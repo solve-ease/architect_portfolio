@@ -134,8 +134,8 @@
   left: 50%;
   transform-style: preserve-3d;
   will-change: transform, opacity;
-  width: 400px;
-  height: 300px;
+  width: 300px;
+  height: 225px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -148,650 +148,658 @@
   display: block;
 }
 
-/* Initial depths and staggered positions - Non-overlapping grid */
+/* Initial depths and staggered positions - Straight columns, misaligned */
+/* Column 1 - starts at Y: -560 */
 .fx-layer-1 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-850px) translateY(-450px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(-560px);
   animation: fx-fly-1 2.3s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-2 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-400px) translateY(-450px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(-315px);
   animation: fx-fly-2 2.7s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-3 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(100px) translateY(-450px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(-70px);
   animation: fx-fly-3 2.1s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-4 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(550px) translateY(-450px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(175px);
   animation: fx-fly-4 2.9s ease-out forwards;
   animation-delay: 0s;
 }
 
+/* Column 2 - starts at Y: -460 */
 .fx-layer-5 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-850px) translateY(-100px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-640px) translateY(-460px);
   animation: fx-fly-5 2.4s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-6 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-400px) translateY(-100px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-640px) translateY(-215px);
   animation: fx-fly-6 2.8s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-7 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(550px) translateY(-100px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-640px) translateY(30px);
   animation: fx-fly-7 2.2s ease-out forwards;
   animation-delay: 0s;
 }
 
+/* Column 3 - starts at Y: -570 */
 .fx-layer-8 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-850px) translateY(250px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(-570px);
   animation: fx-fly-8 2.6s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-9 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-400px) translateY(250px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(-325px);
   animation: fx-fly-9 3s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-10 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(100px) translateY(250px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(-80px);
   animation: fx-fly-10 2.5s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-11 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(550px) translateY(250px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(165px);
   animation: fx-fly-11 2.3s ease-out forwards;
   animation-delay: 0s;
 }
 
+/* Column 4 - starts at Y: -440 */
 .fx-layer-12 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(1000px) translateY(-450px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(0px) translateY(-440px);
   animation: fx-fly-12 2.7s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-13 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(1000px) translateY(-100px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(0px) translateY(-195px);
   animation: fx-fly-13 2.2s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-14 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(1000px) translateY(250px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(0px) translateY(50px);
   animation: fx-fly-14 2.9s ease-out forwards;
   animation-delay: 0s;
 }
 
+/* Column 5 - starts at Y: -550 */
 .fx-layer-15 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1300px) translateY(-450px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(-550px);
   animation: fx-fly-15 2.4s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-16 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1300px) translateY(-100px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(-305px);
   animation: fx-fly-16 2.8s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-17 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1300px) translateY(250px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(-60px);
   animation: fx-fly-17 2.6s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-18 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(100px) translateY(-100px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(185px);
   animation: fx-fly-18 2.5s ease-out forwards;
   animation-delay: 0s;
 }
 
+/* Column 6 - starts at Y: -450 */
 .fx-layer-19 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-650px) translateY(-280px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(640px) translateY(-450px);
   animation: fx-fly-19 2.6s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-20 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(380px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(640px) translateY(-205px);
   animation: fx-fly-20 2.3s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-21 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1100px) translateY(-320px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(640px) translateY(40px);
   animation: fx-fly-21 2.8s ease-out forwards;
   animation-delay: 0s;
 }
 
+/* Column 7 - starts at Y: -565 */
 .fx-layer-22 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(780px) translateY(-380px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(960px) translateY(-565px);
   animation: fx-fly-22 2.4s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-23 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-280px) translateY(420px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(960px) translateY(-320px);
   animation: fx-fly-23 2.9s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-24 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(920px) translateY(180px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(960px) translateY(-75px);
   animation: fx-fly-24 2.2s ease-out forwards;
   animation-delay: 0s;
 }
 
+/* Additional images distributed across columns */
 .fx-layer-25 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-950px) translateY(380px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(420px);
   animation: fx-fly-25 2.7s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-26 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(180px) translateY(-520px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-640px) translateY(275px);
   animation: fx-fly-26 2.5s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-27 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-520px) translateY(80px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(410px);
   animation: fx-fly-27 3s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-28 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(650px) translateY(50px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(0px) translateY(295px);
   animation: fx-fly-28 2.3s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-29 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1450px) translateY(150px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(430px);
   animation: fx-fly-29 2.6s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-30 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(1150px) translateY(-250px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(640px) translateY(285px);
   animation: fx-fly-30 2.4s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-31 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-180px) translateY(-380px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(960px) translateY(170px);
   animation: fx-fly-31 2.8s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-32 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(450px) translateY(320px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-640px) translateY(520px);
   animation: fx-fly-32 2.1s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-33 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1200px) translateY(-180px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(655px);
   animation: fx-fly-33 2.9s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-34 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(850px) translateY(-50px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(0px) translateY(540px);
   animation: fx-fly-34 2.5s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-35 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-750px) translateY(480px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(675px);
   animation: fx-fly-35 2.7s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-36 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(280px) translateY(-200px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(640px) translateY(530px);
   animation: fx-fly-36 2.2s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-37 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-50px) translateY(180px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(960px) translateY(415px);
   animation: fx-fly-37 2.6s ease-out forwards;
   animation-delay: 0s;
 }
 
 .fx-layer-38 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateX(1050px) translateY(420px);
+  transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(665px);
   animation: fx-fly-38 2.4s ease-out forwards;
   animation-delay: 0s;
 }
 
-/* Fly-through animations - maintaining non-overlapping positions */
+/* Fly-through animations - straight columns */
 @keyframes fx-fly-1 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-850px) translateY(-450px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(-560px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-1020px) translateY(-540px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-1152px) translateY(-672px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-2 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-400px) translateY(-450px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(-315px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-480px) translateY(-540px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-1152px) translateY(-378px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-3 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(100px) translateY(-450px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(-70px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(120px) translateY(-540px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-1152px) translateY(-84px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-4 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(550px) translateY(-450px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(175px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(660px) translateY(-540px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-1152px) translateY(210px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-5 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-850px) translateY(-100px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-640px) translateY(-460px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-1020px) translateY(-120px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-768px) translateY(-552px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-6 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-400px) translateY(-100px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-640px) translateY(-215px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-480px) translateY(-120px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-768px) translateY(-258px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-7 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(550px) translateY(-100px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-640px) translateY(30px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(660px) translateY(-120px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-768px) translateY(36px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-8 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-850px) translateY(250px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(-570px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-1020px) translateY(300px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-384px) translateY(-684px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-9 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-400px) translateY(250px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(-325px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-480px) translateY(300px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-384px) translateY(-390px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-10 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(100px) translateY(250px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(-80px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(120px) translateY(300px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-384px) translateY(-96px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-11 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(550px) translateY(250px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(165px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(660px) translateY(300px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-384px) translateY(198px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-12 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(1000px) translateY(-450px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(0px) translateY(-440px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(1200px) translateY(-540px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(0px) translateY(-528px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-13 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(1000px) translateY(-100px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(0px) translateY(-195px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(1200px) translateY(-120px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(0px) translateY(-234px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-14 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(1000px) translateY(250px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(0px) translateY(50px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(1200px) translateY(300px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(0px) translateY(60px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-15 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1300px) translateY(-450px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(-550px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-1560px) translateY(-540px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(384px) translateY(-660px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-16 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1300px) translateY(-100px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(-305px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-1560px) translateY(-120px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(384px) translateY(-366px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-17 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1300px) translateY(250px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(-60px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-1560px) translateY(300px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(384px) translateY(-72px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-18 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(100px) translateY(-100px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(185px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(120px) translateY(-120px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(384px) translateY(222px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-19 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-650px) translateY(-280px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(640px) translateY(-450px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-780px) translateY(-336px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(768px) translateY(-540px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-20 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(380px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(640px) translateY(-205px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(384px) translateY(456px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(768px) translateY(-246px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-21 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1100px) translateY(-320px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(640px) translateY(40px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-1320px) translateY(-384px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(768px) translateY(48px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-22 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(780px) translateY(-380px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(960px) translateY(-565px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(936px) translateY(-456px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(1152px) translateY(-678px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-23 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-280px) translateY(420px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(960px) translateY(-320px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-336px) translateY(504px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(1152px) translateY(-384px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-24 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(920px) translateY(180px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(960px) translateY(-75px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(1104px) translateY(216px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(1152px) translateY(-90px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-25 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-950px) translateY(380px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(420px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-1140px) translateY(456px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-1152px) translateY(504px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-26 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(180px) translateY(-520px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-640px) translateY(275px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(216px) translateY(-624px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-768px) translateY(330px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-27 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-520px) translateY(80px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(410px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-624px) translateY(96px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-384px) translateY(492px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-28 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(650px) translateY(50px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(0px) translateY(295px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(780px) translateY(60px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(0px) translateY(354px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-29 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1450px) translateY(150px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(430px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-1740px) translateY(180px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(384px) translateY(516px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-30 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(1150px) translateY(-250px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(640px) translateY(285px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(1380px) translateY(-300px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(768px) translateY(342px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-31 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-180px) translateY(-380px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(960px) translateY(170px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-216px) translateY(-456px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(1152px) translateY(204px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-32 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(450px) translateY(320px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-640px) translateY(520px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(540px) translateY(384px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-768px) translateY(624px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-33 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-1200px) translateY(-180px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-320px) translateY(655px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-1440px) translateY(-216px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-384px) translateY(786px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-34 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(850px) translateY(-50px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(0px) translateY(540px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(1020px) translateY(-60px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(0px) translateY(648px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-35 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-750px) translateY(480px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(320px) translateY(675px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-900px) translateY(576px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(384px) translateY(810px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-36 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(280px) translateY(-200px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(640px) translateY(530px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(336px) translateY(-240px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(768px) translateY(636px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-37 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-50px) translateY(180px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(960px) translateY(415px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(-60px) translateY(216px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(1152px) translateY(498px) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes fx-fly-38 {
   from {
-    transform: translate(-50%, -50%) translateZ(-2000px) translateX(1050px) translateY(420px) scale(0.6);
+    transform: translate(-50%, -50%) translateZ(-2000px) translateX(-960px) translateY(665px) scale(0.6);
     opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(400px) translateX(1260px) translateY(504px) scale(1);
+    transform: translate(-50%, -50%) translateZ(400px) translateX(-1152px) translateY(798px) scale(1);
     opacity: 1;
   }
 }
