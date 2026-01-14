@@ -1,42 +1,335 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.background-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 15px;
+  padding: 15px;
+  z-index: 0;
+  opacity: 0.3;
 }
 
-@keyframes logo-spin {
+.grid-item {
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.grid-item-1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800');
+}
+
+.grid-item-2 {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800');
+}
+
+.grid-item-3 {
+  grid-column: 3 / 5;
+  grid-row: 1 / 3;
+  background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800');
+}
+
+.grid-item-4 {
+  grid-column: 2 / 3;
+  grid-row: 2 / 4;
+  background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800');
+}
+
+.grid-item-5 {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  background-image: url('https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800');
+}
+
+.grid-item-6 {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+  background-image: url('https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800');
+}
+
+.grid-item-7 {
+  grid-column: 4 / 5;
+  grid-row: 3 / 4;
+  background-image: url('https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800');
+}
+
+.grid-item-8 {
+  grid-column: 1 / 3;
+  grid-row: 1 / 1;
+  background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800');
+  display: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  background-color: transparent;
+  position: relative;
+  z-index: 10;
+}
+
+.navbar a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #666;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3D Fly-through Effect */
+.fx-3d-scene {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fx-3d-world {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.fx-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  width: 400px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.fx-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Initial depths and staggered positions */
+.fx-layer-1 {
+  transform: translate(-50%, -50%) translateZ(-800px) translateX(-100px);
+  animation: fx-fly-1 12s linear infinite;
+}
+
+.fx-layer-2 {
+  transform: translate(-50%, -50%) translateZ(-1400px) translateX(150px);
+  animation: fx-fly-2 12s linear infinite;
+  animation-delay: 2s;
+}
+
+.fx-layer-3 {
+  transform: translate(-50%, -50%) translateZ(-2000px) translateY(-80px);
+  animation: fx-fly-3 12s linear infinite;
+  animation-delay: 4s;
+}
+
+.fx-layer-4 {
+  transform: translate(-50%, -50%) translateZ(-2600px) translateX(-120px) translateY(60px);
+  animation: fx-fly-4 12s linear infinite;
+  animation-delay: 6s;
+}
+
+.fx-layer-5 {
+  transform: translate(-50%, -50%) translateZ(-3200px) translateX(80px) translateY(-50px);
+  animation: fx-fly-5 12s linear infinite;
+  animation-delay: 8s;
+}
+
+.fx-layer-6 {
+  transform: translate(-50%, -50%) translateZ(-3800px) translateY(70px);
+  animation: fx-fly-6 12s linear infinite;
+  animation-delay: 10s;
+}
+
+/* Fly-through animations */
+@keyframes fx-fly-1 {
   from {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) translateZ(-4000px) translateX(-100px) scale(0.3);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.9;
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) translateZ(1000px) translateX(-100px) scale(1.6);
+    opacity: 0;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes fx-fly-2 {
+  from {
+    transform: translate(-50%, -50%) translateZ(-4000px) translateX(150px) scale(0.3);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(-50%, -50%) translateZ(1000px) translateX(150px) scale(1.6);
+    opacity: 0;
   }
 }
 
-.card {
-  padding: 2em;
+@keyframes fx-fly-3 {
+  from {
+    transform: translate(-50%, -50%) translateZ(-4000px) translateY(-80px) scale(0.3);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(-50%, -50%) translateZ(1000px) translateY(-80px) scale(1.6);
+    opacity: 0;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+@keyframes fx-fly-4 {
+  from {
+    transform: translate(-50%, -50%) translateZ(-4000px) translateX(-120px) translateY(60px) scale(0.3);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(-50%, -50%) translateZ(1000px) translateX(-120px) translateY(60px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes fx-fly-5 {
+  from {
+    transform: translate(-50%, -50%) translateZ(-4000px) translateX(80px) translateY(-50px) scale(0.3);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(-50%, -50%) translateZ(1000px) translateX(80px) translateY(-50px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes fx-fly-6 {
+  from {
+    transform: translate(-50%, -50%) translateZ(-4000px) translateY(70px) scale(0.3);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(-50%, -50%) translateZ(1000px) translateY(70px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Hero title wrapper with 3D positioning */
+.hero-title-wrapper {
+  position: relative;
+  z-index: 5;
+  transform-style: preserve-3d;
+}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .fx-layer {
+    animation: none !important;
+    opacity: 0.1;
+    transform: translate(-50%, -50%) translateZ(-2000px) !important;
+  }
+  
+  .fx-3d-scene {
+    perspective: none;
+  }
+}
+
+.title {
+  font-size: 7rem;
+  color: #333;
+  margin: 0;
+  transform: scale(0.8);
+  animation: zoomIn 2.5s ease-out forwards, maskWipe 1s  forwards;
+  clip-path: inset(0 100% 0 0);
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes maskWipe {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
 }
