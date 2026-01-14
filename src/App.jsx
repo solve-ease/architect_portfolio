@@ -1,6 +1,100 @@
 import './App.css'
+import { useRef, useState, useEffect } from 'react'
 
 function App() {
+  const worldRef = useRef(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [startY, setStartY] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
+  const [scrollTop, setScrollTop] = useState(0)
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true)
+    setStartX(e.pageX - worldRef.current.offsetLeft)
+    setStartY(e.pageY - worldRef.current.offsetTop)
+    setScrollLeft(worldRef.current.scrollLeft)
+    setScrollTop(worldRef.current.scrollTop)
+    worldRef.current.style.cursor = 'grabbing'
+  }
+
+  const handleMouseLeave = () => {
+    setIsDragging(false)
+    if (worldRef.current) {
+      worldRef.current.style.cursor = 'grab'
+    }
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+    if (worldRef.current) {
+      worldRef.current.style.cursor = 'grab'
+    }
+  }
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return
+    e.preventDefault()
+    const x = e.pageX - worldRef.current.offsetLeft
+    const y = e.pageY - worldRef.current.offsetTop
+    const walkX = (x - startX) * 2 // Multiply by 2 for faster scrolling
+    const walkY = (y - startY) * 2
+    worldRef.current.scrollLeft = scrollLeft - walkX
+    worldRef.current.scrollTop = scrollTop - walkY
+    updateTitlePosition()
+  }
+
+  const handleTouchStart = (e) => {
+    setIsDragging(true)
+    setStartX(e.touches[0].pageX - worldRef.current.offsetLeft)
+    setStartY(e.touches[0].pageY - worldRef.current.offsetTop)
+    setScrollLeft(worldRef.current.scrollLeft)
+    setScrollTop(worldRef.current.scrollTop)
+  }
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return
+    const x = e.touches[0].pageX - worldRef.current.offsetLeft
+    const y = e.touches[0].pageY - worldRef.current.offsetTop
+    const walkX = (x - startX) * 2
+    const walkY = (y - startY) * 2
+    worldRef.current.scrollLeft = scrollLeft - walkX
+    worldRef.current.scrollTop = scrollTop - walkY
+    updateTitlePosition()
+  }
+
+  const handleTouchEnd = () => {
+    setIsDragging(false)
+  }
+
+  const handleWheel = (e) => {
+    // Prevent scroll wheel from moving the content
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
+  const updateTitlePosition = () => {
+    const titleWrapper = worldRef.current?.querySelector('.hero-title-wrapper')
+    if (titleWrapper && worldRef.current) {
+      const centerX = (worldRef.current.scrollWidth - worldRef.current.clientWidth) / 2
+      const centerY = (worldRef.current.scrollHeight - worldRef.current.clientHeight) / 2
+      const scrollX = worldRef.current.scrollLeft - centerX
+      const scrollY = worldRef.current.scrollTop - centerY
+      // Move title at 100% to counteract scroll and keep it stationary
+      titleWrapper.style.transform = `translate(-50%, -50%) translateZ(0) translateX(${scrollX}px) translateY(${scrollY}px)`
+    }
+  }
+
+  useEffect(() => {
+    // Center the scroll on mount
+    if (worldRef.current) {
+      const centerX = (worldRef.current.scrollWidth - worldRef.current.clientWidth) / 2
+      const centerY = (worldRef.current.scrollHeight - worldRef.current.clientHeight) / 2
+      worldRef.current.scrollLeft = centerX
+      worldRef.current.scrollTop = centerY
+    }
+  }, [])
+
   return (
     <div className="container">
       
@@ -13,7 +107,19 @@ function App() {
       
       <main className="main-content">
         <div className="fx-3d-scene">
-          <div className="fx-3d-world">
+          <div 
+            className="fx-3d-world"
+            ref={worldRef}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onWheel={handleWheel}
+          >
+            <div className="fx-3d-inner">
             <div className="fx-layer fx-layer-1">
               <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="" />
             </div>
@@ -131,6 +237,7 @@ function App() {
             
             <div className="hero-title-wrapper">
               <h1 className="title">PowerHouse</h1>
+            </div>
             </div>
           </div>
         </div>
