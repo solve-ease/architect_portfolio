@@ -118,7 +118,7 @@
   overflow: hidden;
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -150,148 +150,30 @@
 
 /* Initial depths and staggered positions */
 .fx-layer-1 {
-  transform: translate(-50%, -50%) translateZ(-800px) translateX(-100px);
-  animation: fx-fly-1 12s linear infinite;
+  transform: translate(-50%, -50%) translateZ(-2000px);
+  animation: fx-fly-1 2s ease-out forwards;
 }
 
-.fx-layer-2 {
-  transform: translate(-50%, -50%) translateZ(-1400px) translateX(150px);
-  animation: fx-fly-2 12s linear infinite;
-  animation-delay: 2s;
-}
-
-.fx-layer-3 {
-  transform: translate(-50%, -50%) translateZ(-2000px) translateY(-80px);
-  animation: fx-fly-3 12s linear infinite;
-  animation-delay: 4s;
-}
-
-.fx-layer-4 {
-  transform: translate(-50%, -50%) translateZ(-2600px) translateX(-120px) translateY(60px);
-  animation: fx-fly-4 12s linear infinite;
-  animation-delay: 6s;
-}
-
-.fx-layer-5 {
-  transform: translate(-50%, -50%) translateZ(-3200px) translateX(80px) translateY(-50px);
-  animation: fx-fly-5 12s linear infinite;
-  animation-delay: 8s;
-}
-
-.fx-layer-6 {
-  transform: translate(-50%, -50%) translateZ(-3800px) translateY(70px);
-  animation: fx-fly-6 12s linear infinite;
-  animation-delay: 10s;
-}
-
-/* Fly-through animations */
+/* Fly-through animation */
 @keyframes fx-fly-1 {
   from {
-    transform: translate(-50%, -50%) translateZ(-4000px) translateX(-100px) scale(0.3);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.7;
-  }
-  85% {
-    opacity: 0.9;
+    transform: translate(-50%, -50%) translateZ(-2000px) scale(0.6);
+    opacity: 1;
   }
   to {
-    transform: translate(-50%, -50%) translateZ(1000px) translateX(-100px) scale(1.6);
-    opacity: 0;
-  }
-}
-
-@keyframes fx-fly-2 {
-  from {
-    transform: translate(-50%, -50%) translateZ(-4000px) translateX(150px) scale(0.3);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.7;
-  }
-  85% {
-    opacity: 0.9;
-  }
-  to {
-    transform: translate(-50%, -50%) translateZ(1000px) translateX(150px) scale(1.6);
-    opacity: 0;
-  }
-}
-
-@keyframes fx-fly-3 {
-  from {
-    transform: translate(-50%, -50%) translateZ(-4000px) translateY(-80px) scale(0.3);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.7;
-  }
-  85% {
-    opacity: 0.9;
-  }
-  to {
-    transform: translate(-50%, -50%) translateZ(1000px) translateY(-80px) scale(1.6);
-    opacity: 0;
-  }
-}
-
-@keyframes fx-fly-4 {
-  from {
-    transform: translate(-50%, -50%) translateZ(-4000px) translateX(-120px) translateY(60px) scale(0.3);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.7;
-  }
-  85% {
-    opacity: 0.9;
-  }
-  to {
-    transform: translate(-50%, -50%) translateZ(1000px) translateX(-120px) translateY(60px) scale(1.6);
-    opacity: 0;
-  }
-}
-
-@keyframes fx-fly-5 {
-  from {
-    transform: translate(-50%, -50%) translateZ(-4000px) translateX(80px) translateY(-50px) scale(0.3);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.7;
-  }
-  85% {
-    opacity: 0.9;
-  }
-  to {
-    transform: translate(-50%, -50%) translateZ(1000px) translateX(80px) translateY(-50px) scale(1.6);
-    opacity: 0;
-  }
-}
-
-@keyframes fx-fly-6 {
-  from {
-    transform: translate(-50%, -50%) translateZ(-4000px) translateY(70px) scale(0.3);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.7;
-  }
-  85% {
-    opacity: 0.9;
-  }
-  to {
-    transform: translate(-50%, -50%) translateZ(1000px) translateY(70px) scale(1.6);
-    opacity: 0;
+    transform: translate(-50%, -50%) translateZ(400px) scale(1);
+    opacity: 1;
   }
 }
 
 /* Hero title wrapper with 3D positioning */
 .hero-title-wrapper {
-  position: relative;
-  z-index: 5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(0);
   transform-style: preserve-3d;
+  pointer-events: auto;
 }
 
 /* Reduced motion fallback */
