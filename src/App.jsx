@@ -6,8 +6,8 @@ function App() {
   useEffect(() => {
     const layers = document.querySelectorAll('.fx-layer');
     layers.forEach((layer) => {
-      // Random delay between 0 and 0.5 seconds
-      const randomDelay = Math.random() * 0.5;
+      // Random delay between 0 and 2 seconds for more varied appearance
+      const randomDelay = Math.random() * 2;
       layer.style.animationDelay = `${randomDelay}s`;
     });
   }, []);
