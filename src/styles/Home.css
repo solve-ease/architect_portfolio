@@ -85,13 +85,12 @@
   pointer-events: auto;
 }
 
-.title {
-  font-size: 7rem;
-  color: #333;
-  margin: 0;
-  font-weight: 400;
+.hero-logo {
+  max-width: 20rem;
+  width: 90vw;
+  height: auto;
   transform: scale(0.8);
-  animation: zoomIn 2.5s ease-out forwards, maskWipe 1s  forwards;
+  animation: zoomIn 2.5s ease-out forwards, maskWipe 1s forwards;
   clip-path: inset(0 100% 0 0);
 }
 

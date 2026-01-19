@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import '../styles/Home.css'
+import logo from '../assets/PARAFLULX_LOGO.webp'
 
 function Home() {
   // Random animation delays for each image in a small range
@@ -134,7 +135,7 @@ function Home() {
       </div>
       
       <div className="hero-title-wrapper">
-        <h1 className="title">PowerHouse</h1>
+        <img src={logo} alt="Paraflux" className="hero-logo" />
       </div>
     </div>
   )

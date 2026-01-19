@@ -94,6 +94,18 @@ body {
   width: fit-content;
 }
 
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+.navbar .logo {
+  height: 35px;
+  width: auto;
+  display: block;
+}
+
 .navbar a {
   color: #333;
   text-decoration: none;
