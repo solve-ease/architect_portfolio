@@ -70,6 +70,7 @@ function Home() {
   const isDragging = useRef(false);
   const startPos = useRef({ x: 0, y: 0 });
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
 
   // Random animation delays for each image in a small range
   useEffect(() => {
@@ -127,6 +128,32 @@ function Home() {
     };
   }, [offset]);
 
+  // Zoom functionality on scroll
+  useEffect(() => {
+    const handleWheel = (e) => {
+      e.preventDefault();
+      
+      setZoom((prevZoom) => {
+        const zoomDelta = e.deltaY * -0.001;
+        const newZoom = prevZoom + zoomDelta;
+        
+        // Clamp zoom between 0.85 and 1.35
+        return Math.min(Math.max(newZoom, 0.85), 1.5);
+      });
+    };
+
+    const scene = document.querySelector('.fx-3d-scene');
+    if (scene) {
+      scene.addEventListener('wheel', handleWheel, { passive: false });
+    }
+
+    return () => {
+      if (scene) {
+        scene.removeEventListener('wheel', handleWheel);
+      }
+    };
+  }, []);
+
   return (
     <div className="main-content">
       <div className="fx-3d-scene">
@@ -134,7 +161,7 @@ function Home() {
           className="fx-3d-world fx-grid" 
           ref={worldRef}
           style={{
-            transform: `translate(${offset.x}px, ${offset.y}px)`,
+            transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
             transition: isDragging.current ? 'none' : 'transform 0.3s ease-out'
           }}
         >
