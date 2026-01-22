@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import '../styles/Home.css'
 import logo from '../assets/PARAFLULX_LOGO.webp'
 
@@ -65,6 +65,12 @@ import white2 from '../assets/architect_images_webp_reduced/Renders for website/
 import white3 from '../assets/architect_images_webp_reduced/Renders for website/The White house/The White House (3).webp'
 
 function Home() {
+  const worldRef = useRef(null);
+  const logoRef = useRef(null);
+  const isDragging = useRef(false);
+  const startPos = useRef({ x: 0, y: 0 });
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
   // Random animation delays for each image in a small range
   useEffect(() => {
     const layers = document.querySelectorAll('.fx-layer');
@@ -75,10 +81,63 @@ function Home() {
     });
   }, []);
 
+  // Drag functionality
+  useEffect(() => {
+    const handleMouseDown = (e) => {
+      isDragging.current = true;
+      startPos.current = {
+        x: e.clientX - offset.x,
+        y: e.clientY - offset.y
+      };
+      if (worldRef.current) {
+        worldRef.current.style.cursor = 'grabbing';
+      }
+    };
+
+    const handleMouseMove = (e) => {
+      if (!isDragging.current) return;
+      
+      const newOffset = {
+        x: e.clientX - startPos.current.x,
+        y: e.clientY - startPos.current.y
+      };
+      setOffset(newOffset);
+    };
+
+    const handleMouseUp = () => {
+      isDragging.current = false;
+      if (worldRef.current) {
+        worldRef.current.style.cursor = 'grab';
+      }
+    };
+
+    const world = worldRef.current;
+    if (world) {
+      world.addEventListener('mousedown', handleMouseDown);
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+    }
+
+    return () => {
+      if (world) {
+        world.removeEventListener('mousedown', handleMouseDown);
+      }
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [offset]);
+
   return (
     <div className="main-content">
       <div className="fx-3d-scene">
-        <div className="fx-3d-world fx-grid">
+        <div 
+          className="fx-3d-world fx-grid" 
+          ref={worldRef}
+          style={{
+            transform: `translate(${offset.x}px, ${offset.y}px)`,
+            transition: isDragging.current ? 'none' : 'transform 0.3s ease-out'
+          }}
+        >
           <div className="fx-layer">
             <img src={conv1} alt="Architecture render" />
           </div>
@@ -196,7 +255,14 @@ function Home() {
         </div>
       </div>
       
-      <div className="hero-title-wrapper">
+      <div 
+        className="hero-title-wrapper"
+        ref={logoRef}
+        style={{
+          transform: `translate(calc(-50% + ${offset.x * 0.25}px), calc(-50% + ${offset.y * 0.25}px)) translateZ(-400px)`,
+          transition: isDragging.current ? 'none' : 'transform 0.3s ease-out'
+        }}
+      >
         <img src={logo} alt="Paraflux" className="hero-logo" />
       </div>
     </div>

@@ -17,13 +17,15 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .fx-3d-world {
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
+  cursor: grab;
+  user-select: none;
 }
 
 /* CSS Grid Layout - automatically positions all images */
@@ -186,7 +188,6 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) translateZ(-400px);
   transform-style: preserve-3d;
   pointer-events: auto;
 }
@@ -196,16 +197,20 @@
   width: 90vw;
   height: auto;
   transform: scale(0.8);
-  animation: zoomIn 2.5s ease-out forwards, maskWipe 1s forwards;
+  animation: zoomIn 2.5s ease-out forwards, maskWipe 1s ease-out forwards;
+  /* animation-delay: 0.5s; */
   clip-path: inset(0 100% 0 0);
+  opacity: 0;
 }
 
 @keyframes zoomIn {
   0% {
     transform: scale(0.8);
+    opacity: 0;
   }
   100% {
     transform: scale(1.2);
+    opacity: 1;
   }
 }
 
