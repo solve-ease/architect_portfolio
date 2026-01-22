@@ -245,6 +245,9 @@
 }
 
 @media (max-width: 768px) {
+  .team-content{
+    padding: 8rem 1.5rem;
+  }
   .team-heading {
     font-size: 2rem;
   }
