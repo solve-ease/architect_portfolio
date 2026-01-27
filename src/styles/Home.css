@@ -18,13 +18,17 @@
   inset: 0;
   z-index: 1;
   pointer-events: auto;
+  cursor: grab;
+}
+
+.fx-3d-scene:active {
+  cursor: grabbing;
 }
 
 .fx-3d-world {
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
-  cursor: grab;
   user-select: none;
 }
 
@@ -32,7 +36,7 @@
 .fx-grid {
   display: grid;
   grid-template-columns: repeat(7, 300px);
-  gap: 60px;
+  gap: 55px;
   justify-content: center;
   align-content: center;
   position: absolute;
@@ -45,7 +49,7 @@
   will-change: transform, opacity;
   width: 300px;
   height: 225px;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   
@@ -63,6 +67,20 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+.fx-layer picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Shared animation - flies from far to near in 3D space */
@@ -240,32 +258,73 @@
   }
 }
 
-/* Mobile Landscape & Portrait - 7 smaller columns */
+/* Mobile Landscape & Portrait - 3 columns */
 @media (max-width: 600px) {
   .fx-grid {
-    grid-template-columns: repeat(7, 140px);
-    gap: 40px;
+    grid-template-columns: repeat(5, 180px);
+    gap: 30px;
+    padding: 20px;
   }
   
   .fx-layer {
-    width: 140px;
-    height: 105px;
+    width: 180px;
+    height: 135px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
   
   .fx-3d-scene {
-    perspective: 600px;
+    perspective: 800px;
+  }
+  
+  .hero-logo {
+    max-width: 14rem;
+  }
+  
+  /* Update column-based animations for 3 columns */
+  .fx-layer:nth-child(5n + 1) {
+    animation: fx-fly-in-offset1 6s cubic-bezier(.43,.31,0,1) forwards;
+  }
+  
+  .fx-layer:nth-child(5n + 2) {
+    animation: fx-fly-in-offset2 6s cubic-bezier(.43,.31,0,1) forwards;
+  }
+  
+  .fx-layer:nth-child(5n + 3) {
+    animation: fx-fly-in-offset3 6s cubic-bezier(.43,.31,0,1) forwards;
+  }
+
+  .fx-layer:nth-child(5n + 4) {
+    animation: fx-fly-in-offset4 6s cubic-bezier(.43,.31,0,1) forwards;
+  }
+  
+  .fx-layer:nth-child(5n + 5) {
+    animation: fx-fly-in-offset5 6s cubic-bezier(.43,.31,0,1) forwards;
   }
 }
 
-/* Extra Small Mobile */
+/* Extra Small Mobile - 2 columns */
 @media (max-width: 380px) {
   .fx-grid {
-    grid-template-columns: repeat(7, 120px);
-    gap: 40px;
+    grid-template-columns: repeat(2, 150px);
+    gap: 25px;
+    padding: 15px;
   }
   
   .fx-layer {
-    width: 120px;
-    height: 90px;
+    width: 150px;
+    height: 112px;
+  }
+  
+  .hero-logo {
+    max-width: 12rem;
+  }
+  
+  /* Update for 2 columns */
+  .fx-layer:nth-child(2n + 1) {
+    animation: fx-fly-in-offset1 5.5s cubic-bezier(.43,.31,0,1) forwards;
+  }
+  
+  .fx-layer:nth-child(2n + 2) {
+    animation: fx-fly-in-offset2 5.5s cubic-bezier(.43,.31,0,1) forwards;
   }
 }
