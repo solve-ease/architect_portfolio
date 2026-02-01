@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import { useState, useEffect } from 'react'
 import Home from './pages/Home'
 import Team from './pages/Team'
+import About from './pages/About'
 import Footer from './components/Footer'
 import logo from './assets/PARAFLULX_LOGO.webp'
 import logo_mobile from './assets/logo_white.webp' 
@@ -44,9 +45,9 @@ function Navbar() {
       <nav className="navbar navbar-desktop">
         <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
         <Link to="/team" className={location.pathname === '/team' ? 'active' : ''}>Team</Link>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="/about">About</a>
+        <a href="/projects">Projects</a>
+        <a href="/contact">Contact</a>
       </nav>
 
       {/* Mobile Hamburger Button */}
@@ -89,13 +90,14 @@ function Navbar() {
 
 function AppContent() {
   const location = useLocation()
-  const showFooter = location.pathname !== '/'
+  const showFooter = location.pathname !== '/' && location.pathname !== '/about'
   
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       {showFooter && <Footer />}
     </>

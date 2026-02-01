@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/PARAFLULX_LOGO.webp'
 import logo_black from '../assets/logo_white.webp'
+import logo_white from '../assets/logo_white-removebg-preview.webp'
 import './Navbar.css'
 import { FaLinkedin, FaInstagram } from 'react-icons/fa'
 
-function Navbar() {
+function Navbar({ variant = 'default', transparent = false }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const displayLogo = variant === 'white' ? logo_white : logo
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -21,10 +24,10 @@ function Navbar() {
 
   return (
     <>
-      <nav className="team-navbar">
+      <nav className={`team-navbar ${transparent ? 'transparent-navbar' : ''}`}>
         <div className="team-navbar-container">
           <div className="team-navbar-logo">
-            <img src={logo} alt="Paraflux Logo" className={`team-logo-img ${isMenuOpen ? 'hidden' : ''}`} />
+            <img src={displayLogo} alt="Paraflux Logo" className={`team-logo-img ${isMenuOpen ? 'hidden' : ''}`} />
             <img src={logo_black} alt="Paraflux Logo" className={`team-logo-img logo-white ${isMenuOpen ? 'visible' : ''}`} />
           </div>
           
@@ -59,10 +62,11 @@ function Navbar() {
         <div className="menu-content">
           <nav className="menu-nav">
             {/* <a href="#sectors" className="menu-link">Sectors</a> */}
+            <Link to="/" className="menu-link" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <a href="#projects" className="menu-link">Projects</a>
-            <a href="#our-story" className="menu-link">Our Story</a>
+            <Link to="/about" className="menu-link" onClick={() => setIsMenuOpen(false)}>About</Link>
             {/* <a href="#studio" className="menu-link">Studio</a> */}
-            <a href="#team" className="menu-link">Team</a>
+            <Link to="/team" className="menu-link" onClick={() => setIsMenuOpen(false)}>Team</Link>
             {/* <a href="#news" className="menu-link">News</a> */}
             {/* <a href="#careers" className="menu-link">Careers</a> */}
             <a href="#contact" className="menu-link">Contact</a>

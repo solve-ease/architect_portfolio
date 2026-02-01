@@ -6,9 +6,18 @@
   width: 80%;
   /* background-color: #f8f8f8; */
   z-index: 3000;
-  padding: 2rem 0rem;
+  padding: 1rem 0rem;
   margin: 0 auto;
   position: relative;
+}
+
+.team-navbar.transparent-navbar {
+  position: relative;
+  width: 80%;
+  background: transparent;
+  box-shadow: none;
+  padding: 1rem 0rem;
+  margin: 0 auto;
 }
 
 .team-navbar-container {
