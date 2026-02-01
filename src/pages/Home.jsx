@@ -261,12 +261,13 @@ function Home() {
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         
-        // Define maximum drag limits (adjust these values as needed)
-        // Allow dragging but keep at least 20% of content visible
-        const maxOffsetX = viewportWidth * 0.8;
-        const minOffsetX = -viewportWidth * 0.8;
-        const maxOffsetY = viewportHeight * 0.8;
-        const minOffsetY = -viewportHeight * 0.8;
+        // Define maximum drag limits to reduce white space
+        // Reduced from 0.8 to 0.3 to minimize white space on x-axis
+        // Increased y-axis limits slightly for more vertical freedom
+        const maxOffsetX = viewportWidth * 1.0;
+        const minOffsetX = -viewportWidth * 1.0;
+        const maxOffsetY = viewportHeight * .9;
+        const minOffsetY = -viewportHeight * 1.0;
         
         // Clamp the offset within boundaries
         newX = Math.max(minOffsetX, Math.min(maxOffsetX, newX));

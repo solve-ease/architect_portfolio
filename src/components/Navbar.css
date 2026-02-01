@@ -244,6 +244,9 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .team-navbar.transparent-navbar {
+    width: 90%;
+  }
   .team-navbar {
     width: 90vw;
     padding: 1.5rem 0rem;
@@ -263,7 +266,9 @@
   }
 
   .menu-header {
-    padding: 1.5rem 5vw;
+    padding: 1rem 0;
+    margin: auto;
+    width: 90%;
   }
 
   .menu-logo img {

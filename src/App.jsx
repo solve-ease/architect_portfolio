@@ -71,7 +71,7 @@ function Navbar() {
         
         <nav className="mobile-menu-nav">
           <a href="/" onClick={closeMenu}>Home</a>
-          <a href="#about" onClick={closeMenu}>About</a>
+          <a href="/about" onClick={closeMenu}>About</a>
           <a href="#projects" onClick={closeMenu}>Projects</a>
           {/* <a href="#studio" onClick={closeMenu}>Studio</a> */}
           <Link to="/team" onClick={closeMenu}>Team</Link>
