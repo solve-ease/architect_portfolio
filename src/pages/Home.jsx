@@ -1,130 +1,132 @@
 import { useEffect, useRef, useState, useMemo } from 'react'
 import '../styles/Home.css'
-import logo from '../assets/PARAFLULX_LOGO.webp'
+
+// Logo
+const logo = '/assets/PARAFLULX_LOGO.webp'
 
 // Conventional centger (3 images)
-import conv1 from '../assets/architect_images_webp_reduced/Renders for website/Conventional centger/04-05_Thesis page_01 copy.webp'
-import conv2 from '../assets/architect_images_webp_reduced/Renders for website/Conventional centger/Thesis  (1).webp'
-import conv3 from '../assets/architect_images_webp_reduced/Renders for website/Conventional centger/Untitled-1 copy.webp'
+const conv1 = '/assets/architect_images_webp_reduced/Renders for website/Conventional centger/04-05_Thesis page_01 copy.webp'
+const conv2 = '/assets/architect_images_webp_reduced/Renders for website/Conventional centger/Thesis  (1).webp'
+const conv3 = '/assets/architect_images_webp_reduced/Renders for website/Conventional centger/Untitled-1 copy.webp'
 
 // Evolo (3 images)
-import evolo1 from '../assets/architect_images_webp_reduced/Renders for website/Evolo/CloseUp.webp'
-import evolo2 from '../assets/architect_images_webp_reduced/Renders for website/Evolo/EVOLO SHEET 01 copy.webp'
-import evolo3 from '../assets/architect_images_webp_reduced/Renders for website/Evolo/Final 2.webp'
+const evolo1 = '/assets/architect_images_webp_reduced/Renders for website/Evolo/CloseUp.webp'
+const evolo2 = '/assets/architect_images_webp_reduced/Renders for website/Evolo/EVOLO SHEET 01 copy.webp'
+const evolo3 = '/assets/architect_images_webp_reduced/Renders for website/Evolo/Final 2.webp'
 
 // GPM Retail (3 images)
-import gpm1 from '../assets/architect_images_webp_reduced/Renders for website/GPM Retail/F1.webp'
-import gpm2 from '../assets/architect_images_webp_reduced/Renders for website/GPM Retail/f3.webp'
-import gpm3 from '../assets/architect_images_webp_reduced/Renders for website/GPM Retail/f5.webp'
+const gpm1 = '/assets/architect_images_webp_reduced/Renders for website/GPM Retail/F1.webp'
+const gpm2 = '/assets/architect_images_webp_reduced/Renders for website/GPM Retail/f3.webp'
+const gpm3 = '/assets/architect_images_webp_reduced/Renders for website/GPM Retail/f5.webp'
 
 // M3m (5 images)
-import m3m1 from '../assets/architect_images_webp_reduced/Renders for website/M3m/Final 1.webp'
-import m3m2 from '../assets/architect_images_webp_reduced/Renders for website/M3m/Scene 12.webp'
-import m3m3 from '../assets/architect_images_webp_reduced/Renders for website/M3m/Scene 16.webp'
-import m3m4 from '../assets/architect_images_webp_reduced/Renders for website/M3m/Scene 22.webp'
-import m3m5 from '../assets/architect_images_webp_reduced/Renders for website/M3m/Commercail (3).webp'
+const m3m1 = '/assets/architect_images_webp_reduced/Renders for website/M3m/Final 1.webp'
+const m3m2 = '/assets/architect_images_webp_reduced/Renders for website/M3m/Scene 12.webp'
+const m3m3 = '/assets/architect_images_webp_reduced/Renders for website/M3m/Scene 16.webp'
+const m3m4 = '/assets/architect_images_webp_reduced/Renders for website/M3m/Scene 22.webp'
+const m3m5 = '/assets/architect_images_webp_reduced/Renders for website/M3m/Commercail (3).webp'
 
 // Migsun Lucknow (2 images)
-import migLuck1 from '../assets/architect_images_webp_reduced/Renders for website/Migsun Lucknow/Cover Page.webp'
-import migLuck2 from '../assets/architect_images_webp_reduced/Renders for website/Migsun Lucknow/Mixed Use- luknow (2).webp'
+const migLuck1 = '/assets/architect_images_webp_reduced/Renders for website/Migsun Lucknow/Cover Page.webp'
+const migLuck2 = '/assets/architect_images_webp_reduced/Renders for website/Migsun Lucknow/Mixed Use- luknow (2).webp'
 
 // Migsun mixed use (6 images)
-import migMix1 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/1 copy.webp'
-import migMix2 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/5.webp'
-import migMix3 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op2/F2.webp'
-import migMix4 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op2/f6.webp'
-import migMix5 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op3/2 copy.webp'
-import migMix6 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op3/4 copy.webp'
+const migMix1 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/1 copy.webp'
+const migMix2 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/5.webp'
+const migMix3 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op2/F2.webp'
+const migMix4 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op2/f6.webp'
+const migMix5 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op3/2 copy.webp'
+const migMix6 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op3/4 copy.webp'
 
 // Migsun rohini (3 images)
-import migRoh1 from '../assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op1/Cover Image.webp'
-import migRoh2 from '../assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op1/2.webp'
-import migRoh3 from '../assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op2/Mixed Use (3)_Bloom.webp'
+const migRoh1 = '/assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op1/Cover Image.webp'
+const migRoh2 = '/assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op1/2.webp'
+const migRoh3 = '/assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op2/Mixed Use (3)_Bloom.webp'
 
 // Noida one (2 images)
-import noida1 from '../assets/architect_images_webp_reduced/Renders for website/Noida one/Noida One (1).webp'
-import noida2 from '../assets/architect_images_webp_reduced/Renders for website/Noida one/Noida One (2).webp'
+const noida1 = '/assets/architect_images_webp_reduced/Renders for website/Noida one/Noida One (1).webp'
+const noida2 = '/assets/architect_images_webp_reduced/Renders for website/Noida one/Noida One (2).webp'
 
 // Omaxe mall (3 images)
-import omaxe1 from '../assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op1/Final_02_op2.webp'
-import omaxe2 from '../assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op1/Final_05_op2.webp'
-import omaxe3 from '../assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op2/Final 01.webp'
+const omaxe1 = '/assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op1/Final_02_op2.webp'
+const omaxe2 = '/assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op1/Final_05_op2.webp'
+const omaxe3 = '/assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op2/Final 01.webp'
 
 // Pentagon (2 images)
-import pent1 from '../assets/architect_images_webp_reduced/Renders for website/Pentagon/Image(1)_style_transfer01 copy.webp'
-import pent2 from '../assets/architect_images_webp_reduced/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
+const pent1 = '/assets/architect_images_webp_reduced/Renders for website/Pentagon/Image(1)_style_transfer01 copy.webp'
+const pent2 = '/assets/architect_images_webp_reduced/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
 
 // Rsp (3 images)
-import rsp1 from '../assets/architect_images_webp_reduced/Renders for website/Rsp/Scene 13.webp'
-import rsp2 from '../assets/architect_images_webp_reduced/Renders for website/Rsp/Scene 24.webp'
-import rsp3 from '../assets/architect_images_webp_reduced/Renders for website/Rsp/RSP Mall_0p1_ (4).webp'
+const rsp1 = '/assets/architect_images_webp_reduced/Renders for website/Rsp/Scene 13.webp'
+const rsp2 = '/assets/architect_images_webp_reduced/Renders for website/Rsp/Scene 24.webp'
+const rsp3 = '/assets/architect_images_webp_reduced/Renders for website/Rsp/RSP Mall_0p1_ (4).webp'
 
 // The White house (3 images)
-import white1 from '../assets/architect_images_webp_reduced/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
-import white2 from '../assets/architect_images_webp_reduced/Renders for website/The White house/The White House (2).webp'
-import white3 from '../assets/architect_images_webp_reduced/Renders for website/The White house/The White House (3).webp'
+const white1 = '/assets/architect_images_webp_reduced/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
+const white2 = '/assets/architect_images_webp_reduced/Renders for website/The White house/The White House (2).webp'
+const white3 = '/assets/architect_images_webp_reduced/Renders for website/The White house/The White House (3).webp'
 
 // Mobile optimized images - Conventional centger
-import conv1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/04-05_Thesis page_01 copy.webp'
-import conv2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/Thesis  (1).webp'
-import conv3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/Untitled-1 copy.webp'
+const conv1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/04-05_Thesis page_01 copy.webp'
+const conv2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/Thesis  (1).webp'
+const conv3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/Untitled-1 copy.webp'
 
 // Evolo mobile
-import evolo1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/CloseUp.webp'
-import evolo2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/EVOLO SHEET 01 copy.webp'
-import evolo3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/Final 2.webp'
+const evolo1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/CloseUp.webp'
+const evolo2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/EVOLO SHEET 01 copy.webp'
+const evolo3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/Final 2.webp'
 
 // GPM Retail mobile
-import gpm1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/F1.webp'
-import gpm2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/f3.webp'
-import gpm3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/f5.webp'
+const gpm1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/F1.webp'
+const gpm2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/f3.webp'
+const gpm3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/f5.webp'
 
 // M3m mobile
-import m3m1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Final 1.webp'
-import m3m2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 12.webp'
-import m3m3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 16.webp'
-import m3m4Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 22.webp'
-import m3m5Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Commercail (3).webp'
+const m3m1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Final 1.webp'
+const m3m2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 12.webp'
+const m3m3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 16.webp'
+const m3m4Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 22.webp'
+const m3m5Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Commercail (3).webp'
 
 // Migsun Lucknow mobile
-import migLuck1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun Lucknow/Cover Page.webp'
-import migLuck2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun Lucknow/Mixed Use- luknow (2).webp'
+const migLuck1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun Lucknow/Cover Page.webp'
+const migLuck2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun Lucknow/Mixed Use- luknow (2).webp'
 
 // Migsun mixed use mobile
-import migMix1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op1/1 copy.webp'
-import migMix2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op1/5.webp'
-import migMix3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op2/F2.webp'
-import migMix4Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op2/f6.webp'
-import migMix5Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op3/2 copy.webp'
-import migMix6Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op3/4 copy.webp'
+const migMix1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op1/1 copy.webp'
+const migMix2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op1/5.webp'
+const migMix3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op2/F2.webp'
+const migMix4Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op2/f6.webp'
+const migMix5Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op3/2 copy.webp'
+const migMix6Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op3/4 copy.webp'
 
 // Migsun rohini mobile
-import migRoh1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op1/Cover Image.webp'
-import migRoh2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op1/2.webp'
-import migRoh3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op2/Mixed Use (3)_Bloom.webp'
+const migRoh1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op1/Cover Image.webp'
+const migRoh2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op1/2.webp'
+const migRoh3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op2/Mixed Use (3)_Bloom.webp'
 
 // Noida one mobile
-import noida1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Noida one/Noida One (1).webp'
-import noida2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Noida one/Noida One (2).webp'
+const noida1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Noida one/Noida One (1).webp'
+const noida2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Noida one/Noida One (2).webp'
 
 // Omaxe mall mobile
-import omaxe1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op1/Final_02_op2.webp'
-import omaxe2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op1/Final_05_op2.webp'
-import omaxe3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op2/Final 01.webp'
+const omaxe1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op1/Final_02_op2.webp'
+const omaxe2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op1/Final_05_op2.webp'
+const omaxe3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op2/Final 01.webp'
 
 // Pentagon mobile
-import pent1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Pentagon/Image(1)_style_transfer01 copy.webp'
-import pent2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
+const pent1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Pentagon/Image(1)_style_transfer01 copy.webp'
+const pent2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
 
 // Rsp mobile
-import rsp1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/Scene 13.webp'
-import rsp2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/Scene 24.webp'
-import rsp3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/RSP Mall_0p1_ (4).webp'
+const rsp1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/Scene 13.webp'
+const rsp2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/Scene 24.webp'
+const rsp3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/RSP Mall_0p1_ (4).webp'
 
 // The White house mobile
-import white1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
-import white2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (2).webp'
-import white3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (3).webp'
+const white1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
+const white2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (2).webp'
+const white3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (3).webp'
 
 function Home() {
   const worldRef = useRef(null);
