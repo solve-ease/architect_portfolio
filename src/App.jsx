@@ -1,248 +1,117 @@
 import './App.css'
-import { useRef, useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import Home from './pages/Home'
+import Team from './pages/Team'
+import About from './pages/About'
+import Footer from './components/Footer'
+import logo from './assets/PARAFLULX_LOGO.webp'
+import logo_mobile from './assets/logo_white.webp' 
+
+function Navbar() {
+  const location = useLocation()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+  }
+
+  // Disable scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMenuOpen])
+  
+  // Only show navbar on home page
+  if (location.pathname !== '/') {
+    return null
+  }
+  
+  return (
+    <>
+      {/* Desktop Navbar */}
+      <nav className="navbar navbar-desktop">
+        <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
+        <Link to="/team" className={location.pathname === '/team' ? 'active' : ''}>Team</Link>
+        <a href="/about">About</a>
+        <a href="/projects">Projects</a>
+        <a href="/contact">Contact</a>
+      </nav>
+
+      {/* Mobile Hamburger Button */}
+      <div className='hamburger-container'>
+        <button 
+          className={`hamburger-button ${isMenuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+          >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-menu-header">
+          <img src={logo_mobile} alt="paraflux architects" className="mobile-menu-logo" />
+        </div>
+        
+        <nav className="mobile-menu-nav">
+          <a href="/" onClick={closeMenu}>Home</a>
+          <a href="/about" onClick={closeMenu}>About</a>
+          <a href="#projects" onClick={closeMenu}>Projects</a>
+          {/* <a href="#studio" onClick={closeMenu}>Studio</a> */}
+          <Link to="/team" onClick={closeMenu}>Team</Link>
+          {/* <a href="#news" onClick={closeMenu}>News</a> */}
+          {/* <a href="#careers" onClick={closeMenu}>Careers</a> */}
+          <a href="#contact" onClick={closeMenu}>Contact</a>
+        </nav>
+
+        <div className="mobile-menu-footer">
+          <p>We speak your language</p>
+        </div>
+      </div>
+    </>
+  )
+}
+
+function AppContent() {
+  const location = useLocation()
+  const showFooter = location.pathname !== '/' && location.pathname !== '/about'
+  
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+      {showFooter && <Footer />}
+    </>
+  )
+}
 
 function App() {
-  const worldRef = useRef(null)
-  const [isDragging, setIsDragging] = useState(false)
-  const [startX, setStartX] = useState(0)
-  const [startY, setStartY] = useState(0)
-  const [scrollLeft, setScrollLeft] = useState(0)
-  const [scrollTop, setScrollTop] = useState(0)
-
-  const handleMouseDown = (e) => {
-    setIsDragging(true)
-    setStartX(e.pageX - worldRef.current.offsetLeft)
-    setStartY(e.pageY - worldRef.current.offsetTop)
-    setScrollLeft(worldRef.current.scrollLeft)
-    setScrollTop(worldRef.current.scrollTop)
-    worldRef.current.style.cursor = 'grabbing'
-  }
-
-  const handleMouseLeave = () => {
-    setIsDragging(false)
-    if (worldRef.current) {
-      worldRef.current.style.cursor = 'grab'
-    }
-  }
-
-  const handleMouseUp = () => {
-    setIsDragging(false)
-    if (worldRef.current) {
-      worldRef.current.style.cursor = 'grab'
-    }
-  }
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return
-    e.preventDefault()
-    const x = e.pageX - worldRef.current.offsetLeft
-    const y = e.pageY - worldRef.current.offsetTop
-    const walkX = (x - startX) * 2 // Multiply by 2 for faster scrolling
-    const walkY = (y - startY) * 2
-    worldRef.current.scrollLeft = scrollLeft - walkX
-    worldRef.current.scrollTop = scrollTop - walkY
-    updateTitlePosition()
-  }
-
-  const handleTouchStart = (e) => {
-    setIsDragging(true)
-    setStartX(e.touches[0].pageX - worldRef.current.offsetLeft)
-    setStartY(e.touches[0].pageY - worldRef.current.offsetTop)
-    setScrollLeft(worldRef.current.scrollLeft)
-    setScrollTop(worldRef.current.scrollTop)
-  }
-
-  const handleTouchMove = (e) => {
-    if (!isDragging) return
-    const x = e.touches[0].pageX - worldRef.current.offsetLeft
-    const y = e.touches[0].pageY - worldRef.current.offsetTop
-    const walkX = (x - startX) * 2
-    const walkY = (y - startY) * 2
-    worldRef.current.scrollLeft = scrollLeft - walkX
-    worldRef.current.scrollTop = scrollTop - walkY
-    updateTitlePosition()
-  }
-
-  const handleTouchEnd = () => {
-    setIsDragging(false)
-  }
-
-  const handleWheel = (e) => {
-    // Prevent scroll wheel from moving the content
-    e.preventDefault()
-    e.stopPropagation()
-  }
-
-  const updateTitlePosition = () => {
-    const titleWrapper = worldRef.current?.querySelector('.hero-title-wrapper')
-    if (titleWrapper && worldRef.current) {
-      const centerX = (worldRef.current.scrollWidth - worldRef.current.clientWidth) / 2
-      const centerY = (worldRef.current.scrollHeight - worldRef.current.clientHeight) / 2
-      const scrollX = worldRef.current.scrollLeft - centerX
-      const scrollY = worldRef.current.scrollTop - centerY
-      // Move title at 100% to counteract scroll and keep it stationary
-      titleWrapper.style.transform = `translate(-50%, -50%) translateZ(0) translateX(${scrollX}px) translateY(${scrollY}px)`
-    }
-  }
-
-  useEffect(() => {
-    // Center the scroll on mount
-    if (worldRef.current) {
-      const centerX = (worldRef.current.scrollWidth - worldRef.current.clientWidth) / 2
-      const centerY = (worldRef.current.scrollHeight - worldRef.current.clientHeight) / 2
-      worldRef.current.scrollLeft = centerX
-      worldRef.current.scrollTop = centerY
-    }
-  }, [])
-
   return (
-    <div className="container">
-      
-      <nav className="navbar">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      
-      <main className="main-content">
-        <div className="fx-3d-scene">
-          <div 
-            className="fx-3d-world"
-            ref={worldRef}
-            onMouseDown={handleMouseDown}
-            onMouseLeave={handleMouseLeave}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            onWheel={handleWheel}
-          >
-            <div className="fx-3d-inner">
-            <div className="fx-layer fx-layer-1">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-2">
-              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-3">
-              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-4">
-              <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-5">
-              <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-6">
-              <img src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-7">
-              <img src="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-8">
-              <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-9">
-              <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-10">
-              <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-11">
-              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-12">
-              <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-13">
-              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-14">
-              <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-15">
-              <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-16">
-              <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-17">
-              <img src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-18">
-              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-19">
-              <img src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-20">
-              <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-21">
-              <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-22">
-              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-23">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-24">
-              <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-25">
-              <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-26">
-              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-27">
-              <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-28">
-              <img src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-29">
-              <img src="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-30">
-              <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-31">
-              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-32">
-              <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-33">
-              <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-34">
-              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-35">
-              <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-36">
-              <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-37">
-              <img src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?w=600&h=400&fit=crop" alt="" />
-            </div>
-            <div className="fx-layer fx-layer-38">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="" />
-            </div>
-            
-            <div className="hero-title-wrapper">
-              <h1 className="title">PowerHouse</h1>
-            </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
+    <Router>
+      <div className="container">
+        <Navbar />
+        <AppContent />
+      </div>
+    </Router>
   )
 }
 
