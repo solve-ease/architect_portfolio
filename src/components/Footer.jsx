@@ -42,7 +42,7 @@ function Footer() {
         <div className="footer-divider"></div>
         
         <div className="footer-bottom">
-          <p>© UHA 2026 | Upton-Hansen Architects Ltd holds ISO 9001 and ISO 14001 certifications</p>
+          <p>© Paraflux 2026 | All Rights Reserved</p>
         </div>
       </div>
     </footer>

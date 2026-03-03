@@ -1,23 +1,16 @@
 /* Team Navbar */
 .team-navbar {
-  /* position: fixed; */
-  top: 0;
-  left: 0;
+  position: relative;
   width: 80%;
-  /* background-color: #f8f8f8; */
-  z-index: 3000;
   padding: 1rem 0rem;
   margin: 0 auto;
-  position: relative;
 }
 
 .team-navbar.transparent-navbar {
-  position: relative;
   width: 80%;
   background: transparent;
   box-shadow: none;
   padding: 1rem 0rem;
-  margin: 0 auto;
 }
 
 .team-navbar-container {

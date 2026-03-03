@@ -5,8 +5,7 @@ import Home from './pages/Home'
 import Team from './pages/Team'
 import About from './pages/About'
 import Footer from './components/Footer'
-const logo = '/assets/PARAFLULX_LOGO.webp'
-const logo_mobile = '/assets/logo_white.webp' 
+const logo_mobile = '/assets/logo_white.webp'
 
 function Navbar() {
   const location = useLocation()
