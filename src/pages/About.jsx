@@ -2,11 +2,11 @@ import { useEffect, useRef } from 'react'
 import '../styles/About.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import evolo from '../assets/architect_images_webp_reduced/Renders for website/Evolo/CloseUp.webp'
-import m3m from '../assets/architect_images_webp_reduced/Renders for website/M3m/Final 1.webp'
-import migsun from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/2 copy.webp'
-import pentagon from '../assets/architect_images_webp_reduced/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
-import whitehouse from '../assets/architect_images_webp_reduced/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
+const evolo = '/assets/architect_images_webp_reduced/Renders for website/Evolo/CloseUp.webp'
+const m3m = '/assets/architect_images_webp_reduced/Renders for website/M3m/Final 1.webp'
+const migsun = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/2 copy.webp'
+const pentagon = '/assets/architect_images_webp_reduced/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
+const whitehouse = '/assets/architect_images_webp_reduced/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
 
 function About() {
   const containerRef = useRef(null)

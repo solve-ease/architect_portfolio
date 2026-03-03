@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/PARAFLULX_LOGO.webp'
-import logo_black from '../assets/logo_white.webp'
-import logo_white from '../assets/logo_white-removebg-preview.webp'
+const logo = '/assets/PARAFLULX_LOGO.webp'
+const logo_black = '/assets/logo_white.webp'
+const logo_white = '/assets/logo_white-removebg-preview.webp'
 import './Navbar.css'
 import { FaLinkedin, FaInstagram } from 'react-icons/fa'
 

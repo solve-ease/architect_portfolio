@@ -1,4 +1,4 @@
-TARGET_DIR="/home/rogue/Desktop/solve-ease/shivam/architect/src/assets/architect_images_webp_reduced_mobile"
+TARGET_DIR="/home/rogue/Desktop/solve-ease/shivam/architect/public/assets/architect_images_webp_reduced_mobile"
 
 find "$TARGET_DIR" -type f -name "*.webp" -exec sh -c '
   for img do

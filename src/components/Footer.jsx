@@ -1,5 +1,5 @@
 import '../styles/Footer.css'
-import logo from '../assets/logo_white.webp'
+const logo = '/assets/logo_white.webp'
 import { FaLinkedin, FaInstagram } from 'react-icons/fa'
 
 function Footer() {
