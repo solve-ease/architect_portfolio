@@ -36,7 +36,7 @@ function Footer() {
             <div className="footer-column">
               <a href="#projects">Projects</a>
               <a href="#news">News</a>
-              <a href="#contact">Contact</a>
+              <Link to="/contact">Contact</Link>
               <Link to="/privacy-info">Privacy Policy</Link>
             </div>
           </div>
