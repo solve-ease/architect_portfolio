@@ -1,8 +1,8 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import '../styles/PrivacyPolicy.css'
+import '../styles/PrivacyInfo.css'
 
-function PrivacyPolicy() {
+function PrivacyInfo() {
   return (
     <div className="privacy-page">
       <Navbar />
@@ -102,4 +102,4 @@ function PrivacyPolicy() {
   )
 }
 
-export default PrivacyPolicy
+export default PrivacyInfo

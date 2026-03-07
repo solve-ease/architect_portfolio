@@ -61,14 +61,6 @@ function Navbar({ variant = 'default', transparent = false }) {
               <img src={logo_black} alt="Paraflux Logo" />
             </Link>
           </div>
-          <button
-            className="menu-close-btn"
-            onClick={() => setIsMenuOpen(false)}
-            aria-label="Close menu"
-          >
-            <span className="menu-close-line"></span>
-            <span className="menu-close-line"></span>
-          </button>
         </div>
 
         <div className="menu-content">
