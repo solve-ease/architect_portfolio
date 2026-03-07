@@ -27,8 +27,10 @@ function Navbar({ variant = 'default', transparent = false }) {
       <nav className={`team-navbar ${transparent ? 'transparent-navbar' : ''}`}>
         <div className="team-navbar-container">
           <div className="team-navbar-logo">
-            <img src={displayLogo} alt="Paraflux Logo" className={`team-logo-img ${isMenuOpen ? 'hidden' : ''}`} />
-            <img src={logo_black} alt="Paraflux Logo" className={`team-logo-img logo-white ${isMenuOpen ? 'visible' : ''}`} />
+            <Link to="/">
+              <img src={displayLogo} alt="Paraflux Logo" className={`team-logo-img ${isMenuOpen ? 'hidden' : ''}`} />
+              <img src={logo_black} alt="Paraflux Logo" className={`team-logo-img logo-white ${isMenuOpen ? 'visible' : ''}`} />
+            </Link>
           </div>
           
           <div className="team-navbar-right">
@@ -55,7 +57,9 @@ function Navbar({ variant = 'default', transparent = false }) {
       <div className={`menu-overlay ${isMenuOpen ? 'menu-open' : ''}`}>
         <div className="menu-header">
           <div className="menu-logo">
-            <img src={logo_black} alt="Paraflux Logo" />
+            <Link to="/" onClick={() => setIsMenuOpen(false)}>
+              <img src={logo_black} alt="Paraflux Logo" />
+            </Link>
           </div>
         </div>
 

@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react'
 import Home from './pages/Home'
 import Team from './pages/Team'
 import About from './pages/About'
+import PrivacyInfo from './pages/PrivacyInfo'
 import Footer from './components/Footer'
-const logo = '/assets/PARAFLULX_LOGO.webp'
-const logo_mobile = '/assets/logo_white.webp' 
+const logo_mobile = '/assets/logo_white.webp'
 
 function Navbar() {
   const location = useLocation()
@@ -90,7 +90,7 @@ function Navbar() {
 
 function AppContent() {
   const location = useLocation()
-  const showFooter = location.pathname !== '/' && location.pathname !== '/about'
+  const showFooter = location.pathname !== '/' && location.pathname !== '/about' && location.pathname !== '/privacy-info'
   
   return (
     <>
@@ -98,6 +98,7 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Team />} />
         <Route path="/about" element={<About />} />
+        <Route path="/privacy-info" element={<PrivacyInfo />} />
       </Routes>
       {showFooter && <Footer />}
     </>
