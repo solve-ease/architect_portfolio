@@ -28,14 +28,14 @@ function Footer() {
             <div className="footer-column">
               <Link to="/">Home</Link>
               <Link to="/about">Our Story</Link>
-              <a href="#studio">Studio</a>
+              {/* <a href="#studio">Studio</a> */}
               <Link to="/team">Team</Link>
               <a href="#careers">Careers</a>
             </div>
             
             <div className="footer-column">
               <a href="#projects">Projects</a>
-              <a href="#news">News</a>
+              {/* <a href="#news">News</a> */}
               <Link to="/contact">Contact</Link>
               <Link to="/privacy-info">Privacy Policy</Link>
             </div>

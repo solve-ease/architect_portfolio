@@ -177,6 +177,36 @@
   color: #aaa;
 }
 
+/* Error styles */
+.error-message {
+  font-size: 0.8rem;
+  color: #d32f2f;
+  margin-top: 0.25rem;
+  display: block;
+  line-height: 1.4;
+  font-weight: 400;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.input-error {
+  border-bottom-color: #d32f2f !important;
+}
+
+.input-error:focus {
+  border-bottom-color: #d32f2f !important;
+}
+
 .contact-submit-btn {
   align-self: flex-start;
   padding: 0.9rem 2.5rem;
