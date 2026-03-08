@@ -5,23 +5,23 @@ function Team() {
   const teamMembers = [
     {
       id: 1,
-      name: 'Team Member 1',
-      position: 'Senior Architect',
-      languages: 'English, Hindi, Spanish',
+      name: 'Chaitanya Goyal',
+      position: 'Founder',
+      languages: 'English, Hindi',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop'
     },
     {
       id: 2,
-      name: 'Team Member 2',
-      position: 'Design Director',
-      languages: 'English, French, German',
+      name: 'Anand Goyal',
+      position: 'Co-Founder',
+      languages: 'English, Hindi',
       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop'
     },
     {
       id: 3,
-      name: 'Team Member 3',
-      position: 'Project Manager',
-      languages: 'English, Mandarin, Japanese',
+      name: 'Mukesh Goyal',
+      position: 'Co - Founder',
+      languages: 'English, Hindi',
       image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=800&fit=crop'
     }
   ]
