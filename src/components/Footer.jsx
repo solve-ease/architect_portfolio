@@ -30,7 +30,7 @@ function Footer() {
               <Link to="/about">Our Story</Link>
               {/* <a href="#studio">Studio</a> */}
               <Link to="/team">Team</Link>
-              <a href="#careers">Careers</a>
+              {/* <a href="#careers">Careers</a> */}
             </div>
             
             <div className="footer-column">
