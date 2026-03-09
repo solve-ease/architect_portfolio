@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Team from './pages/Team'
 import About from './pages/About'
 import PrivacyInfo from './pages/PrivacyInfo'
+import Contact from './pages/Contact'
 import Footer from './components/Footer'
 const logo_mobile = '/assets/logo_white.webp'
 
@@ -47,7 +48,7 @@ function Navbar() {
         <Link to="/team" className={location.pathname === '/team' ? 'active' : ''}>Team</Link>
         <a href="/about">About</a>
         <a href="/projects">Projects</a>
-        <a href="/contact">Contact</a>
+        <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link>
       </nav>
 
       {/* Mobile Hamburger Button */}
@@ -77,7 +78,7 @@ function Navbar() {
           <Link to="/team" onClick={closeMenu}>Team</Link>
           {/* <a href="#news" onClick={closeMenu}>News</a> */}
           {/* <a href="#careers" onClick={closeMenu}>Careers</a> */}
-          <a href="#contact" onClick={closeMenu}>Contact</a>
+          <Link to="/contact" onClick={closeMenu}>Contact</Link>
         </nav>
 
         <div className="mobile-menu-footer">
@@ -90,7 +91,7 @@ function Navbar() {
 
 function AppContent() {
   const location = useLocation()
-  const showFooter = location.pathname !== '/' && location.pathname !== '/about' && location.pathname !== '/privacy-info'
+  const showFooter = location.pathname !== '/' && location.pathname !== '/about' && location.pathname !== '/privacy-info' && location.pathname !== '/contact'
   
   return (
     <>
@@ -99,6 +100,7 @@ function AppContent() {
         <Route path="/team" element={<Team />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy-info" element={<PrivacyInfo />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       {showFooter && <Footer />}
     </>
