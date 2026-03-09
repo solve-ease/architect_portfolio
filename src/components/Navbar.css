@@ -249,6 +249,11 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  /* White hamburger lines for transparent navbar (About page) on mobile */
+  .transparent-navbar .team-hamburger-line {
+    background-color: #fff;
+  }
+
   .team-navbar.transparent-navbar {
     width: 90%;
   }

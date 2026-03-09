@@ -8,21 +8,56 @@ function Team() {
       name: 'Chaitanya Goyal',
       position: 'Founder',
       languages: 'English, Hindi',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop'
+      image: '/team/chaitanya.webp'
     },
     {
       id: 2,
       name: 'Anand Goyal',
-      position: 'Co-Founder',
+      position: 'Co - Founder',
       languages: 'English, Hindi',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop'
+      image: '/team/silhoutte.webp'
     },
     {
       id: 3,
-      name: 'Mukesh Goyal',
-      position: 'Co - Founder',
+      name: 'Mohammed Faisal Rais',
+      position: 'Project Architect',
       languages: 'English, Hindi',
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=800&fit=crop'
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 4,
+      name: 'Yogendra Yadav',
+      position: 'General Manager',
+      languages: 'English, Hindi',
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 5,
+      name: 'Mukesh Goyal',
+      position: 'Adviser',
+      languages: 'English, Hindi',
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 6,
+      name: 'Varshika Agarwal',
+      position: 'Designer',
+      languages: 'English, Hindi',
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 7,
+      name: 'Sarthak',
+      position: 'BD',
+      languages: 'English, Hindi',
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 8,
+      name: 'Anika Jain',
+      position: 'Interior Designer',
+      languages: 'English, Hindi',
+      image: '/team/silhoutte.webp'
     }
   ]
 
@@ -34,9 +69,9 @@ function Team() {
         <h1 className="team-heading">Meet our Team</h1>
         
         <p className="team-description">
-          We are a multilingual team of Architects, Landscape Designers, Creatives,<br />
+          We are a team of Architects, Landscape Designers, Creatives,<br />
           Computational Designers, Interior Designers, Project Managers, Technicians, and<br />
-          Visualisation Artists
+          &nbsp;Visualisation Artists
         </p>
 
         <div className="divider"></div>

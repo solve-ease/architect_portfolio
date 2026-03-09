@@ -146,8 +146,8 @@ function Contact() {
 
             <div className="contact-info-item">
               <h3>Studio</h3>
-              <p>123 Architecture Lane</p>
-              <p>New Delhi, 110001</p>
+              <p>A 135D Sector 27</p>
+              <p>Noida, U.P</p> 
               <p>India</p>
             </div>
 
@@ -158,7 +158,8 @@ function Contact() {
 
             <div className="contact-info-item">
               <h3>Phone</h3>
-              <a href="tel:+911234567890">+91 12345 67890</a>
+              <a href="tel:+91 95400 06147">+91 95400 06147</a>
+              <a href="tel:+91 98100 06147">+91 98100 06147</a>
             </div>
 
             <div className="contact-info-item">
@@ -174,7 +175,7 @@ function Contact() {
                   <FaLinkedin className="contact-social-icon" />
                   LinkedIn
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a href="https://www.instagram.com/theparaflux/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <FaInstagram className="contact-social-icon" />
                   Instagram
                 </a>
