@@ -7,58 +7,58 @@ function Team() {
       id: 1,
       name: 'Chaitanya Goyal',
       position: 'Founder',
-      languages: 'English, Hindi',
+      languages: 'M.Arch | AA LONDON',
       image: '/team/chaitanya.webp'
     },
     {
       id: 2,
       name: 'Anand Goyal',
       position: 'Co - Founder',
-      languages: 'English, Hindi',
+      languages: 'MIM | SMU, SINGAPORE',
       image: '/team/silhoutte.webp'
     },
     {
       id: 3,
-      name: 'Mohammed Faisal Rais',
-      position: 'Project Architect',
-      languages: 'English, Hindi',
+      name: 'Mukesh Goyal',
+      position: 'Adviser',
+      languages: 'B. Arch | AMBALA',
       image: '/team/silhoutte.webp'
     },
     {
       id: 4,
+      name: 'Varshika Agarwal',
+      position: 'Designer',
+      languages: 'MBA | IMT, HYDERABAD',
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 5,
+      name: 'Sarthak Goyal',
+      position: 'BD',
+      languages: 'MBA | ESCP, LONDON, MADRID, BERLIN',
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 6,
+      name: 'Anika Jain',
+      position: 'Interior Designer',
+      languages: 'M. Des | GSA, GLASGOW',
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 7,
+      name: 'Mohammed Faisal Rais',
+      position: 'Project Architect',
+      languages: 'B. Arch',
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 8,
       name: 'Yogendra Yadav',
       position: 'General Manager',
       languages: 'English, Hindi',
       image: '/team/silhoutte.webp'
     },
-    {
-      id: 5,
-      name: 'Mukesh Goyal',
-      position: 'Adviser',
-      languages: 'English, Hindi',
-      image: '/team/silhoutte.webp'
-    },
-    {
-      id: 6,
-      name: 'Varshika Agarwal',
-      position: 'Designer',
-      languages: 'English, Hindi',
-      image: '/team/silhoutte.webp'
-    },
-    {
-      id: 7,
-      name: 'Sarthak',
-      position: 'BD',
-      languages: 'English, Hindi',
-      image: '/team/silhoutte.webp'
-    },
-    {
-      id: 8,
-      name: 'Anika Jain',
-      position: 'Interior Designer',
-      languages: 'English, Hindi',
-      image: '/team/silhoutte.webp'
-    }
   ]
 
   return (
