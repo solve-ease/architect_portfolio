@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
 import '../styles/Home.css'
 import { imageKeyToProject } from '../data/projectData'
+import projectData from '../data/projectData'
+import ProjectPanel from '../components/ProjectPanel'
 
 // Logo
 const logo = '/assets/PARAFLULX_LOGO.webp'
@@ -141,10 +142,12 @@ function Home() {
   const [zoom, setZoom] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const rafId = useRef(null);
-  const navigate = useNavigate();
 
   // Zoom-to-fullscreen overlay state
-  const [zoomOverlay, setZoomOverlay] = useState(null); // { src, rect }
+  const [zoomOverlay, setZoomOverlay] = useState(null); // { src, rect, projectId }
+
+  // Open project panel state
+  const [openProject, setOpenProject] = useState(null); // { project, heroImage }
 
   // Detect if screen is mobile
   useEffect(() => {
@@ -391,15 +394,16 @@ function Home() {
     setZoomOverlay({ src, rect, projectId });
   }, []);
 
-  // When zoom overlay mounts, run the animation then navigate
+  // When zoom overlay mounts, run the animation then open the panel
   useEffect(() => {
     if (!zoomOverlay) return;
     const timer = setTimeout(() => {
-      navigate(`/project/${zoomOverlay.projectId}`, { state: { fromZoom: true, heroImage: zoomOverlay.src } });
+      const project = projectData.find((p) => p.id === zoomOverlay.projectId);
+      setOpenProject({ project, heroImage: zoomOverlay.src });
       setZoomOverlay(null);
     }, 650);
     return () => clearTimeout(timer);
-  }, [zoomOverlay, navigate]);
+  }, [zoomOverlay]);
 
   return (
     <div className="main-content">
@@ -416,6 +420,16 @@ function Home() {
           }}
         />
       )}
+
+      {/* Full-screen project panel popup */}
+      {openProject && openProject.project && (
+        <ProjectPanel
+          project={openProject.project}
+          heroImage={openProject.heroImage}
+          onClose={() => setOpenProject(null)}
+        />
+      )}
+
       <div className="fx-3d-scene" ref={sceneRef}>
         <div 
           className="fx-3d-world fx-grid" 
