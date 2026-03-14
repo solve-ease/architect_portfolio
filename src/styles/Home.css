@@ -52,6 +52,7 @@
   /* border-radius: 12px; */
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
   
   /* Start images at far position before animation begins */
   transform: translateZ(-2000px) scale(0.5);
@@ -60,6 +61,11 @@
   /* Single shared animation for all images */
   animation: fx-fly-in 7.5s cubic-bezier(.43,.31,0,1) forwards;
   /* Delay set via JavaScript based on index */
+}
+
+.fx-layer:hover {
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
 .fx-layer img {
@@ -327,5 +333,42 @@
   
   .fx-layer:nth-child(2n + 2) {
     animation: fx-fly-in-offset2 5.5s cubic-bezier(.43,.31,0,1) forwards;
+  }
+}
+
+/* ── Zoom-to-fullscreen overlay ── */
+.home-zoom-overlay {
+  position: fixed;
+  z-index: 9999;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  pointer-events: none;
+
+  /* Start: match the clicked card's position & size */
+  top: var(--zoom-y);
+  left: var(--zoom-x);
+  width: var(--zoom-w);
+  height: var(--zoom-h);
+
+  /* Animate to fill the viewport */
+  animation: home-zoom-expand 0.65s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes home-zoom-expand {
+  0% {
+    top: var(--zoom-y);
+    left: var(--zoom-x);
+    width: var(--zoom-w);
+    height: var(--zoom-h);
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
   }
 }

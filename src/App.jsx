@@ -6,6 +6,7 @@ import Team from './pages/Team'
 import About from './pages/About'
 import PrivacyInfo from './pages/PrivacyInfo'
 import Contact from './pages/Contact'
+import ProjectDetail from './pages/ProjectDetail'
 import Footer from './components/Footer'
 const logo_mobile = '/assets/logo_white.webp'
 
@@ -91,7 +92,7 @@ function Navbar() {
 
 function AppContent() {
   const location = useLocation()
-  const showFooter = location.pathname !== '/' && location.pathname !== '/about' && location.pathname !== '/privacy-info' && location.pathname !== '/contact'
+  const showFooter = location.pathname !== '/' && location.pathname !== '/about' && location.pathname !== '/privacy-info' && location.pathname !== '/contact' && !location.pathname.startsWith('/project/')
   
   return (
     <>
@@ -101,6 +102,7 @@ function AppContent() {
         <Route path="/about" element={<About />} />
         <Route path="/privacy-info" element={<PrivacyInfo />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/project/:projectId" element={<ProjectDetail />} />
       </Routes>
       {showFooter && <Footer />}
     </>
