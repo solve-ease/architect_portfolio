@@ -35,8 +35,8 @@
 /* CSS Grid Layout - automatically positions all images */
 .fx-grid {
   display: grid;
-  grid-template-columns: repeat(7, 300px);
-  gap: 55px;
+  grid-template-columns: repeat(7, 375px);
+  gap: 69px;
   justify-content: center;
   align-content: center;
   position: absolute;
@@ -47,8 +47,8 @@
 .fx-layer {
   transform-style: preserve-3d;
   will-change: transform, opacity;
-  width: 300px;
-  height: 225px;
+  width: 375px;
+  height: 281px;
   /* border-radius: 12px; */
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -251,13 +251,13 @@
 /* Tablet Responsive - 5 columns */
 @media (max-width: 1024px) {
   .fx-grid {
-    grid-template-columns: repeat(5, 250px);
-    gap: 50px;
+    grid-template-columns: repeat(5, 313px);
+    gap: 63px;
   }
   
   .fx-layer {
-    width: 250px;
-    height: 188px;
+    width: 313px;
+    height: 235px;
   }
   
   .fx-3d-scene {
@@ -268,14 +268,14 @@
 /* Mobile Landscape & Portrait - 3 columns */
 @media (max-width: 600px) {
   .fx-grid {
-    grid-template-columns: repeat(5, 180px);
-    gap: 30px;
+    grid-template-columns: repeat(5, 225px);
+    gap: 38px;
     padding: 20px;
   }
   
   .fx-layer {
-    width: 180px;
-    height: 135px;
+    width: 225px;
+    height: 169px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
   
@@ -312,14 +312,14 @@
 /* Extra Small Mobile - 2 columns */
 @media (max-width: 380px) {
   .fx-grid {
-    grid-template-columns: repeat(2, 150px);
-    gap: 25px;
+    grid-template-columns: repeat(2, 188px);
+    gap: 31px;
     padding: 15px;
   }
   
   .fx-layer {
-    width: 150px;
-    height: 112px;
+    width: 188px;
+    height: 141px;
   }
   
   .hero-logo {

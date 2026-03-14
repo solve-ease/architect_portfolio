@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import projectData from '../data/projectData'
 import '../styles/ProjectDetail.css'
 
 function ProjectDetail() {
   const { projectId } = useParams()
   const navigate = useNavigate()
+  const location = useLocation()
+  const fromZoom = location.state?.fromZoom ?? false
   const project = projectData.find((p) => p.id === projectId)
   const heroRef = useRef(null)
-  const [heroLoaded, setHeroLoaded] = useState(false)
+  const [heroLoaded, setHeroLoaded] = useState(fromZoom)
   const [activeImg, setActiveImg] = useState(null)
 
   useEffect(() => {
@@ -56,7 +58,10 @@ function ProjectDetail() {
 
       {/* ── Hero ── */}
       <section className="pd-hero">
-        <div className={`pd-hero-img-wrap ${heroLoaded ? 'loaded' : ''}`}>
+        <div
+          className={`pd-hero-img-wrap ${heroLoaded ? 'loaded' : ''}`}
+          style={fromZoom ? { transition: 'none' } : undefined}
+        >
           <img
             ref={heroRef}
             src={project.coverImage}
