@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import '../styles/ProjectDetail.css'
 
-function ProjectPanel({ project, heroImage, onClose }) {
+function ProjectPanel({ project, heroImage, onClose, onHeroReady }) {
   const [activeImg, setActiveImg] = useState(null)
+  const heroImgRef = useRef(null)
 
   // Lock body scroll while panel is open
   useEffect(() => {
@@ -20,6 +21,14 @@ function ProjectPanel({ project, heroImage, onClose }) {
     }, 50)
     return () => clearTimeout(timer)
   }, [])
+
+  // If the hero image is already in the browser cache it may never fire onLoad.
+  // Check img.complete on mount and call onHeroReady immediately in that case.
+  useEffect(() => {
+    if (heroImgRef.current?.complete) {
+      onHeroReady?.()
+    }
+  }, [onHeroReady])
 
   // Close on Escape key
   useEffect(() => {
@@ -52,9 +61,11 @@ function ProjectPanel({ project, heroImage, onClose }) {
       <section className="pd-hero">
         <div className="pd-hero-img-wrap loaded">
           <img
+            ref={heroImgRef}
             src={heroImage}
             alt={project.title}
             className="pd-hero-img"
+            onLoad={() => onHeroReady?.()}
           />
         </div>
         <div className="pd-hero-overlay">

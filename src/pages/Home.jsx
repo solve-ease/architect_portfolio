@@ -394,13 +394,15 @@ function Home() {
     setZoomOverlay({ src, rect, projectId });
   }, []);
 
-  // When zoom overlay mounts, run the animation then open the panel
+  // When zoom overlay mounts, run the animation then open the panel.
+  // We do NOT clear the zoom overlay here — it stays as a seamless bridge
+  // (z-index 9999) behind the panel (z-index 10000) until the panel's hero
+  // image fires onLoad, at which point onHeroReady clears it invisibly.
   useEffect(() => {
     if (!zoomOverlay) return;
     const timer = setTimeout(() => {
       const project = projectData.find((p) => p.id === zoomOverlay.projectId);
       setOpenProject({ project, heroImage: zoomOverlay.src });
-      setZoomOverlay(null);
     }, 650);
     return () => clearTimeout(timer);
   }, [zoomOverlay]);
@@ -427,6 +429,7 @@ function Home() {
           project={openProject.project}
           heroImage={openProject.heroImage}
           onClose={() => setOpenProject(null)}
+          onHeroReady={() => setZoomOverlay(null)}
         />
       )}
 
