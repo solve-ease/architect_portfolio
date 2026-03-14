@@ -395,7 +395,7 @@ function Home() {
   useEffect(() => {
     if (!zoomOverlay) return;
     const timer = setTimeout(() => {
-      navigate(`/project/${zoomOverlay.projectId}`, { state: { fromZoom: true } });
+      navigate(`/project/${zoomOverlay.projectId}`, { state: { fromZoom: true, heroImage: zoomOverlay.src } });
       setZoomOverlay(null);
     }, 650);
     return () => clearTimeout(timer);

@@ -9,6 +9,7 @@ function ProjectDetail() {
   const location = useLocation()
   const fromZoom = location.state?.fromZoom ?? false
   const project = projectData.find((p) => p.id === projectId)
+  const heroImage = location.state?.heroImage || project?.coverImage
   const heroRef = useRef(null)
   const [heroLoaded, setHeroLoaded] = useState(fromZoom)
   const [activeImg, setActiveImg] = useState(null)
@@ -64,7 +65,7 @@ function ProjectDetail() {
         >
           <img
             ref={heroRef}
-            src={project.coverImage}
+            src={heroImage}
             alt={project.title}
             className="pd-hero-img"
             onLoad={() => setHeroLoaded(true)}
