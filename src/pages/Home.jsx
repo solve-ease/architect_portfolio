@@ -223,14 +223,35 @@ function Home() {
     </picture>
   );
 
-  // Random animation delays for each image in a small range
+  // Random animation delays + lock in final state after fly-in so CSS transitions work
   useEffect(() => {
     const layers = document.querySelectorAll('.fx-layer');
+
+    const handleAnimationEnd = (e) => {
+      const layer = e.currentTarget;
+      // Capture the computed transform that fill-mode is holding
+      const finalTransform = getComputedStyle(layer).transform;
+      // Set final state as inline styles so transitions own these properties going forward
+      layer.style.opacity = '1';
+      layer.style.transform = finalTransform;
+      // Remove the animation entirely — fill-mode was suppressing CSS transitions on
+      // opacity/transform; with no animation active the transitions work normally
+      layer.style.animation = 'none';
+      layer.removeEventListener('animationend', handleAnimationEnd);
+    };
+
     layers.forEach((layer) => {
       // Random delay between 0 and 2 seconds for more varied appearance
       const randomDelay = Math.random() * 2;
       layer.style.animationDelay = `${randomDelay}s`;
+      layer.addEventListener('animationend', handleAnimationEnd);
     });
+
+    return () => {
+      layers.forEach((layer) => {
+        layer.removeEventListener('animationend', handleAnimationEnd);
+      });
+    };
   }, []);
 
   // Drag functionality (Mouse and Touch) - Optimized for mobile
