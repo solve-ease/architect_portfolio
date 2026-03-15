@@ -22,6 +22,17 @@
   -webkit-overflow-scrolling: touch;
 }
 
+/* Gentle fade-out when the panel is dismissed */
+.pp-panel.pp-closing {
+  animation: pp-panel-out 0.45s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes pp-panel-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
 /* ── Close button ── */
 .pd-close {
   position: fixed;

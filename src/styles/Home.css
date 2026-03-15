@@ -63,7 +63,7 @@
   /* Delay set via JavaScript based on index */
 
   /* Return transition: smoothly fades back in after panel is closed */
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition: opacity 0.6s ease;
 }
 
 .fx-layer:hover {

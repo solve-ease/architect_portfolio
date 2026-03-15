@@ -142,6 +142,7 @@ function Home() {
   const [zoom, setZoom] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const rafId = useRef(null);
+  const closingTimers = useRef([]);
 
   // Clicked image info — set on click, triggers dismiss animation for all others
   const [clickedInfo, setClickedInfo] = useState(null); // { key, src, rect, projectId }
@@ -151,6 +152,9 @@ function Home() {
 
   // Open project panel state
   const [openProject, setOpenProject] = useState(null); // { project, heroImage }
+
+  // Panel closing state — drives the fade-out animation before unmounting
+  const [isClosingPanel, setIsClosingPanel] = useState(false);
 
   // Detect if screen is mobile
   useEffect(() => {
@@ -440,6 +444,27 @@ function Home() {
     return () => clearTimeout(timer);
   }, [zoomOverlay]);
 
+  // Close handler — fades the panel out, then fades the home images back in.
+  // Images start returning (dismiss class removed) 150ms in so they overlap
+  // with the tail of the panel fade-out for a seamless transition.
+  const handleClosePanel = useCallback(() => {
+    setIsClosingPanel(true);
+    // Start images fading back in while panel is still fading out
+    const t1 = setTimeout(() => setClickedInfo(null), 150);
+    // After the fade-out completes, unmount everything
+    const t2 = setTimeout(() => {
+      setOpenProject(null);
+      setZoomOverlay(null);
+      setIsClosingPanel(false);
+    }, 450);
+    closingTimers.current = [t1, t2];
+  }, []);
+
+  // Clean up any pending close timers if the home component unmounts mid-animation
+  useEffect(() => {
+    return () => closingTimers.current.forEach(clearTimeout);
+  }, []);
+
   return (
     <div className="main-content">
       {/* Zoom-to-fullscreen overlay */}
@@ -461,8 +486,9 @@ function Home() {
         <ProjectPanel
           project={openProject.project}
           heroImage={openProject.heroImage}
-          onClose={() => { setOpenProject(null); setZoomOverlay(null); setClickedInfo(null); }}
+          onClose={handleClosePanel}
           onHeroReady={() => setZoomOverlay(null)}
+          isClosing={isClosingPanel}
         />
       )}
 

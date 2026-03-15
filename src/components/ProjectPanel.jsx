@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import '../styles/ProjectDetail.css'
 
-function ProjectPanel({ project, heroImage, onClose, onHeroReady }) {
+function ProjectPanel({ project, heroImage, onClose, onHeroReady, isClosing }) {
   const [activeImg, setActiveImg] = useState(null)
   const heroImgRef = useRef(null)
 
@@ -43,7 +43,7 @@ function ProjectPanel({ project, heroImage, onClose, onHeroReady }) {
   const galleryImages = project.images
 
   return (
-    <div className="pd-root pp-panel">
+    <div className={`pd-root pp-panel${isClosing ? ' pp-closing' : ''}`}>
       {/* ── Close button ── */}
       <button
         className="pd-close"
