@@ -61,6 +61,9 @@
   /* Single shared animation for all images */
   animation: fx-fly-in 7.5s cubic-bezier(.43,.31,0,1) forwards;
   /* Delay set via JavaScript based on index */
+
+  /* Return transition: smoothly fades back in after panel is closed */
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
 .fx-layer:hover {
@@ -334,6 +337,14 @@
   .fx-layer:nth-child(2n + 2) {
     animation: fx-fly-in-offset2 5.5s cubic-bezier(.43,.31,0,1) forwards;
   }
+}
+
+/* ── Dismiss animation: non-chosen layers fade and scale back when an image is clicked ── */
+.fx-world-dismissing .fx-layer:not([data-chosen]) {
+  opacity: 0 !important;
+  transform: translateZ(-900px) scale(0.55) !important;
+  transition: opacity 0.35s ease-out, transform 0.35s cubic-bezier(0.4, 0, 0.6, 1) !important;
+  pointer-events: none;
 }
 
 /* ── Zoom-to-fullscreen overlay ── */

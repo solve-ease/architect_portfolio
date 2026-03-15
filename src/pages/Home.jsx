@@ -143,6 +143,9 @@ function Home() {
   const [isMobile, setIsMobile] = useState(false);
   const rafId = useRef(null);
 
+  // Clicked image info — set on click, triggers dismiss animation for all others
+  const [clickedInfo, setClickedInfo] = useState(null); // { key, src, rect, projectId }
+
   // Zoom-to-fullscreen overlay state
   const [zoomOverlay, setZoomOverlay] = useState(null); // { src, rect, projectId }
 
@@ -373,7 +376,7 @@ function Home() {
     };
   }, []);
 
-  // Handle image click — zoom to fullscreen then navigate
+  // Handle image click — first dismiss others, then zoom to fullscreen
   const handleLayerClick = useCallback((e, imageKey) => {
     // Ignore if user was dragging
     if (didDrag.current) {
@@ -391,10 +394,19 @@ function Home() {
     const imgEl = layerEl.querySelector('img');
     const src = imgEl ? imgEl.currentSrc || imgEl.src : '';
 
-    setZoomOverlay({ src, rect, projectId });
+    setClickedInfo({ key: imageKey, src, rect, projectId });
   }, []);
 
-  // When zoom overlay mounts, run the animation then open the panel.
+  // Step 1: when an image is clicked, wait for the dismiss animation then start the zoom overlay
+  useEffect(() => {
+    if (!clickedInfo) return;
+    const timer = setTimeout(() => {
+      setZoomOverlay({ src: clickedInfo.src, rect: clickedInfo.rect, projectId: clickedInfo.projectId });
+    }, 350);
+    return () => clearTimeout(timer);
+  }, [clickedInfo]);
+
+  // Step 2: When zoom overlay mounts, run the animation then open the panel.
   // We do NOT clear the zoom overlay here — it stays as a seamless bridge
   // (z-index 9999) behind the panel (z-index 10000) until the panel's hero
   // image fires onLoad, at which point onHeroReady clears it invisibly.
@@ -428,14 +440,14 @@ function Home() {
         <ProjectPanel
           project={openProject.project}
           heroImage={openProject.heroImage}
-          onClose={() => setOpenProject(null)}
+          onClose={() => { setOpenProject(null); setZoomOverlay(null); setClickedInfo(null); }}
           onHeroReady={() => setZoomOverlay(null)}
         />
       )}
 
       <div className="fx-3d-scene" ref={sceneRef}>
         <div 
-          className="fx-3d-world fx-grid" 
+          className={`fx-3d-world fx-grid${clickedInfo ? ' fx-world-dismissing' : ''}`} 
           ref={worldRef}
           style={{
             transform: `translate3d(${offset.x}px, ${offset.y}px, 0) scale(${zoom})`,
@@ -443,118 +455,118 @@ function Home() {
             willChange: isDragging.current ? 'transform' : 'auto'
           }}
         >
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'conv1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'conv1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'conv1')}>
             <ResponsiveImage imageKey="conv1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'evolo1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'evolo1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'evolo1')}>
             <ResponsiveImage imageKey="evolo1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'gpm1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'gpm1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'gpm1')}>
             <ResponsiveImage imageKey="gpm1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'm3m1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'm3m1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'm3m1')}>
             <ResponsiveImage imageKey="m3m1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migLuck1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migLuck1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migLuck1')}>
             <ResponsiveImage imageKey="migLuck1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migMix1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix1')}>
             <ResponsiveImage imageKey="migMix1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migRoh1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migRoh1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migRoh1')}>
             <ResponsiveImage imageKey="migRoh1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'noida1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'noida1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'noida1')}>
             <ResponsiveImage imageKey="noida1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'omaxe1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'omaxe1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'omaxe1')}>
             <ResponsiveImage imageKey="omaxe1" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'pent1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'pent1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'pent1')}>
             <ResponsiveImage imageKey="pent1" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'rsp1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'rsp1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'rsp1')}>
             <ResponsiveImage imageKey="rsp1" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'white1')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'white1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'white1')}>
             <ResponsiveImage imageKey="white1" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'conv2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'conv2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'conv2')}>
             <ResponsiveImage imageKey="conv2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'evolo2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'evolo2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'evolo2')}>
             <ResponsiveImage imageKey="evolo2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'gpm2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'gpm2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'gpm2')}>
             <ResponsiveImage imageKey="gpm2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'm3m2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'm3m2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'm3m2')}>
             <ResponsiveImage imageKey="m3m2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migLuck2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migLuck2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migLuck2')}>
             <ResponsiveImage imageKey="migLuck2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migMix2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix2')}>
             <ResponsiveImage imageKey="migMix2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migRoh2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migRoh2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migRoh2')}>
             <ResponsiveImage imageKey="migRoh2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'noida2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'noida2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'noida2')}>
             <ResponsiveImage imageKey="noida2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'omaxe2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'omaxe2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'omaxe2')}>
             <ResponsiveImage imageKey="omaxe2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'pent2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'pent2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'pent2')}>
             <ResponsiveImage imageKey="pent2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'rsp2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'rsp2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'rsp2')}>
             <ResponsiveImage imageKey="rsp2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'white2')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'white2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'white2')}>
             <ResponsiveImage imageKey="white2" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'conv3')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'conv3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'conv3')}>
             <ResponsiveImage imageKey="conv3" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'evolo3')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'evolo3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'evolo3')}>
             <ResponsiveImage imageKey="evolo3" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'gpm3')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'gpm3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'gpm3')}>
             <ResponsiveImage imageKey="gpm3" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'm3m3')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'm3m3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'm3m3')}>
             <ResponsiveImage imageKey="m3m3" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migMix3')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix3')}>
             <ResponsiveImage imageKey="migMix3" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migRoh3')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migRoh3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migRoh3')}>
             <ResponsiveImage imageKey="migRoh3" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'omaxe3')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'omaxe3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'omaxe3')}>
             <ResponsiveImage imageKey="omaxe3" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'rsp3')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'rsp3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'rsp3')}>
             <ResponsiveImage imageKey="rsp3" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'white3')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'white3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'white3')}>
             <ResponsiveImage imageKey="white3" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'm3m4')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'm3m4' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'm3m4')}>
             <ResponsiveImage imageKey="m3m4" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migMix4')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix4' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix4')}>
             <ResponsiveImage imageKey="migMix4" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'm3m5')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'm3m5' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'm3m5')}>
             <ResponsiveImage imageKey="m3m5" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migMix5')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix5' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix5')}>
             <ResponsiveImage imageKey="migMix5" alt="Architecture render" />
           </div>
-          <div className="fx-layer" onClick={(e) => handleLayerClick(e, 'migMix6')}>
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix6' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix6')}>
             <ResponsiveImage imageKey="migMix6" alt="Architecture render" />
           </div>
         </div>
