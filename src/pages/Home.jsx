@@ -1,141 +1,160 @@
-import { useEffect, useRef, useState, useMemo } from 'react'
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
 import '../styles/Home.css'
-import logo from '../assets/PARAFLULX_LOGO.webp'
+import { imageKeyToProject } from '../data/projectData'
+import projectData from '../data/projectData'
+import ProjectPanel from '../components/ProjectPanel'
+
+// Logo
+const logo = '/assets/PARAFLULX_LOGO.webp'
 
 // Conventional centger (3 images)
-import conv1 from '../assets/architect_images_webp_reduced/Renders for website/Conventional centger/04-05_Thesis page_01 copy.webp'
-import conv2 from '../assets/architect_images_webp_reduced/Renders for website/Conventional centger/Thesis  (1).webp'
-import conv3 from '../assets/architect_images_webp_reduced/Renders for website/Conventional centger/Untitled-1 copy.webp'
+const conv1 = '/assets/architect_images_webp_reduced/Renders for website/Conventional centger/04-05_Thesis page_01 copy.webp'
+const conv2 = '/assets/architect_images_webp_reduced/Renders for website/Conventional centger/Thesis  (1).webp'
+const conv3 = '/assets/architect_images_webp_reduced/Renders for website/Conventional centger/Untitled-1 copy.webp'
 
 // Evolo (3 images)
-import evolo1 from '../assets/architect_images_webp_reduced/Renders for website/Evolo/CloseUp.webp'
-import evolo2 from '../assets/architect_images_webp_reduced/Renders for website/Evolo/EVOLO SHEET 01 copy.webp'
-import evolo3 from '../assets/architect_images_webp_reduced/Renders for website/Evolo/Final 2.webp'
+const evolo1 = '/assets/architect_images_webp_reduced/Renders for website/Evolo/CloseUp.webp'
+const evolo2 = '/assets/architect_images_webp_reduced/Renders for website/Evolo/EVOLO SHEET 01 copy.webp'
+const evolo3 = '/assets/architect_images_webp_reduced/Renders for website/Evolo/Final 2.webp'
 
 // GPM Retail (3 images)
-import gpm1 from '../assets/architect_images_webp_reduced/Renders for website/GPM Retail/F1.webp'
-import gpm2 from '../assets/architect_images_webp_reduced/Renders for website/GPM Retail/f3.webp'
-import gpm3 from '../assets/architect_images_webp_reduced/Renders for website/GPM Retail/f5.webp'
+const gpm1 = '/assets/architect_images_webp_reduced/Renders for website/GPM Retail/F1.webp'
+const gpm2 = '/assets/architect_images_webp_reduced/Renders for website/GPM Retail/f3.webp'
+const gpm3 = '/assets/architect_images_webp_reduced/Renders for website/GPM Retail/f5.webp'
 
 // M3m (5 images)
-import m3m1 from '../assets/architect_images_webp_reduced/Renders for website/M3m/Final 1.webp'
-import m3m2 from '../assets/architect_images_webp_reduced/Renders for website/M3m/Scene 12.webp'
-import m3m3 from '../assets/architect_images_webp_reduced/Renders for website/M3m/Scene 16.webp'
-import m3m4 from '../assets/architect_images_webp_reduced/Renders for website/M3m/Scene 22.webp'
-import m3m5 from '../assets/architect_images_webp_reduced/Renders for website/M3m/Commercail (3).webp'
+const m3m1 = '/assets/architect_images_webp_reduced/Renders for website/M3m/Final 1.webp'
+const m3m2 = '/assets/architect_images_webp_reduced/Renders for website/M3m/Scene 12.webp'
+const m3m3 = '/assets/architect_images_webp_reduced/Renders for website/M3m/Scene 16.webp'
+const m3m4 = '/assets/architect_images_webp_reduced/Renders for website/M3m/Scene 22.webp'
+const m3m5 = '/assets/architect_images_webp_reduced/Renders for website/M3m/Commercail (3).webp'
 
 // Migsun Lucknow (2 images)
-import migLuck1 from '../assets/architect_images_webp_reduced/Renders for website/Migsun Lucknow/Cover Page.webp'
-import migLuck2 from '../assets/architect_images_webp_reduced/Renders for website/Migsun Lucknow/Mixed Use- luknow (2).webp'
+const migLuck1 = '/assets/architect_images_webp_reduced/Renders for website/Migsun Lucknow/Cover Page.webp'
+const migLuck2 = '/assets/architect_images_webp_reduced/Renders for website/Migsun Lucknow/Mixed Use- luknow (2).webp'
 
 // Migsun mixed use (6 images)
-import migMix1 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/1 copy.webp'
-import migMix2 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/5.webp'
-import migMix3 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op2/F2.webp'
-import migMix4 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op2/f6.webp'
-import migMix5 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op3/2 copy.webp'
-import migMix6 from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op3/4 copy.webp'
+const migMix1 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/1 copy.webp'
+const migMix2 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/5.webp'
+const migMix3 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op2/F2.webp'
+const migMix4 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op2/f6.webp'
+const migMix5 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op3/2 copy.webp'
+const migMix6 = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op3/4 copy.webp'
 
 // Migsun rohini (3 images)
-import migRoh1 from '../assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op1/Cover Image.webp'
-import migRoh2 from '../assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op1/2.webp'
-import migRoh3 from '../assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op2/Mixed Use (3)_Bloom.webp'
+const migRoh1 = '/assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op1/Cover Image.webp'
+const migRoh2 = '/assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op1/2.webp'
+const migRoh3 = '/assets/architect_images_webp_reduced/Renders for website/Migsun rohini/op2/Mixed Use (3)_Bloom.webp'
 
 // Noida one (2 images)
-import noida1 from '../assets/architect_images_webp_reduced/Renders for website/Noida one/Noida One (1).webp'
-import noida2 from '../assets/architect_images_webp_reduced/Renders for website/Noida one/Noida One (2).webp'
+const noida1 = '/assets/architect_images_webp_reduced/Renders for website/Noida one/Noida One (1).webp'
+const noida2 = '/assets/architect_images_webp_reduced/Renders for website/Noida one/Noida One (2).webp'
 
 // Omaxe mall (3 images)
-import omaxe1 from '../assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op1/Final_02_op2.webp'
-import omaxe2 from '../assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op1/Final_05_op2.webp'
-import omaxe3 from '../assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op2/Final 01.webp'
+const omaxe1 = '/assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op1/Final_02_op2.webp'
+const omaxe2 = '/assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op1/Final_05_op2.webp'
+const omaxe3 = '/assets/architect_images_webp_reduced/Renders for website/Omaxe mall/op2/Final 01.webp'
 
 // Pentagon (2 images)
-import pent1 from '../assets/architect_images_webp_reduced/Renders for website/Pentagon/Image(1)_style_transfer01 copy.webp'
-import pent2 from '../assets/architect_images_webp_reduced/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
+const pent1 = '/assets/architect_images_webp_reduced/Renders for website/Pentagon/Image(1)_style_transfer01 copy.webp'
+const pent2 = '/assets/architect_images_webp_reduced/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
 
 // Rsp (3 images)
-import rsp1 from '../assets/architect_images_webp_reduced/Renders for website/Rsp/Scene 13.webp'
-import rsp2 from '../assets/architect_images_webp_reduced/Renders for website/Rsp/Scene 24.webp'
-import rsp3 from '../assets/architect_images_webp_reduced/Renders for website/Rsp/RSP Mall_0p1_ (4).webp'
+const rsp1 = '/assets/architect_images_webp_reduced/Renders for website/Rsp/Scene 13.webp'
+const rsp2 = '/assets/architect_images_webp_reduced/Renders for website/Rsp/Scene 24.webp'
+const rsp3 = '/assets/architect_images_webp_reduced/Renders for website/Rsp/RSP Mall_0p1_ (4).webp'
 
 // The White house (3 images)
-import white1 from '../assets/architect_images_webp_reduced/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
-import white2 from '../assets/architect_images_webp_reduced/Renders for website/The White house/The White House (2).webp'
-import white3 from '../assets/architect_images_webp_reduced/Renders for website/The White house/The White House (3).webp'
+const white1 = '/assets/architect_images_webp_reduced/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
+const white2 = '/assets/architect_images_webp_reduced/Renders for website/The White house/The White House (2).webp'
+const white3 = '/assets/architect_images_webp_reduced/Renders for website/The White house/The White House (3).webp'
 
 // Mobile optimized images - Conventional centger
-import conv1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/04-05_Thesis page_01 copy.webp'
-import conv2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/Thesis  (1).webp'
-import conv3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/Untitled-1 copy.webp'
+const conv1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/04-05_Thesis page_01 copy.webp'
+const conv2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/Thesis  (1).webp'
+const conv3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Conventional centger/Untitled-1 copy.webp'
 
 // Evolo mobile
-import evolo1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/CloseUp.webp'
-import evolo2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/EVOLO SHEET 01 copy.webp'
-import evolo3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/Final 2.webp'
+const evolo1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/CloseUp.webp'
+const evolo2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/EVOLO SHEET 01 copy.webp'
+const evolo3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Evolo/Final 2.webp'
 
 // GPM Retail mobile
-import gpm1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/F1.webp'
-import gpm2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/f3.webp'
-import gpm3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/f5.webp'
+const gpm1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/F1.webp'
+const gpm2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/f3.webp'
+const gpm3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/GPM Retail/f5.webp'
 
 // M3m mobile
-import m3m1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Final 1.webp'
-import m3m2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 12.webp'
-import m3m3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 16.webp'
-import m3m4Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 22.webp'
-import m3m5Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Commercail (3).webp'
+const m3m1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Final 1.webp'
+const m3m2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 12.webp'
+const m3m3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 16.webp'
+const m3m4Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Scene 22.webp'
+const m3m5Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/M3m/Commercail (3).webp'
 
 // Migsun Lucknow mobile
-import migLuck1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun Lucknow/Cover Page.webp'
-import migLuck2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun Lucknow/Mixed Use- luknow (2).webp'
+const migLuck1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun Lucknow/Cover Page.webp'
+const migLuck2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun Lucknow/Mixed Use- luknow (2).webp'
 
 // Migsun mixed use mobile
-import migMix1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op1/1 copy.webp'
-import migMix2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op1/5.webp'
-import migMix3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op2/F2.webp'
-import migMix4Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op2/f6.webp'
-import migMix5Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op3/2 copy.webp'
-import migMix6Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op3/4 copy.webp'
+const migMix1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op1/1 copy.webp'
+const migMix2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op1/5.webp'
+const migMix3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op2/F2.webp'
+const migMix4Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op2/f6.webp'
+const migMix5Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op3/2 copy.webp'
+const migMix6Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun_mixed use/op3/4 copy.webp'
 
 // Migsun rohini mobile
-import migRoh1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op1/Cover Image.webp'
-import migRoh2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op1/2.webp'
-import migRoh3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op2/Mixed Use (3)_Bloom.webp'
+const migRoh1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op1/Cover Image.webp'
+const migRoh2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op1/2.webp'
+const migRoh3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Migsun rohini/op2/Mixed Use (3)_Bloom.webp'
 
 // Noida one mobile
-import noida1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Noida one/Noida One (1).webp'
-import noida2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Noida one/Noida One (2).webp'
+const noida1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Noida one/Noida One (1).webp'
+const noida2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Noida one/Noida One (2).webp'
 
 // Omaxe mall mobile
-import omaxe1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op1/Final_02_op2.webp'
-import omaxe2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op1/Final_05_op2.webp'
-import omaxe3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op2/Final 01.webp'
+const omaxe1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op1/Final_02_op2.webp'
+const omaxe2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op1/Final_05_op2.webp'
+const omaxe3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Omaxe mall/op2/Final 01.webp'
 
 // Pentagon mobile
-import pent1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Pentagon/Image(1)_style_transfer01 copy.webp'
-import pent2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
+const pent1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Pentagon/Image(1)_style_transfer01 copy.webp'
+const pent2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
 
 // Rsp mobile
-import rsp1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/Scene 13.webp'
-import rsp2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/Scene 24.webp'
-import rsp3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/RSP Mall_0p1_ (4).webp'
+const rsp1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/Scene 13.webp'
+const rsp2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/Scene 24.webp'
+const rsp3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/Rsp/RSP Mall_0p1_ (4).webp'
 
 // The White house mobile
-import white1Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
-import white2Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (2).webp'
-import white3Mobile from '../assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (3).webp'
+const white1Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
+const white2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (2).webp'
+const white3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (3).webp'
 
 function Home() {
   const worldRef = useRef(null);
   const sceneRef = useRef(null);
   const logoRef = useRef(null);
   const isDragging = useRef(false);
+  const didDrag = useRef(false);
   const startPos = useRef({ x: 0, y: 0 });
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const rafId = useRef(null);
+  const closingTimers = useRef([]);
+
+  // Clicked image info — set on click, triggers dismiss animation for all others
+  const [clickedInfo, setClickedInfo] = useState(null); // { key, src, rect, projectId }
+
+  // Zoom-to-fullscreen overlay state
+  const [zoomOverlay, setZoomOverlay] = useState(null); // { src, rect, projectId }
+
+  // Open project panel state
+  const [openProject, setOpenProject] = useState(null); // { project, heroImage }
+
+  // Panel closing state — drives the fade-out animation before unmounting
+  const [isClosingPanel, setIsClosingPanel] = useState(false);
 
   // Detect if screen is mobile
   useEffect(() => {
@@ -208,14 +227,35 @@ function Home() {
     </picture>
   );
 
-  // Random animation delays for each image in a small range
+  // Random animation delays + lock in final state after fly-in so CSS transitions work
   useEffect(() => {
     const layers = document.querySelectorAll('.fx-layer');
+
+    const handleAnimationEnd = (e) => {
+      const layer = e.currentTarget;
+      // Capture the computed transform that fill-mode is holding
+      const finalTransform = getComputedStyle(layer).transform;
+      // Set final state as inline styles so transitions own these properties going forward
+      layer.style.opacity = '1';
+      layer.style.transform = finalTransform;
+      // Remove the animation entirely — fill-mode was suppressing CSS transitions on
+      // opacity/transform; with no animation active the transitions work normally
+      layer.style.animation = 'none';
+      layer.removeEventListener('animationend', handleAnimationEnd);
+    };
+
     layers.forEach((layer) => {
       // Random delay between 0 and 2 seconds for more varied appearance
       const randomDelay = Math.random() * 2;
       layer.style.animationDelay = `${randomDelay}s`;
+      layer.addEventListener('animationend', handleAnimationEnd);
     });
+
+    return () => {
+      layers.forEach((layer) => {
+        layer.removeEventListener('animationend', handleAnimationEnd);
+      });
+    };
   }, []);
 
   // Drag functionality (Mouse and Touch) - Optimized for mobile
@@ -223,6 +263,7 @@ function Home() {
     const handleStart = (e) => {
       e.preventDefault(); // Prevent default drag behavior
       isDragging.current = true;
+      didDrag.current = false;
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
       
@@ -277,6 +318,7 @@ function Home() {
           x: newX,
           y: newY
         };
+        didDrag.current = true;
         setOffset(newOffset);
       });
     };
@@ -359,11 +401,100 @@ function Home() {
     };
   }, []);
 
+  // Handle image click — first dismiss others, then zoom to fullscreen
+  const handleLayerClick = useCallback((e, imageKey) => {
+    // Ignore if user was dragging
+    if (didDrag.current) {
+      didDrag.current = false;
+      return;
+    }
+    const projectId = imageKeyToProject[imageKey];
+    if (!projectId) return;
+
+    // Get the clicked layer element rect
+    const layerEl = e.currentTarget;
+    const rect = layerEl.getBoundingClientRect();
+
+    // Get current src from the img inside
+    const imgEl = layerEl.querySelector('img');
+    const src = imgEl ? imgEl.currentSrc || imgEl.src : '';
+
+    setClickedInfo({ key: imageKey, src, rect, projectId });
+  }, []);
+
+  // Step 1: when an image is clicked, wait for the dismiss animation then start the zoom overlay
+  useEffect(() => {
+    if (!clickedInfo) return;
+    const timer = setTimeout(() => {
+      setZoomOverlay({ src: clickedInfo.src, rect: clickedInfo.rect, projectId: clickedInfo.projectId });
+    }, 350);
+    return () => clearTimeout(timer);
+  }, [clickedInfo]);
+
+  // Step 2: When zoom overlay mounts, run the animation then open the panel.
+  // We do NOT clear the zoom overlay here — it stays as a seamless bridge
+  // (z-index 9999) behind the panel (z-index 10000) until the panel's hero
+  // image fires onLoad, at which point onHeroReady clears it invisibly.
+  useEffect(() => {
+    if (!zoomOverlay) return;
+    const timer = setTimeout(() => {
+      const project = projectData.find((p) => p.id === zoomOverlay.projectId);
+      setOpenProject({ project, heroImage: zoomOverlay.src });
+    }, 650);
+    return () => clearTimeout(timer);
+  }, [zoomOverlay]);
+
+  // Close handler — fades the panel out, then fades the home images back in.
+  // Images start returning (dismiss class removed) 150ms in so they overlap
+  // with the tail of the panel fade-out for a seamless transition.
+  const handleClosePanel = useCallback(() => {
+    setIsClosingPanel(true);
+    // Start images fading back in while panel is still fading out
+    const t1 = setTimeout(() => setClickedInfo(null), 150);
+    // After the fade-out completes, unmount everything
+    const t2 = setTimeout(() => {
+      setOpenProject(null);
+      setZoomOverlay(null);
+      setIsClosingPanel(false);
+    }, 450);
+    closingTimers.current = [t1, t2];
+  }, []);
+
+  // Clean up any pending close timers if the home component unmounts mid-animation
+  useEffect(() => {
+    return () => closingTimers.current.forEach(clearTimeout);
+  }, []);
+
   return (
     <div className="main-content">
+      {/* Zoom-to-fullscreen overlay */}
+      {zoomOverlay && (
+        <div
+          className="home-zoom-overlay"
+          style={{
+            '--zoom-x': `${zoomOverlay.rect.left}px`,
+            '--zoom-y': `${zoomOverlay.rect.top}px`,
+            '--zoom-w': `${zoomOverlay.rect.width}px`,
+            '--zoom-h': `${zoomOverlay.rect.height}px`,
+            backgroundImage: `url(${zoomOverlay.src})`,
+          }}
+        />
+      )}
+
+      {/* Full-screen project panel popup */}
+      {openProject && openProject.project && (
+        <ProjectPanel
+          project={openProject.project}
+          heroImage={openProject.heroImage}
+          onClose={handleClosePanel}
+          onHeroReady={() => setZoomOverlay(null)}
+          isClosing={isClosingPanel}
+        />
+      )}
+
       <div className="fx-3d-scene" ref={sceneRef}>
         <div 
-          className="fx-3d-world fx-grid" 
+          className={`fx-3d-world fx-grid${clickedInfo ? ' fx-world-dismissing' : ''}`} 
           ref={worldRef}
           style={{
             transform: `translate3d(${offset.x}px, ${offset.y}px, 0) scale(${zoom})`,
@@ -371,118 +502,118 @@ function Home() {
             willChange: isDragging.current ? 'transform' : 'auto'
           }}
         >
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'conv1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'conv1')}>
             <ResponsiveImage imageKey="conv1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'evolo1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'evolo1')}>
             <ResponsiveImage imageKey="evolo1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'gpm1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'gpm1')}>
             <ResponsiveImage imageKey="gpm1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'm3m1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'm3m1')}>
             <ResponsiveImage imageKey="m3m1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migLuck1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migLuck1')}>
             <ResponsiveImage imageKey="migLuck1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix1')}>
             <ResponsiveImage imageKey="migMix1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migRoh1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migRoh1')}>
             <ResponsiveImage imageKey="migRoh1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'noida1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'noida1')}>
             <ResponsiveImage imageKey="noida1" alt="Architecture render" priority={true} />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'omaxe1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'omaxe1')}>
             <ResponsiveImage imageKey="omaxe1" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'pent1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'pent1')}>
             <ResponsiveImage imageKey="pent1" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'rsp1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'rsp1')}>
             <ResponsiveImage imageKey="rsp1" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'white1' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'white1')}>
             <ResponsiveImage imageKey="white1" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'conv2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'conv2')}>
             <ResponsiveImage imageKey="conv2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'evolo2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'evolo2')}>
             <ResponsiveImage imageKey="evolo2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'gpm2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'gpm2')}>
             <ResponsiveImage imageKey="gpm2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'm3m2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'm3m2')}>
             <ResponsiveImage imageKey="m3m2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migLuck2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migLuck2')}>
             <ResponsiveImage imageKey="migLuck2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix2')}>
             <ResponsiveImage imageKey="migMix2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migRoh2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migRoh2')}>
             <ResponsiveImage imageKey="migRoh2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'noida2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'noida2')}>
             <ResponsiveImage imageKey="noida2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'omaxe2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'omaxe2')}>
             <ResponsiveImage imageKey="omaxe2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'pent2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'pent2')}>
             <ResponsiveImage imageKey="pent2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'rsp2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'rsp2')}>
             <ResponsiveImage imageKey="rsp2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'white2' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'white2')}>
             <ResponsiveImage imageKey="white2" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'conv3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'conv3')}>
             <ResponsiveImage imageKey="conv3" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'evolo3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'evolo3')}>
             <ResponsiveImage imageKey="evolo3" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'gpm3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'gpm3')}>
             <ResponsiveImage imageKey="gpm3" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'm3m3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'm3m3')}>
             <ResponsiveImage imageKey="m3m3" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix3')}>
             <ResponsiveImage imageKey="migMix3" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migRoh3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migRoh3')}>
             <ResponsiveImage imageKey="migRoh3" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'omaxe3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'omaxe3')}>
             <ResponsiveImage imageKey="omaxe3" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'rsp3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'rsp3')}>
             <ResponsiveImage imageKey="rsp3" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'white3' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'white3')}>
             <ResponsiveImage imageKey="white3" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'm3m4' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'm3m4')}>
             <ResponsiveImage imageKey="m3m4" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix4' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix4')}>
             <ResponsiveImage imageKey="migMix4" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'm3m5' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'm3m5')}>
             <ResponsiveImage imageKey="m3m5" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix5' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix5')}>
             <ResponsiveImage imageKey="migMix5" alt="Architecture render" />
           </div>
-          <div className="fx-layer">
+          <div className="fx-layer" data-chosen={clickedInfo?.key === 'migMix6' ? 'true' : undefined} onClick={(e) => handleLayerClick(e, 'migMix6')}>
             <ResponsiveImage imageKey="migMix6" alt="Architecture render" />
           </div>
         </div>

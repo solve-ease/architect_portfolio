@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom'
 import '../styles/Footer.css'
-import logo from '../assets/logo_white.webp'
+const logo = '/assets/logo_white.webp'
 import { FaLinkedin, FaInstagram } from 'react-icons/fa'
 
 function Footer() {
@@ -9,13 +10,15 @@ function Footer() {
         <div className="footer-top">
           <div className="footer-left">
             <div className="footer-logo">
-              <img src={logo} alt="Paraflux Logo" className="footer-logo-img" />
+              <Link to="/">
+                <img src={logo} alt="Paraflux Logo" className="footer-logo-img" />
+              </Link>
             </div>
             <div className="footer-social">
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <FaLinkedin />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://www.instagram.com/theparaflux/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <FaInstagram />
               </a>
             </div>
@@ -23,18 +26,18 @@ function Footer() {
           
           <div className="footer-links-container">
             <div className="footer-column">
-              <a href="#home">Home</a>
-              <a href="#our-story">Our Story</a>
-              <a href="#studio">Studio</a>
-              <a href="#team">Team</a>
-              <a href="#careers">Careers</a>
+              <Link to="/">Home</Link>
+              <Link to="/about">Our Story</Link>
+              {/* <a href="#studio">Studio</a> */}
+              <Link to="/team">Team</Link>
+              {/* <a href="#careers">Careers</a> */}
             </div>
             
             <div className="footer-column">
               <a href="#projects">Projects</a>
-              <a href="#news">News</a>
-              <a href="#contact">Contact</a>
-              <a href="#privacy">Privacy Policy</a>
+              {/* <a href="#news">News</a> */}
+              <Link to="/contact">Contact</Link>
+              <Link to="/privacy-info">Privacy Policy</Link>
             </div>
           </div>
         </div>
@@ -42,7 +45,7 @@ function Footer() {
         <div className="footer-divider"></div>
         
         <div className="footer-bottom">
-          <p>© UHA 2026 | Upton-Hansen Architects Ltd holds ISO 9001 and ISO 14001 certifications</p>
+          <p>© Paraflux 2026 | All Rights Reserved</p>
         </div>
       </div>
     </footer>

@@ -29,6 +29,10 @@
   justify-content: space-between;
 }
 
+.footer-logo a {
+  display: inline-flex;
+}
+
 .footer-logo-img {
   height: 3.75rem;
   width: auto;

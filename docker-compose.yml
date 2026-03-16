@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  architect-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "51773:51773"
+    container_name: architect-portfolio
+    restart: unless-stopped

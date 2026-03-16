@@ -2,44 +2,39 @@ import { useEffect, useRef } from 'react'
 import '../styles/About.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import evolo from '../assets/architect_images_webp_reduced/Renders for website/Evolo/CloseUp.webp'
-import m3m from '../assets/architect_images_webp_reduced/Renders for website/M3m/Final 1.webp'
-import migsun from '../assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/2 copy.webp'
-import pentagon from '../assets/architect_images_webp_reduced/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
-import whitehouse from '../assets/architect_images_webp_reduced/Renders for website/The White house/The White House (1) COVER IMAGE.webp'
+const evolo = '/about/AboutUs.webp'
+const m3m = '/assets/architect_images_webp_reduced/Renders for website/M3m/Final 1.webp'
+const migsun = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/2 copy.webp'
+const pentagon = '/assets/architect_images_webp_reduced/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
+const whitehouse = '/about/OurVision.webp'
 
 function About() {
   const containerRef = useRef(null)
 
   const milestones = [
     {
-      title: "Global Reach",
-      subtitle: "EXPANDING HORIZONS",
-      content: "From our humble beginnings, we've established a truly global presence. Our multidisciplinary team brings together diverse perspectives and expertise, enabling us to tackle complex architectural challenges across continents and cultures.",
-      image: m3m
-    },
-    {
       title: "Our Story",
       subtitle: "A COLLECTION OF KEY MILESTONES",
-      content: "Founded in London in 2011, we have grown into a team of 50+ working from 7 global offices across 6 time zones. We have over 50 projects on-site across 3 continents from the tallest residential tower in New Delhi to an award-winning 53 hectare masterplan in Moscow.",
+      content: `The ParaFlux Architects is a small, innovative architecture studio based in Noida, India. Our ideology is rooted in the belief that architecture is not just about creating beautiful buildings, but also
+about shaping the way people experience and interact with their surroundings. We believe that
+architecture has the power to transform people’s lives and create a better world.
+At ParaFlux, we strive to create architecture that is both functional and aesthetically pleasing,
+while also being sustainable and environmentally responsible. We believe in using local materials and techniques whenever possible, and in designing buildings that are energy-efficient and
+als and techniques whenever possible, and in designing buildings that are energy-efficient and
+ecologically sensitive.`,
       image: evolo
     },
     {
-      title: "Innovation",
-      subtitle: "PUSHING BOUNDARIES",
-      content: "We believe in pushing the boundaries of what's possible in architecture. Our commitment to innovation drives us to explore new materials, technologies, and design methodologies that create sustainable and inspiring spaces for generations to come.",
-      image: migsun
-    },
-    {
-      title: "Excellence",
-      subtitle: "AWARD-WINNING DESIGNS",
-      content: "Our dedication to excellence has earned us recognition worldwide. Each project reflects our passion for creating spaces that blend functionality with aesthetic beauty, always keeping the end-user experience at the forefront of our design process.",
-      image: pentagon
-    },
-    {
-      title: "Vision",
+      title: "Our Vision",
       subtitle: "SHAPING THE FUTURE",
-      content: "Looking ahead, we continue to shape the future of architecture. Our vision is to create sustainable, human-centric environments that not only meet today's needs but anticipate the challenges and opportunities of tomorrow.",
+      content: `Our vision is to establish an architectural firm that excels in creating exceptional real estate
+projects. We strive to redefine the standards of architectural design by integrating innovative
+concepts, sustainable practices, and modern technologies. Our aim is to shape spaces that not
+only meet the functional needs of our clients but also evoke a sense of awe and inspiration. We
+envision a future where our firm’s projects are recognized for their distinctive aesthetics, superior
+quality, and seamless integration with the surrounding environment. By pushing the boundaries
+of creativity and embracing the latest trends in real estate, we aspire to leave a lasting impact on
+the urban landscape and enhance the lives of individuals and communities through our transformative designs.`,
       image: whitehouse
     }
   ]

@@ -3,27 +3,62 @@ import '../styles/Team.css'
 
 function Team() {
   const teamMembers = [
-    {
+        {
       id: 1,
-      name: 'Team Member 1',
-      position: 'Senior Architect',
-      languages: 'English, Hindi, Spanish',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop'
+      name: 'Chaitanya Goyal',
+      position: 'Founder',
+      languages: 'M.Arch | AA LONDON',
+      image: '/team/chaitanya.webp'
     },
     {
       id: 2,
-      name: 'Team Member 2',
-      position: 'Design Director',
-      languages: 'English, French, German',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop'
+      name: 'Anand Goyal',
+      position: 'Co - Founder',
+      languages: 'MIM | SMU, SINGAPORE',
+      image: '/team/Anand_Goyal.webp'
     },
     {
       id: 3,
-      name: 'Team Member 3',
-      position: 'Project Manager',
-      languages: 'English, Mandarin, Japanese',
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=800&fit=crop'
-    }
+      name: 'Mohammed Faisal Rais',
+      position: 'Project Architect',
+      languages: 'B. Arch',
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 4,
+      name: 'Yogendra Yadav',
+      position: 'General Manager',
+      languages: `MBA | SIKKIM MANIPAL \nPGDM | IAMT, GHAZIABAD`,
+      image: '/team/Yogendra_Yadav.webp'
+    },
+    {
+      id: 5,
+      name: 'Sarthak Goyal',
+      position: 'BD',
+      languages: 'MBA | ESCP, LONDON, MADRID, BERLIN',
+      image: '/team/Sarthak_Goyal.webp'
+    },
+    {
+      id: 6,
+      name: 'Anika Jain',
+      position: 'Interior Designer',
+      languages: 'M. Des | GSA, GLASGOW',
+      image: '/team/silhoutte.webp'
+    },
+    {
+      id: 8,
+      name: 'Varshika Agarwal',
+      position: 'Designer',
+      languages: 'MBA | IMT, HYDERABAD',
+      image: '/team/Varshika.webp'
+    },
+    {
+      id: 7,
+      name: 'Mukesh Goyal',
+      position: 'Adviser',
+      languages: 'B. Arch | AMBALA',
+      image: '/team/Mukesh_Goyal.webp'
+    },
   ]
 
   return (
@@ -34,9 +69,9 @@ function Team() {
         <h1 className="team-heading">Meet our Team</h1>
         
         <p className="team-description">
-          We are a multilingual team of Architects, Landscape Designers, Creatives,<br />
+          We are a team of Architects, Landscape Designers, Creatives,<br />
           Computational Designers, Interior Designers, Project Managers, Technicians, and<br />
-          Visualisation Artists
+          &nbsp;Visualisation Artists
         </p>
 
         <div className="divider"></div>
