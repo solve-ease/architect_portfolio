@@ -4,7 +4,7 @@ const logo = '/assets/PARAFLULX_LOGO.webp'
 const logo_black = '/assets/logo_white.webp'
 const logo_white = '/assets/logo_white-removebg-preview.webp'
 import './Navbar.css'
-import { FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 function Navbar({ variant = 'default', transparent = false }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -73,6 +73,7 @@ function Navbar({ variant = 'default', transparent = false }) {
             <Link to="/team" className="menu-link" onClick={() => setIsMenuOpen(false)}>Team</Link>
             {/* <a href="#news" className="menu-link">News</a> */}
             {/* <a href="#careers" className="menu-link">Careers</a> */}
+            <Link to="/careers" className="menu-link" onClick={() => setIsMenuOpen(false)}>Careers</Link>
             <Link to="/contact" className="menu-link" onClick={() => setIsMenuOpen(false)}>Contact</Link>
           </nav>
 
@@ -89,6 +90,9 @@ function Navbar({ variant = 'default', transparent = false }) {
             </a>
             <a href="https://www.instagram.com/theparaflux/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <FaInstagram />
+            </a>
+            <a href="https://www.youtube.com/@theparaflux" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <FaYoutube />
             </a>
           </div>
         </div>

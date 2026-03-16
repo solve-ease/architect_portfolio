@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
 import '../styles/Contact.css'
 
 function Contact() {
@@ -178,6 +178,10 @@ function Contact() {
                 <a href="https://www.instagram.com/theparaflux/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <FaInstagram className="contact-social-icon" />
                   Instagram
+                </a>
+                <a href="https://www.youtube.com/@theparaflux" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                  <FaYoutube className="contact-social-icon" />
+                  YouTube
                 </a>
               </div>
             </div>

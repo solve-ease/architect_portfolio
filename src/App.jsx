@@ -6,6 +6,7 @@ import Team from './pages/Team'
 import About from './pages/About'
 import PrivacyInfo from './pages/PrivacyInfo'
 import Contact from './pages/Contact'
+import Careers from './pages/Careers'
 import ProjectDetail from './pages/ProjectDetail'
 import Footer from './components/Footer'
 const logo_mobile = '/assets/logo_white.webp'
@@ -50,6 +51,7 @@ function Navbar() {
         <a href="/about">About</a>
         <a href="/projects">Projects</a>
         <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link>
+        <Link to="/careers" className={location.pathname === '/careers' ? 'active' : ''}>Careers</Link>
       </nav>
 
       {/* Mobile Hamburger Button */}
@@ -79,6 +81,7 @@ function Navbar() {
           <Link to="/team" onClick={closeMenu}>Team</Link>
           {/* <a href="#news" onClick={closeMenu}>News</a> */}
           {/* <a href="#careers" onClick={closeMenu}>Careers</a> */}
+          <Link to="/careers" onClick={closeMenu}>Careers</Link>
           <Link to="/contact" onClick={closeMenu}>Contact</Link>
         </nav>
 
@@ -92,7 +95,7 @@ function Navbar() {
 
 function AppContent() {
   const location = useLocation()
-  const showFooter = location.pathname !== '/' && location.pathname !== '/about' && location.pathname !== '/privacy-info' && location.pathname !== '/contact' && !location.pathname.startsWith('/project/')
+  const showFooter = location.pathname !== '/' && location.pathname !== '/about' && location.pathname !== '/privacy-info' && location.pathname !== '/contact' && location.pathname !== '/careers' && !location.pathname.startsWith('/project/')
   
   return (
     <>
@@ -102,6 +105,7 @@ function AppContent() {
         <Route path="/about" element={<About />} />
         <Route path="/privacy-info" element={<PrivacyInfo />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/careers" element={<Careers />} />
         <Route path="/project/:projectId" element={<ProjectDetail />} />
       </Routes>
       {showFooter && <Footer />}
