@@ -342,8 +342,8 @@
 /* ── Dismiss animation: non-chosen layers fade and scale back when an image is clicked ── */
 .fx-world-dismissing .fx-layer:not([data-chosen]) {
   opacity: 0 !important;
-  transform: translateZ(-900px) scale(0.55) !important;
-  transition: opacity 0.35s ease-out, transform 0.35s cubic-bezier(0.4, 0, 0.6, 1);
+  transform: translateZ(-900px) scale(0.7) !important;
+  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.4, 0, 0.6, 1);
   pointer-events: none;
 }
 
