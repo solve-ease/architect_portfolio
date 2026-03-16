@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, useMemo, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/Home.css'
 import { imageKeyToProject } from '../data/projectData'
-import projectData from '../data/projectData'
-import ProjectPanel from '../components/ProjectPanel'
 
 // Logo
 const logo = '/assets/PARAFLULX_LOGO.webp'
@@ -132,17 +131,35 @@ const white2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for w
 const white3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (3).webp'
 
 function Home() {
+  const navigate = useNavigate();
   const worldRef = useRef(null);
   const sceneRef = useRef(null);
   const logoRef = useRef(null);
   const isDragging = useRef(false);
   const didDrag = useRef(false);
   const startPos = useRef({ x: 0, y: 0 });
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
+
+  // Restore state from sessionStorage when returning from project detail
+  const [skipIntro] = useState(() => {
+    return sessionStorage.getItem('homeVisited') === 'true';
+  });
+  const [offset, setOffset] = useState(() => {
+    const saved = sessionStorage.getItem('homeOffset');
+    return saved ? JSON.parse(saved) : { x: 0, y: 0 };
+  });
+  const [zoom, setZoom] = useState(() => {
+    const saved = sessionStorage.getItem('homeZoom');
+    return saved ? parseFloat(saved) : 1;
+  });
+
+  // Refs to access current offset/zoom in callbacks without stale closures
+  const offsetRef = useRef(offset);
+  offsetRef.current = offset;
+  const zoomRef = useRef(zoom);
+  zoomRef.current = zoom;
+
   const [isMobile, setIsMobile] = useState(false);
   const rafId = useRef(null);
-  const closingTimers = useRef([]);
 
   // Clicked image info — set on click, triggers dismiss animation for all others
   const [clickedInfo, setClickedInfo] = useState(null); // { key, src, rect, projectId }
@@ -150,11 +167,12 @@ function Home() {
   // Zoom-to-fullscreen overlay state
   const [zoomOverlay, setZoomOverlay] = useState(null); // { src, rect, projectId }
 
-  // Open project panel state
-  const [openProject, setOpenProject] = useState(null); // { project, heroImage }
-
-  // Panel closing state — drives the fade-out animation before unmounting
-  const [isClosingPanel, setIsClosingPanel] = useState(false);
+  // Clear saved home state on mount (already consumed by useState initializers above)
+  useEffect(() => {
+    sessionStorage.removeItem('homeVisited');
+    sessionStorage.removeItem('homeOffset');
+    sessionStorage.removeItem('homeZoom');
+  }, []);
 
   // Detect if screen is mobile
   useEffect(() => {
@@ -227,8 +245,28 @@ function Home() {
     </picture>
   );
 
+  // Skip fly-in animation when returning from project detail — set final state before paint
+  // Column Y offsets must match the CSS @keyframes fx-fly-in-offset1 … offset7 final translateY values
+  const COLUMN_Y_OFFSETS = useMemo(() => [-45, 60, -80, 35, -20, 75, -55], []);
+
+  useLayoutEffect(() => {
+    if (!skipIntro) return;
+    const layers = document.querySelectorAll('.fx-layer');
+    const w = window.innerWidth;
+    const cols = w <= 380 ? 2 : w <= 600 ? 5 : 7;
+
+    layers.forEach((layer, index) => {
+      const yOffset = COLUMN_Y_OFFSETS[index % cols];
+      layer.style.opacity = '1';
+      layer.style.transform = `translateZ(0) translateY(${yOffset}px) scale(1)`;
+      layer.style.animation = 'none';
+    });
+  }, [skipIntro, COLUMN_Y_OFFSETS]);
+
   // Random animation delays + lock in final state after fly-in so CSS transitions work
   useEffect(() => {
+    if (skipIntro) return;
+
     const layers = document.querySelectorAll('.fx-layer');
 
     const handleAnimationEnd = (e) => {
@@ -256,7 +294,7 @@ function Home() {
         layer.removeEventListener('animationend', handleAnimationEnd);
       });
     };
-  }, []);
+  }, [skipIntro]);
 
   // Drag functionality (Mouse and Touch) - Optimized for mobile
   useEffect(() => {
@@ -431,42 +469,23 @@ function Home() {
     return () => clearTimeout(timer);
   }, [clickedInfo]);
 
-  // Step 2: When zoom overlay mounts, run the animation then open the panel.
-  // We do NOT clear the zoom overlay here — it stays as a seamless bridge
-  // (z-index 9999) behind the panel (z-index 10000) until the panel's hero
-  // image fires onLoad, at which point onHeroReady clears it invisibly.
+  // Step 2: When zoom overlay mounts, run the animation then navigate to project page.
   useEffect(() => {
     if (!zoomOverlay) return;
     const timer = setTimeout(() => {
-      const project = projectData.find((p) => p.id === zoomOverlay.projectId);
-      setOpenProject({ project, heroImage: zoomOverlay.src });
+      // Save home page state so it can be restored on return
+      sessionStorage.setItem('homeOffset', JSON.stringify(offsetRef.current));
+      sessionStorage.setItem('homeZoom', String(zoomRef.current));
+      sessionStorage.setItem('homeVisited', 'true');
+      navigate(`/project/${zoomOverlay.projectId}`, {
+        state: { heroImage: zoomOverlay.src, fromZoom: true },
+      });
     }, 650);
     return () => clearTimeout(timer);
-  }, [zoomOverlay]);
-
-  // Close handler — fades the panel out, then fades the home images back in.
-  // Images start returning (dismiss class removed) 150ms in so they overlap
-  // with the tail of the panel fade-out for a seamless transition.
-  const handleClosePanel = useCallback(() => {
-    setIsClosingPanel(true);
-    // Start images fading back in while panel is still fading out
-    const t1 = setTimeout(() => setClickedInfo(null), 150);
-    // After the fade-out completes, unmount everything
-    const t2 = setTimeout(() => {
-      setOpenProject(null);
-      setZoomOverlay(null);
-      setIsClosingPanel(false);
-    }, 450);
-    closingTimers.current = [t1, t2];
-  }, []);
-
-  // Clean up any pending close timers if the home component unmounts mid-animation
-  useEffect(() => {
-    return () => closingTimers.current.forEach(clearTimeout);
-  }, []);
+  }, [zoomOverlay, navigate]);
 
   return (
-    <div className="main-content">
+    <div className={`main-content${skipIntro ? ' fx-skip-intro' : ''}`}>
       {/* Zoom-to-fullscreen overlay */}
       {zoomOverlay && (
         <div
@@ -478,17 +497,6 @@ function Home() {
             '--zoom-h': `${zoomOverlay.rect.height}px`,
             backgroundImage: `url(${zoomOverlay.src})`,
           }}
-        />
-      )}
-
-      {/* Full-screen project panel popup */}
-      {openProject && openProject.project && (
-        <ProjectPanel
-          project={openProject.project}
-          heroImage={openProject.heroImage}
-          onClose={handleClosePanel}
-          onHeroReady={() => setZoomOverlay(null)}
-          isClosing={isClosingPanel}
         />
       )}
 

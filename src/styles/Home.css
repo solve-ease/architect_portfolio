@@ -339,6 +339,14 @@
   }
 }
 
+/* ── Skip intro animation (when returning from project detail) ── */
+.fx-skip-intro .hero-logo {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
+  clip-path: inset(0 0 0 0) !important;
+}
+
 /* ── Dismiss animation: non-chosen layers fade and scale back when an image is clicked ── */
 .fx-world-dismissing .fx-layer:not([data-chosen]) {
   opacity: 0 !important;
