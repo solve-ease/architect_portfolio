@@ -347,12 +347,12 @@
 .pd-heading-left {
   display: flex;
   justify-content: flex-start;
-  padding: 80px 60px;
+  padding: 80px 0;
   border-bottom: 1px solid #e0e0e0;
 }
 
 .pd-heading-left-inner {
-  max-width: 50%;
+  width: 70%;
   text-align: left;
 }
 
@@ -364,7 +364,7 @@
   text-transform: uppercase;
   color: #111;
   margin: 0 0 20px;
-  white-space: pre-line;
+  /* white-space: pre-line; */
 }
 
 .pd-heading-left-sub {

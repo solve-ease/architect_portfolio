@@ -197,6 +197,7 @@
 /* ── Body ── */
 .pd-body {
   background: #fff;
+  padding: 0 2vw;
 }
 
 /* ── Info strip ── */
