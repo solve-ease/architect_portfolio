@@ -90,6 +90,7 @@ function ProjectDetail() {
             alt={project.title}
             className="pd-hero-img"
             onLoad={() => setHeroLoaded(true)}
+            onError={() => setHeroLoaded(true)}
           />
         </div>
         <div className="pd-hero-overlay">
