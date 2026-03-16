@@ -246,21 +246,22 @@ function Home() {
   );
 
   // Skip fly-in animation when returning from project detail — set final state before paint
+  // Column Y offsets must match the CSS @keyframes fx-fly-in-offset1 … offset7 final translateY values
+  const COLUMN_Y_OFFSETS = useMemo(() => [-45, 60, -80, 35, -20, 75, -55], []);
+
   useLayoutEffect(() => {
     if (!skipIntro) return;
     const layers = document.querySelectorAll('.fx-layer');
-    // Y offsets matching the CSS keyframe final states for each column
-    const offsets = [-45, 60, -80, 35, -20, 75, -55];
     const w = window.innerWidth;
     const cols = w <= 380 ? 2 : w <= 600 ? 5 : 7;
 
     layers.forEach((layer, index) => {
-      const yOffset = offsets[index % cols];
+      const yOffset = COLUMN_Y_OFFSETS[index % cols];
       layer.style.opacity = '1';
       layer.style.transform = `translateZ(0) translateY(${yOffset}px) scale(1)`;
       layer.style.animation = 'none';
     });
-  }, [skipIntro]);
+  }, [skipIntro, COLUMN_Y_OFFSETS]);
 
   // Random animation delays + lock in final state after fly-in so CSS transitions work
   useEffect(() => {
