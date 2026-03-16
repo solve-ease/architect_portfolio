@@ -3,7 +3,7 @@ import '../styles/Team.css'
 
 function Team() {
   const teamMembers = [
-    {
+        {
       id: 1,
       name: 'Chaitanya Goyal',
       position: 'Founder',
@@ -15,28 +15,28 @@ function Team() {
       name: 'Anand Goyal',
       position: 'Co - Founder',
       languages: 'MIM | SMU, SINGAPORE',
-      image: '/team/silhoutte.webp'
+      image: '/team/Anand_Goyal.webp'
     },
     {
       id: 3,
-      name: 'Mukesh Goyal',
-      position: 'Adviser',
-      languages: 'B. Arch | AMBALA',
+      name: 'Mohammed Faisal Rais',
+      position: 'Project Architect',
+      languages: 'B. Arch',
       image: '/team/silhoutte.webp'
     },
     {
       id: 4,
-      name: 'Varshika Agarwal',
-      position: 'Designer',
-      languages: 'MBA | IMT, HYDERABAD',
-      image: '/team/silhoutte.webp'
+      name: 'Yogendra Yadav',
+      position: 'General Manager',
+      languages: `MBA | SIKKIM MANIPAL \nPGDM | IAMT, GHAZIABAD`,
+      image: '/team/Yogendra_Yadav.webp'
     },
     {
       id: 5,
       name: 'Sarthak Goyal',
       position: 'BD',
       languages: 'MBA | ESCP, LONDON, MADRID, BERLIN',
-      image: '/team/silhoutte.webp'
+      image: '/team/Sarthak_Goyal.webp'
     },
     {
       id: 6,
@@ -46,18 +46,18 @@ function Team() {
       image: '/team/silhoutte.webp'
     },
     {
-      id: 7,
-      name: 'Mohammed Faisal Rais',
-      position: 'Project Architect',
-      languages: 'B. Arch',
-      image: '/team/silhoutte.webp'
+      id: 8,
+      name: 'Varshika Agarwal',
+      position: 'Designer',
+      languages: 'MBA | IMT, HYDERABAD',
+      image: '/team/Varshika.webp'
     },
     {
-      id: 8,
-      name: 'Yogendra Yadav',
-      position: 'General Manager',
-      languages: 'English, Hindi',
-      image: '/team/silhoutte.webp'
+      id: 7,
+      name: 'Mukesh Goyal',
+      position: 'Adviser',
+      languages: 'B. Arch | AMBALA',
+      image: '/team/Mukesh_Goyal.webp'
     },
   ]
 
