@@ -230,6 +230,7 @@ The architecture draws on a vocabulary of rich materials — stone, glass, and s
       '/assets/architect_images_webp_reduced/Renders for website/M3m/Commercail (3).webp',
     ],
     sections: [
+      // ── 1. KeyInfo ────────────────────────────────────────────────────────
       {
         type: 'KeyInfo',
         props: {
@@ -243,27 +244,75 @@ The architecture draws on a vocabulary of rich materials — stone, glass, and s
           ],
         },
       },
+      // ── 2. HeadingLeft ───────────────────────────────────────────────────
       {
         type: 'HeadingLeft',
         props: {
-          heading: 'A New Benchmark for Luxury',
+          heading: 'A New Benchmark\nfor Luxury',
           subtext: 'Luxury Mixed-Use · Gurugram · 2023',
         },
       },
+      // ── 3. ImageLeft ─────────────────────────────────────────────────────
+      {
+        type: 'ImageLeft',
+        props: {
+          src: '/about/OurVision.webp',
+          alt: 'M3M tower exterior — dummy render',
+        },
+      },
+      // ── 4. TextRight ─────────────────────────────────────────────────────
+      {
+        type: 'TextRight',
+        props: {
+          heading: 'Vision',
+          text: `A prestige mixed-use development that sets a new benchmark for luxury in Gurugram. M3M redefines urban living through a carefully curated programme of residences, retail, and amenity that creates a self-contained world.
+
+Every detail has been considered — from the proportions of the entrance lobby to the planting palette of the rooftop gardens — to deliver an experience that is simultaneously grand and intimate.
+
+This is not simply a building. It is a new address for Gurugram.`,
+        },
+      },
+      // ── 5. Slider ────────────────────────────────────────────────────────
       {
         type: 'Slider',
         props: {
           heading: 'Master Plan',
           text: `The master plan arranges towers around a series of landscape gardens, allowing every residence to connect visually and physically with green space.
 
-The commercial podium activates the street edge with a varied retail frontage that encourages pedestrian life.`,
+The commercial podium activates the street edge with a varied retail frontage that encourages pedestrian life and creates a destination for the neighbourhood.
+
+Open courtyards between the towers ensure natural ventilation and daylighting throughout the development.`,
           images: [
             '/assets/architect_images_webp_reduced/Renders for website/M3m/Scene 12.webp',
             '/assets/architect_images_webp_reduced/Renders for website/M3m/Scene 16.webp',
             '/assets/architect_images_webp_reduced/Renders for website/M3m/Scene 22.webp',
+            '/about/AboutUs.webp',
           ],
         },
       },
+      // ── 6. ImageLeftTextRight ────────────────────────────────────────────
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/about/AboutUs.webp',
+          alt: 'M3M lobby interior — dummy render',
+          heading: 'The Residences',
+          text: `Each residence is designed as a sanctuary — generous floor-to-ceiling glazing frames curated views of the landscaped gardens below, while deep balconies extend the living space into the open air.
+
+Finishes have been selected to complement the architecture: warm stone, hand-selected timber, and bespoke metalwork combine to create interiors of exceptional quality.
+
+A curated amenity programme — pool, spa, gym, and private dining — means that every need is met within the development.`,
+        },
+      },
+      // ── 7. HeadingRight ──────────────────────────────────────────────────
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: 'Architecture\n& Materials',
+          subtext: 'Stone · Glass · Sculpted Metal',
+        },
+      },
+      // ── 8. ImageRight ────────────────────────────────────────────────────
       {
         type: 'ImageRight',
         props: {
@@ -271,6 +320,16 @@ The commercial podium activates the street edge with a varied retail frontage th
           alt: 'M3M commercial podium',
         },
       },
+      // ── 9. ImageCentre ───────────────────────────────────────────────────
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/about/OurVision.webp',
+          alt: 'M3M site aerial — dummy render',
+          caption: 'Aerial view of the development — under construction, Gurugram 2023',
+        },
+      },
+      // ── 10. ImageCentreWithHeading ───────────────────────────────────────
       {
         type: 'ImageCentreWithHeading',
         props: {

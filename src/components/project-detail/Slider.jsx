@@ -24,7 +24,7 @@ function Slider({ text = '', images = [], heading = '' }) {
         <div className="pd-slider-carousel">
           <div className="pd-slider-track">
             <img
-              key={current}
+              key={images[current]}
               src={images[current]}
               alt={`Slide ${current + 1}`}
               loading="lazy"

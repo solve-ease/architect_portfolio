@@ -302,6 +302,7 @@
   text-transform: uppercase;
   color: #111;
   margin: 0 0 20px;
+  white-space: pre-line;
 }
 
 .pd-heading-right-sub {
@@ -363,6 +364,7 @@
   text-transform: uppercase;
   color: #111;
   margin: 0 0 20px;
+  white-space: pre-line;
 }
 
 .pd-heading-left-sub {
