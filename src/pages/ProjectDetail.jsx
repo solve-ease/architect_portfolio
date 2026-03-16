@@ -2,6 +2,33 @@ import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import projectData from '../data/projectData'
 import '../styles/ProjectDetail.css'
+import '../styles/ProjectDetailSections.css'
+
+// Section components
+import KeyInfo from '../components/project-detail/KeyInfo'
+import ImageLeft from '../components/project-detail/ImageLeft'
+import Slider from '../components/project-detail/Slider'
+import TextRight from '../components/project-detail/TextRight'
+import ImageLeftTextRight from '../components/project-detail/ImageLeftTextRight'
+import HeadingRight from '../components/project-detail/HeadingRight'
+import ImageRight from '../components/project-detail/ImageRight'
+import HeadingLeft from '../components/project-detail/HeadingLeft'
+import ImageCentre from '../components/project-detail/ImageCentre'
+import ImageCentreWithHeading from '../components/project-detail/ImageCentreWithHeading'
+
+// Registry mapping section type strings to components
+const SECTION_COMPONENTS = {
+  KeyInfo,
+  ImageLeft,
+  Slider,
+  TextRight,
+  ImageLeftTextRight,
+  HeadingRight,
+  ImageRight,
+  HeadingLeft,
+  ImageCentre,
+  ImageCentreWithHeading,
+}
 
 function ProjectDetail() {
   const { projectId } = useParams()
@@ -12,7 +39,6 @@ function ProjectDetail() {
   const heroImage = location.state?.heroImage || project?.coverImage
   const heroRef = useRef(null)
   const [heroLoaded, setHeroLoaded] = useState(fromZoom)
-  const [activeImg, setActiveImg] = useState(null)
 
   useEffect(() => {
     // Scroll to top when page opens
@@ -36,11 +62,6 @@ function ProjectDetail() {
       </div>
     )
   }
-
-  const descParagraphs = project.description.trim().split('\n\n')
-
-  // Split gallery images: first is cover (already shown as hero), rest go in gallery
-  const galleryImages = project.images
 
   return (
     <div className="pd-root">
@@ -69,6 +90,7 @@ function ProjectDetail() {
             alt={project.title}
             className="pd-hero-img"
             onLoad={() => setHeroLoaded(true)}
+            onError={() => setHeroLoaded(true)}
           />
         </div>
         <div className="pd-hero-overlay">
@@ -84,78 +106,13 @@ function ProjectDetail() {
         </div>
       </section>
 
-      {/* ── Body ── */}
+      {/* ── Body: render sections from project config ── */}
       <main className="pd-body">
-
-        {/* ── Info strip ── */}
-        <section className="pd-info-strip">
-          <div className="pd-info-item">
-            <span className="pd-info-label">Project</span>
-            <span className="pd-info-value">{project.title}</span>
-          </div>
-          <div className="pd-info-item">
-            <span className="pd-info-label">Type</span>
-            <span className="pd-info-value">{project.type}</span>
-          </div>
-          <div className="pd-info-item">
-            <span className="pd-info-label">Location</span>
-            <span className="pd-info-value">{project.location}</span>
-          </div>
-          <div className="pd-info-item">
-            <span className="pd-info-label">Year</span>
-            <span className="pd-info-value">{project.year}</span>
-          </div>
-          <div className="pd-info-item">
-            <span className="pd-info-label">Status</span>
-            <span className="pd-info-value">{project.status}</span>
-          </div>
-          <div className="pd-info-item">
-            <span className="pd-info-label">Area</span>
-            <span className="pd-info-value">{project.area}</span>
-          </div>
-        </section>
-
-        {/* ── Text + first gallery image side-by-side ── */}
-        <section className="pd-intro">
-          <div className="pd-intro-text">
-            {descParagraphs.map((para, i) => (
-              <p key={i} className={i === 0 ? 'pd-lead' : ''}>{para}</p>
-            ))}
-          </div>
-          {galleryImages.length > 1 && (
-            <div className="pd-intro-img-wrap">
-              <img
-                src={galleryImages[1]}
-                alt={`${project.title} view`}
-                loading="lazy"
-                onClick={() => setActiveImg(galleryImages[1])}
-              />
-            </div>
-          )}
-        </section>
-
-        {/* ── Full-width image ── */}
-        {galleryImages.length > 2 && (
-          <section className="pd-full-img">
-            <img
-              src={galleryImages[2]}
-              alt={`${project.title} render`}
-              loading="lazy"
-              onClick={() => setActiveImg(galleryImages[2])}
-            />
-          </section>
-        )}
-
-        {/* ── Grid of remaining images ── */}
-        {galleryImages.length > 3 && (
-          <section className="pd-gallery">
-            {galleryImages.slice(3).map((src, i) => (
-              <div key={i} className="pd-gallery-item" onClick={() => setActiveImg(src)}>
-                <img src={src} alt={`${project.title} image ${i + 4}`} loading="lazy" />
-              </div>
-            ))}
-          </section>
-        )}
+        {project.sections && project.sections.map((section, i) => {
+          const Component = SECTION_COMPONENTS[section.type]
+          if (!Component) return null
+          return <Component key={i} {...section.props} />
+        })}
 
         {/* ── Back strip ── */}
         <section className="pd-back-strip">
@@ -165,16 +122,9 @@ function ProjectDetail() {
           </button>
         </section>
       </main>
-
-      {/* ── Lightbox ── */}
-      {activeImg && (
-        <div className="pd-lightbox" onClick={() => setActiveImg(null)}>
-          <button className="pd-lightbox-close" onClick={() => setActiveImg(null)} aria-label="Close lightbox">✕</button>
-          <img src={activeImg} alt="Enlarged view" onClick={(e) => e.stopPropagation()} />
-        </div>
-      )}
     </div>
   )
 }
 
 export default ProjectDetail
+
