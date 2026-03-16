@@ -179,7 +179,7 @@ function Contact() {
                   <FaInstagram className="contact-social-icon" />
                   Instagram
                 </a>
-                <a href="https://www.youtube.com/@theparaflux" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <a href="https://www.youtube.com/channel/UChezPoGWROarpH8610zIjOQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                   <FaYoutube className="contact-social-icon" />
                   YouTube
                 </a>

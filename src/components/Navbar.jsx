@@ -91,7 +91,7 @@ function Navbar({ variant = 'default', transparent = false }) {
             <a href="https://www.instagram.com/theparaflux/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <FaInstagram />
             </a>
-            <a href="https://www.youtube.com/@theparaflux" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <a href="https://www.youtube.com/channel/UChezPoGWROarpH8610zIjOQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
               <FaYoutube />
             </a>
           </div>
