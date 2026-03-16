@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/Home.css'
 import { imageKeyToProject } from '../data/projectData'
-import projectData from '../data/projectData'
-import ProjectPanel from '../components/ProjectPanel'
 
 // Logo
 const logo = '/assets/PARAFLULX_LOGO.webp'
@@ -132,6 +131,7 @@ const white2Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for w
 const white3Mobile = '/assets/architect_images_webp_reduced_mobile/Renders for website/The White house/The White House (3).webp'
 
 function Home() {
+  const navigate = useNavigate();
   const worldRef = useRef(null);
   const sceneRef = useRef(null);
   const logoRef = useRef(null);
@@ -142,19 +142,12 @@ function Home() {
   const [zoom, setZoom] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const rafId = useRef(null);
-  const closingTimers = useRef([]);
 
   // Clicked image info — set on click, triggers dismiss animation for all others
   const [clickedInfo, setClickedInfo] = useState(null); // { key, src, rect, projectId }
 
   // Zoom-to-fullscreen overlay state
   const [zoomOverlay, setZoomOverlay] = useState(null); // { src, rect, projectId }
-
-  // Open project panel state
-  const [openProject, setOpenProject] = useState(null); // { project, heroImage }
-
-  // Panel closing state — drives the fade-out animation before unmounting
-  const [isClosingPanel, setIsClosingPanel] = useState(false);
 
   // Detect if screen is mobile
   useEffect(() => {
@@ -431,39 +424,16 @@ function Home() {
     return () => clearTimeout(timer);
   }, [clickedInfo]);
 
-  // Step 2: When zoom overlay mounts, run the animation then open the panel.
-  // We do NOT clear the zoom overlay here — it stays as a seamless bridge
-  // (z-index 9999) behind the panel (z-index 10000) until the panel's hero
-  // image fires onLoad, at which point onHeroReady clears it invisibly.
+  // Step 2: When zoom overlay mounts, run the animation then navigate to project page.
   useEffect(() => {
     if (!zoomOverlay) return;
     const timer = setTimeout(() => {
-      const project = projectData.find((p) => p.id === zoomOverlay.projectId);
-      setOpenProject({ project, heroImage: zoomOverlay.src });
+      navigate(`/project/${zoomOverlay.projectId}`, {
+        state: { heroImage: zoomOverlay.src, fromZoom: true },
+      });
     }, 650);
     return () => clearTimeout(timer);
-  }, [zoomOverlay]);
-
-  // Close handler — fades the panel out, then fades the home images back in.
-  // Images start returning (dismiss class removed) 150ms in so they overlap
-  // with the tail of the panel fade-out for a seamless transition.
-  const handleClosePanel = useCallback(() => {
-    setIsClosingPanel(true);
-    // Start images fading back in while panel is still fading out
-    const t1 = setTimeout(() => setClickedInfo(null), 150);
-    // After the fade-out completes, unmount everything
-    const t2 = setTimeout(() => {
-      setOpenProject(null);
-      setZoomOverlay(null);
-      setIsClosingPanel(false);
-    }, 450);
-    closingTimers.current = [t1, t2];
-  }, []);
-
-  // Clean up any pending close timers if the home component unmounts mid-animation
-  useEffect(() => {
-    return () => closingTimers.current.forEach(clearTimeout);
-  }, []);
+  }, [zoomOverlay, navigate]);
 
   return (
     <div className="main-content">
@@ -478,17 +448,6 @@ function Home() {
             '--zoom-h': `${zoomOverlay.rect.height}px`,
             backgroundImage: `url(${zoomOverlay.src})`,
           }}
-        />
-      )}
-
-      {/* Full-screen project panel popup */}
-      {openProject && openProject.project && (
-        <ProjectPanel
-          project={openProject.project}
-          heroImage={openProject.heroImage}
-          onClose={handleClosePanel}
-          onHeroReady={() => setZoomOverlay(null)}
-          isClosing={isClosingPanel}
         />
       )}
 
