@@ -6,6 +6,9 @@ import { imageKeyToProject } from '../data/projectData'
 // Logo
 const logo = '/assets/PARAFLULX_LOGO.webp'
 
+// Number of images per column (must sum to 32)
+const COLUMN_SIZES = [6, 5, 6, 5, 6, 4];
+
 function Home() {
   const navigate = useNavigate();
   const worldRef = useRef(null);
@@ -71,6 +74,18 @@ function Home() {
     return sets;
   }, []);
 
+  // Group images into columns per COLUMN_SIZES
+  const columns = useMemo(() => {
+    const cols = [];
+    let idx = 1;
+    for (const size of COLUMN_SIZES) {
+      const col = [];
+      for (let i = 0; i < size; i++) col.push(idx++);
+      cols.push(col);
+    }
+    return cols;
+  }, []);
+
   // Helper component for responsive images with picture element
   const ResponsiveImage = ({ imageKey, alt, priority = false }) => (
     <picture>
@@ -94,14 +109,16 @@ function Home() {
 
   useLayoutEffect(() => {
     if (!skipIntro) return;
+    const colEls = document.querySelectorAll('.fx-col');
     const layers = document.querySelectorAll('.fx-layer');
-    const w = window.innerWidth;
-    const cols = w <= 380 ? 2 : w <= 600 ? 5 : 7;
 
-    layers.forEach((layer, index) => {
-      const yOffset = COLUMN_Y_OFFSETS[index % cols];
+    colEls.forEach((col, colIdx) => {
+      col.style.transform = `translateY(${COLUMN_Y_OFFSETS[colIdx]}px)`;
+    });
+
+    layers.forEach((layer) => {
       layer.style.opacity = '1';
-      layer.style.transform = `translateZ(0) translateY(${yOffset}px) scale(1)`;
+      layer.style.transform = 'translateZ(0) scale(1)';
       layer.style.animation = 'none';
     });
   }, [skipIntro, COLUMN_Y_OFFSETS]);
@@ -353,14 +370,18 @@ function Home() {
             willChange: isDragging.current ? 'transform' : 'auto'
           }}
         >
-          {Array.from({ length: 32 }, (_, i) => i + 1).map((num) => (
-            <div 
-              key={`img${num}`} 
-              className="fx-layer" 
-              data-chosen={clickedInfo?.key === `img${num}` ? 'true' : undefined} 
-              onClick={(e) => handleLayerClick(e, `img${num}`)}
-            >
-              <ResponsiveImage imageKey={`img${num}`} alt={`Architecture render ${num}`} priority={num <= 7} />
+          {columns.map((colItems, colIdx) => (
+            <div key={`col${colIdx}`} className="fx-col">
+              {colItems.map((num) => (
+                <div
+                  key={`img${num}`}
+                  className="fx-layer"
+                  data-chosen={clickedInfo?.key === `img${num}` ? 'true' : undefined}
+                  onClick={(e) => handleLayerClick(e, `img${num}`)}
+                >
+                  <ResponsiveImage imageKey={`img${num}`} alt={`Architecture render ${num}`} priority={num <= 6} />
+                </div>
+              ))}
             </div>
           ))}
         </div>

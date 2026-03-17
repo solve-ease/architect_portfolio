@@ -80,7 +80,7 @@ function ProjectPanel({ project, heroImage, onClose, onHeroReady, isClosing }) {
           <span></span>
           <span></span>
         </span>
-        <span className="pd-close-label">Close</span>
+        {/* <span className="pd-close-label"></span> */}
       </button>
 
       {/* ── Hero – hero image is already cached from the zoom overlay, show immediately ── */}

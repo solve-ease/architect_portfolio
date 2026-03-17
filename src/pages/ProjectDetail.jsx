@@ -75,7 +75,7 @@ function ProjectDetail() {
           <span></span>
           <span></span>
         </span>
-        <span className="pd-close-label">Close</span>
+        {/* <span className="pd-close-label">Close</span> */}
       </button>
 
       {/* ── Hero ── */}

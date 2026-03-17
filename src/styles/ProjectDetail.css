@@ -9,7 +9,7 @@
   background: #fff;
   color: #111;
   min-height: 100vh;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Futura PT', sans-serif;
 }
 
 /* Full-screen popup panel variant (used by ProjectPanel overlay) */
@@ -45,8 +45,9 @@
   background: rgba(255, 255, 255, 0.92);
   border: none;
   cursor: pointer;
-  padding: 10px 18px 10px 14px;
-  border-radius: 2px;
+  padding: 18px;
+  /* border-radius: 2px; */
+  border-radius: 200px;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
