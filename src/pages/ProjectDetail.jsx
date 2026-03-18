@@ -86,6 +86,7 @@ function ProjectDetail() {
         >
           <img
             ref={heroRef}
+            // src={heroImage.includes('/home') ? heroImage.replace('/home','') : heroImage.replace('/mobile','')}
             src={heroImage}
             alt={project.title}
             className="pd-hero-img"

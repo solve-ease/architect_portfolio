@@ -6,7 +6,7 @@ function HeadingRight({ heading = '', subtext = '' }) {
     <section className="pd-heading-right">
       <div className="pd-heading-right-inner">
         <h2 className="pd-heading-right-title">{heading}</h2>
-        {subtext && <p className="pd-heading-right-sub">{subtext}</p>}
+        {/* {subtext && <p className="pd-heading-right-sub">{subtext}</p>} */}
       </div>
     </section>
   )

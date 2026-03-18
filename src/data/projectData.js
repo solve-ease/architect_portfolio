@@ -78,18 +78,14 @@ Vast column-free spans allow flexible programming, from large-scale conventions 
     ],
   },
   {
-    id: 'evolo',
-    title: 'Evolo',
-    location: 'India',
-    year: '2022',
-    type: 'Mixed-Use Tower',
+    id: 'cascade',
+    title: 'Cascade',
+    location: 'Faridabad, Haryana',
+    // year: '2022',
+    type: 'Branded Ultra-Luxury Mall',
     status: 'Competition Entry',
     area: '62,000 m²',
-    description: `An exploration of vertical living at its most ambitious. Evolo proposes a tower that dissolves the boundary between built form and landscape, creating a continuous cascade of inhabited terraces.
-
-Each floor plate steps back incrementally, carving out generous sky gardens that bring nature into the heart of urban density. The facade responds dynamically to solar orientation, opening where shade is needed and closing to create thermal comfort.
-
-This competition entry challenges conventional tower typologies, offering a vision of the skyscraper as a living, breathing ecosystem above the city.`,
+    description: `A Vertical River "The Cascade" is defined by its soft, terraced geometry. Moving away from rigid verticality, the building is conceived as a series of cascading floor plates that step down toward the street. This creates a natural, amphitheater-like effect, where each level offers a new vantage point over the bustling high-street below. The architecture mimics the movement of water over stone, replacing sharp corners with smooth, organic curves that guide the eye and the pedestrian flow.`,
     coverImage: '/assets/2.webp',
     images: [
       '/assets/2.webp',
@@ -98,46 +94,100 @@ This competition entry challenges conventional tower typologies, offering a visi
     ],
     sections: [
       {
+        type: 'TextRight',
+        props: {
+          text: `A Vertical River "The Cascade" is defined by its soft, terraced geometry. Moving away from rigid verticality, the building is conceived as a series of cascading floor plates that step down toward the street. This creates a natural, amphitheater-like effect, where each level offers a new vantage point over the bustling high-street below. The architecture mimics the movement of water over stone, replacing sharp corners with smooth, organic curves that guide the eye and the pedestrian flow.`,
+        },
+      },
+      {
         type: 'KeyInfo',
         props: {
           items: [
-            { label: 'Project', value: 'Evolo' },
-            { label: 'Type', value: 'Mixed-Use Tower' },
-            { label: 'Location', value: 'India' },
-            { label: 'Year', value: '2022' },
-            { label: 'Status', value: 'Competition Entry' },
-            { label: 'Area', value: '62,000 m²' },
+            { label: 'Project', value: 'Cascade' },
+            { label: 'Typology', value: 'Branded Ultra-Luxury Mall' },
+            { label: 'Location', value: 'Faridabad, Haryana' },
+            { label: 'Program', value: 'High Street Retail' },
+            { label: 'Status', value: 'Concept / Design Development' },
+            { label: 'Area', value: '121,000 m²' },
+            { label: 'Client', value: 'GPM Architects / RPS' },
           ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/14/1.webp',
         },
       },
       {
         type: 'HeadingRight',
         props: {
-          heading: 'Vertical Living Redefined',
-          subtext: 'Mixed-Use Tower · Competition Entry · 2022',
+          heading: `The hallmark of the Cascade design is the integration of curved digital skins that follow the downward sweep of the facade.`,
         },
       },
       {
-        type: 'Slider',
+        type: "Slider",
         props: {
-          heading: 'Concept',
-          text: `An exploration of vertical living at its most ambitious. Evolo proposes a tower that dissolves the boundary between built form and landscape, creating a continuous cascade of inhabited terraces.
-
-Each floor plate steps back incrementally, carving out generous sky gardens that bring nature into the heart of urban density.`,
+          heading: `Digital Fall: 
+Media in 
+Motion`,
+          // text: 'From initial concept to refined design — a journey of exploration and iteration.',
           images: [
-            '/assets/14.webp',
-            '/assets/26.webp',
+            '/assets/14/2.webp',
+            '/assets/14/3.webp',
+            '/assets/14/5.webp',
+            '/assets/14/10.webp',
           ],
-        },
+        }
       },
       {
-        type: 'ImageCentreWithHeading',
+        type: "ImageLeftTextRight",
         props: {
-          heading: 'The Tower',
-          src: '/assets/2.webp',
-          alt: 'Evolo tower close-up',
-          caption: 'Tower elevation — competition render',
-        },
+          src: '/assets/14/4.webp',
+          alt: 'Cascade facade detail',
+          heading: 'Media in\n Motion',
+          text: `The hallmark of the Cascade design is the integration of curved digital skins that follow the downward sweep of the facade. These media surfaces are not static billboards but dynamic canvases that respond to the movement of pedestrians and vehicles below, creating a constantly evolving visual experience. The media skins are designed to be programmable, allowing for a wide range of content — from branded advertising to interactive art installations — that can be tailored to different times of day, events, or seasons. This creates a building that is not just a backdrop for commerce but an active participant in the urban life of the city.`,
+        }
+      },
+      {
+        type: "HeadingLeft",
+        props: {
+          heading: `The ground plane of The Cascade is a masterclass in porosity. By stepping the building back, the design creates deep, sun-drenched terraces on every level, populated with lush greenery and "floating" al-fresco dining pods.`
+        }
+      },
+      {
+        type: "ImageLeft",
+        props: {
+          src: '/assets/14/7.webp',
+          alt: 'Cascade interior detail'
+        }
+      },
+      {
+        type: "Slider",
+        props: {
+          heading: `The Porous Promenade`,
+          // text: 'From initial concept to refined design — a journey of exploration and iteration.',
+          images: [
+            '/assets/14/8.webp',
+            '/assets/14/11.webp',
+            '/assets/14/12.webp',
+          ],
+        }
+      },
+      {
+        type: "HeadingRight",
+        props: {
+          heading:`The ground plane of The Cascade is a masterclass in porosity. By stepping the building back, the design creates deep, sun-drenched terraces on every level, populated with lush greenery and "floating" al-fresco dining pods.`
+        }
+      },
+      {
+        type: "ImageLeftTextRight",
+        props: {
+          src: '/assets/14/11.webp',
+          alt: 'Cascade facade detail',
+          heading: 'The Structural Vortex',
+          text: `Connecting these cascading layers is a dramatic, lattice-work vortex—a central structural funnel that draws natural light into the heart of the lower levels. This sculptural centerpiece serves as a vertical anchor, around which the high-street retail revolves. The interior is a study in tactile luxury, utilizing warm metallic finishes and seamless glass to ensure that the transition from the outdoor promenade to the indoor boutiques is fluid and uninterrupted.`,
+        }
       },
     ],
   },
@@ -861,7 +911,7 @@ export const imageKeyToProject = {
   img11: 'rsp',
   img12: 'the-white-house',
   img13: 'conventional-center',
-  img14: 'evolo',
+  img14: 'cascade',
   img15: 'gpm-retail',
   img16: 'm3m',
   img17: 'migsun-lucknow',

@@ -10,6 +10,7 @@
   color: #111;
   min-height: 100vh;
   font-family: 'Futura PT', sans-serif;
+  overflow-x: hidden;
 }
 
 /* Full-screen popup panel variant (used by ProjectPanel overlay) */
@@ -140,7 +141,7 @@
 }
 
 .pd-hero-type {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin: 0 0 14px;
@@ -157,7 +158,7 @@
 }
 
 .pd-hero-location {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 0.1em;
   opacity: 0.7;
   margin: 0;
@@ -175,7 +176,7 @@
   align-items: center;
   gap: 4px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 0.65rem;
+  font-size: 0.9rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   animation: pd-fade-in 2s 1.5s ease forwards;
@@ -339,8 +340,9 @@
 
 /* ── Back strip ── */
 .pd-back-strip {
-  padding: 56px 60px;
-  border-top: 1px solid #e0e0e0;
+  margin-top: 5%;
+  padding: 56px 0px;
+  /* border-top: 1px solid #e0e0e0; */
 }
 
 .pd-back-btn {
