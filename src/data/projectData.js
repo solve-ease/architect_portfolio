@@ -122,7 +122,7 @@ Motion`,
     type: 'Branded Ultra-Luxury Mixed-Use',
     status: 'Concept / Design Development',
     area: '24,000 m²',
-    description: `"The Arcadia" is a contemporary reinterpretation of the historic European shopping arcade, scaled for the future of the Indian metropolis. While the "Shards" concept focused on vertical tension, The Arcadia celebrates the rhythm of the arch. The façade is defined by a series of monumental, copper-toned portals that stretch across the building’s length, creating a cinematic promenade that frames the commercial energy within.`,
+    description: `"The Arcadia" is a contemporary reinterpretation of the historic European shopping arcade, scaled for the future of the Indian metropolis. While the "Shards" concept focused on vertical tension, The Arcadia celebrates the rhythm of the arch. The façade is defined by a series of monumental, copper-toned portals that stretch across the building's length, creating a cinematic promenade that frames the commercial energy within.`,
 
     coverImage: '/assets/20.webp',
     images: [
@@ -138,7 +138,7 @@ Motion`,
         type: 'TextRight',
         props: {
           // heading: 'The Arcadia',
-          text: `"The Arcadia" is a contemporary reinterpretation of the historic European shopping arcade, scaled for the future of the Indian metropolis. While the "Shards" concept focused on vertical tension, The Arcadia celebrates the rhythm of the arch. The façade is defined by a series of monumental, copper-toned portals that stretch across the building’s length, creating a cinematic promenade that frames the commercial energy within.`,
+          text: `"The Arcadia" is a contemporary reinterpretation of the historic European shopping arcade, scaled for the future of the Indian metropolis. While the "Shards" concept focused on vertical tension, The Arcadia celebrates the rhythm of the arch. The façade is defined by a series of monumental, copper-toned portals that stretch across the building's length, creating a cinematic promenade that frames the commercial energy within.`,
         },
       },
       {
@@ -160,7 +160,7 @@ Motion`,
           src: '/assets/20/1.webp',
           alt: 'Arcadia exterior',
           // caption: 'Exterior view — design development',
-        }  
+        }
       },
       {
         type: "HeadingLeft",
@@ -207,6 +207,125 @@ Motion`,
         props: {
           src: '/assets/20/3.webp',
           alt: 'Arcadia interior',
+        }
+      },
+    ],
+  },
+  {
+    id: 'the-kinetic-ribbon',
+    title: 'The Kinetic Ribbon',
+    location: 'Faridabad, Haryana',
+    type: 'Branded Ultra-Luxury Mixed-Use Development',
+    status: 'Competition Entry',
+    area: '48,000 m²',
+    description: `The Kinetic Ribbon is a study in perpetual motion captured in built form. Conceived as a continuous flowing surface that wraps, folds, and cantilevers across the site, the design reimagines the high-street mall as a dynamic, sculptural landscape. Unlike conventional retail blocks, this project embraces fluidity—creating a building that appears to twist and unravel as it rises, offering multiple perspectives and experiences from every vantage point.`,
+
+    coverImage: '/assets/18/1.webp',
+    images: [
+      '/assets/18/1.webp',
+      '/assets/18/2.webp',
+      '/assets/18/3.webp',
+      '/assets/18/4.webp',
+      '/assets/18/5.webp',
+      '/assets/18/6.webp',
+      '/assets/18/7.webp',
+      '/assets/18/8.webp',
+      '/assets/18/9.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `The Kinetic Ribbon is a study in perpetual motion captured in built form. Conceived as a continuous flowing surface that wraps, folds, and cantilevers across the site, the design reimagines the high-street mall as a dynamic, sculptural landscape. Unlike conventional retail blocks, this project embraces fluidity—creating a building that appears to twist and unravel as it rises, offering multiple perspectives and experiences from every vantage point.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'The Kinetic Ribbon' },
+            { label: 'Typology', value: 'Branded Ultra-Luxury Mixed-Use' },
+            { label: 'Location', value: 'Faridabad, Haryana' },
+            { label: 'Program', value: 'High Street Retail + Hospitality' },
+            { label: 'Status', value: 'Competition Entry / Design Development' },
+            { label: 'Area', value: '48,000 m²' },
+            { label: 'Client', value: 'GPM Architects / RPS' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/18/2.webp',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          subtext: 'The Flowing Facade',
+          heading: `The defining gesture of The Kinetic Ribbon is its continuous, ribbon-like facade that wraps the entire building in a seamless sculptural envelope.`,
+        },
+      },
+      {
+        type: "ImageLeftTextRight",
+        props: {
+          src: '/assets/18/3.webp',
+          alt: 'The Kinetic Ribbon facade detail',
+          heading: 'Motion in\n Stillness',
+          text: `The defining gesture of The Kinetic Ribbon is its continuous, ribbon-like facade that wraps the entire building in a seamless sculptural envelope. This flowing surface creates dramatic cantilevers and overhangs that provide natural shading while establishing a powerful street presence. The ribbon's twisting geometry generates a series of double-height voids and terraces, each offering curated views of the urban context below. The result is a building that feels alive—constantly changing depending on the viewer's position and the time of day.`,
+        }
+      },
+      {
+        type: "Slider",
+        props: {
+          heading: `Perspectives
+in Motion`,
+          images: [
+            '/assets/18/4.webp',
+            '/assets/18/5.webp',
+            '/assets/18/6.webp',
+          ],
+        }
+      },
+      {
+        type: "HeadingRight",
+        props: {
+          heading: `The Kinetic Ribbon is designed as a series of interconnected retail promenades that spiral upward through the building, blurring the boundary between interior and exterior.`
+        }
+      },
+      {
+        type: "ImageRight",
+        props: {
+          src: '/assets/18/7.webp',
+          alt: 'The Kinetic Ribbon interior promenade'
+        }
+      },
+      {
+        type: "ImageLeftTextRight",
+        props: {
+          src: '/assets/18/8.webp',
+          alt: 'The Kinetic Ribbon circulation',
+          heading: 'The Vertical Promenade',
+          text: `The Kinetic Ribbon is designed as a series of interconnected retail promenades that spiral upward through the building, blurring the boundary between interior and exterior. Wide, landscaped terraces punctuate each level, creating opportunities for outdoor dining, pop-up events, and brand activations. The circulation is choreographed to feel effortless—gently sloping ramps and sculptural staircases guide visitors through a carefully curated journey of luxury retail, hospitality, and experiential zones.`,
+        }
+      },
+      {
+        type: "HeadingLeft",
+        props: {
+          heading: 'The material palette celebrates contrast: smooth white surfaces meet warm timber accents, while expansive glazing ensures transparency and visual connectivity throughout.',
+        }
+      },
+      {
+        type: "ImageCentre",
+        props: {
+          src: '/assets/18/9.webp',
+          alt: 'The Kinetic Ribbon materiality',
+        }
+      },
+      {
+        type: "HeadingRight",
+        props: {
+          heading: `At night, integrated LED lighting traces the ribbon's curves, transforming the building into a glowing beacon—a kinetic sculpture that animates the cityscape and announces a new era of architectural expression in the region.`
         }
       },
     ],
