@@ -7,6 +7,7 @@ import About from './pages/About'
 import PrivacyInfo from './pages/PrivacyInfo'
 import Contact from './pages/Contact'
 import Careers from './pages/Careers'
+import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
 import Footer from './components/Footer'
 const logo_mobile = '/assets/logo_white.webp'
@@ -106,6 +107,7 @@ function AppContent() {
         <Route path="/privacy-info" element={<PrivacyInfo />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />
+        <Route path="/projects" element={<Projects />} />
         <Route path="/project/:projectId" element={<ProjectDetail />} />
       </Routes>
       {showFooter && <Footer />}
