@@ -255,7 +255,7 @@
 /* ── 5. ImageLeftTextRight ──────────────────────────────────────────────── */
 
 .pd-img-left-text-right {
-  padding-top: 10%;
+  padding-top: 5%;
   padding-bottom: 5%;
   padding-right: 5%;
   display: grid;
@@ -342,9 +342,11 @@
 
 .pd-image-right {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: .2fr .8fr;
   /* border-bottom: 1px solid #e0e0e0; */
   min-height: 560px;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 .pd-image-right-space {
@@ -363,9 +365,9 @@
   transition: transform 0.6s ease;
 }
 
-.pd-image-right-img:hover img {
+/* .pd-image-right-img:hover img {
   transform: scale(1.03);
-}
+} */
 
 /* ── 8. HeadingLeft ─────────────────────────────────────────────────────── */
 
