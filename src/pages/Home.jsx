@@ -96,7 +96,6 @@ function Home() {
       <img 
         src={imageSets[imageKey].desktop}
         alt={alt}
-        loading={priority ? "eager" : "lazy"}
         fetchpriority={priority ? "high" : "auto"}
         decoding="async"
       />

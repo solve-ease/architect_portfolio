@@ -5,7 +5,7 @@ function ImageLeft({ src, alt = '' }) {
   return (
     <section className="pd-image-left">
       <div className="pd-image-left-img">
-        <img src={src} alt={alt} loading="lazy" />
+        <img src={src} alt={alt} />
       </div>
       <div className="pd-image-left-space" />
     </section>

@@ -6,7 +6,7 @@ function ImageRight({ src, alt = '' }) {
     <section className="pd-image-right">
       <div className="pd-image-right-space" />
       <div className="pd-image-right-img">
-        <img src={src} alt={alt} loading="lazy" />
+        <img src={src} alt={alt}/>
       </div>
     </section>
   )

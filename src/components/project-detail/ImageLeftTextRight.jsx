@@ -5,7 +5,7 @@ function ImageLeftTextRight({ src, alt = '', text = '', heading = '' }) {
   return (
     <section className="pd-img-left-text-right">
       <div className="pd-img-left-text-right-img">
-        <img src={src} alt={alt} loading="lazy" />
+        <img src={src} alt={alt}/>
       </div>
       <div className="pd-img-left-text-right-text">
         {heading && <h2 className="pd-section-heading">{heading}</h2>}

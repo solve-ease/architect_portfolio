@@ -32,7 +32,6 @@ function Projects() {
                 src={project.coverImage}
                 alt={project.title}
                 className="project-card-image"
-                loading="lazy"
               />
               <div className="project-card-overlay">
                 <div className="project-card-content">

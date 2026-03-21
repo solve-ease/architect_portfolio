@@ -156,7 +156,6 @@ function Slider({ text = '', images = [], heading = '' }) {
                     <img
                       src={img}
                       alt={`Slide ${idx + 1}`}
-                      loading="lazy"
                       draggable="false"
                     />
                   </div>

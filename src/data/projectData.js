@@ -9,11 +9,9 @@ const projectData = [
     status: 'Competition Entry',
     area: '62,000 m²',
     description: `A Vertical River "The Cascade" is defined by its soft, terraced geometry. Moving away from rigid verticality, the building is conceived as a series of cascading floor plates that step down toward the street. This creates a natural, amphitheater-like effect, where each level offers a new vantage point over the bustling high-street below. The architecture mimics the movement of water over stone, replacing sharp corners with smooth, organic curves that guide the eye and the pedestrian flow.`,
-    coverImage: '/assets/2.webp',
+    coverImage: '/assets/home/14.webp',
     images: [
-      '/assets/2.webp',
-      '/assets/14.webp',
-      '/assets/26.webp',
+      '/assets/home/14.webp',
     ],
     sections: [
       {
@@ -39,7 +37,7 @@ const projectData = [
       {
         type: 'ImageCentre',
         props: {
-          src: '/assets/14/1.webp',
+          src: '/assets/home/14/1.webp',
         },
       },
       {
@@ -124,7 +122,7 @@ Motion`,
     area: '24,000 m²',
     description: `"The Arcadia" is a contemporary reinterpretation of the historic European shopping arcade, scaled for the future of the Indian metropolis. While the "Shards" concept focused on vertical tension, The Arcadia celebrates the rhythm of the arch. The façade is defined by a series of monumental, copper-toned portals that stretch across the building's length, creating a cinematic promenade that frames the commercial energy within.`,
 
-    coverImage: '/assets/20.webp',
+    coverImage: '/assets/home/20.webp',
     images: [
       '/assets/20/1.webp',
       '/assets/20/2.webp',
@@ -220,7 +218,7 @@ Motion`,
     area: '48,000 m²',
     description: `The Kinetic Ribbon is a study in perpetual motion captured in built form. Conceived as a continuous flowing surface that wraps, folds, and cantilevers across the site, the design reimagines the high-street mall as a dynamic, sculptural landscape. Unlike conventional retail blocks, this project embraces fluidity—creating a building that appears to twist and unravel as it rises, offering multiple perspectives and experiences from every vantage point.`,
 
-    coverImage: '/assets/18/1.webp',
+    coverImage: '/assets/home/18.webp',
     images: [
       '/assets/18/1.webp',
       '/assets/18/2.webp',
@@ -339,7 +337,7 @@ in Motion`,
     area: '5,000 Sq.ft',
     description: `This expansive, multi-functional 5000-square-foot facility in Noida is designed to be the ultimate creative playground for a premier technology YouTuber. The design philosophy moves completely away from the outdated 'slap a logo on the wall' approach. Instead, the studio environment embodies the brand's DNA—precision, warmth, and innovation—through a curated balance of color, light, and functional form.`,
 
-    coverImage: '/assets/13/1.webp',
+    coverImage: '/assets/home/13.webp',
     images: [
       '/assets/13/1.webp',
       '/assets/13/2.webp',
@@ -494,7 +492,7 @@ in Motion`,
     area: '3 Acres',
     description: `The Human High Street redefines the conventional high-street retail experience by creating a layered canopy that shelters pedestrians while inviting natural light and air to flow freely. The design is a direct response to the harsh climate of North India, where the summer sun can be unforgiving and the monsoon rains relentless. By stepping the building envelope back at each level, the architecture creates a series of shaded terraces that serve as both public promenades and private balconies for the studio apartments above.`,
 
-    coverImage: '/assets/11/1.webp',
+    coverImage: '/assets/home/11.webp',
     images: [
       '/assets/11/1.webp',
       '/assets/11/2.webp',
@@ -583,7 +581,7 @@ in Motion`,
     area: '3 Acres',
     description: `Shards is unapologetically bold. Born from a desire to break free from the monotony of conventional retail architecture, this design embraces verticality, tension, and drama. The building is conceived as a cluster of sharp, crystalline forms that rise and fracture across the site, each shard angled to catch light and create dynamic shadows throughout the day. The result is a structure that feels alive, constantly shifting in appearance as the sun moves across the sky.`,
 
-    coverImage: '/assets/3/1.webp',
+    coverImage: '/assets/home/3.webp',
     images: [
       '/assets/3/1.webp',
       '/assets/3/2.webp',
@@ -690,7 +688,7 @@ in Motion`,
     area: '800 Sq.ft',
     description: `This is not just a watch boutique—it is a spatial celebration of precision, craftsmanship, and exclusivity. Designed for JACOB & Co., one of the world's most prestigious watchmakers, this 800-square-foot space in M3M Gurgaon reimagines the luxury retail experience as a curated journey through light, material, and form. Every element is meticulously crafted to reflect the DNA of the brand: bold, unapologetic, and timelessly elegant.`,
 
-    coverImage: '/assets/19/1.webp',
+    coverImage: '/assets/home/19.webp',
     images: [
       '/assets/19/1.webp',
       '/assets/19/2.webp',
@@ -904,7 +902,7 @@ in Motion`,
     area: '4 Acres',
     description: `THE Wave is a celebration of fluid dynamics frozen in architecture. Defined by its seamless continuity of form, the design reimagines the traditional high-street retail and residential tower typology through a language of curves, rhythm, and flow. The building does not sit static on its site—it moves, undulates, and breathes, creating a visual spectacle that feels as much like a sculpture as it does a piece of functional architecture.`,
 
-    coverImage: '/assets/7/1.webp',
+    coverImage: '/assets/home/7.webp',
     images: [
       '/assets/7/1.webp',
       '/assets/7/2.webp',
@@ -999,7 +997,7 @@ in Motion`,
     area: '23,314.6 m²',
     description: `The Urban Nexus is a bold reimagining of mixed-use architecture in the heart of Lucknow. Conceived as two 14-story towers—one housing a premium hotel, the other luxury studio apartments—the design is unified by a dramatic sky-bridge that spans the gap between the blocks, creating both a visual anchor and a functional connection. Below, a multi-story atrium flooded with natural light serves as the social and commercial heart of the development.`,
 
-    coverImage: '/assets/24/1.webp',
+    coverImage: '/assets/home/24.webp',
     images: [
       '/assets/24/1.webp',
       '/assets/24/2.webp',

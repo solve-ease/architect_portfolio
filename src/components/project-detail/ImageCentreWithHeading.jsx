@@ -6,7 +6,7 @@ function ImageCentreWithHeading({ src, alt = '', heading = '', caption = '' }) {
     <section className="pd-image-centre-heading">
       {heading && <h2 className="pd-image-centre-heading-title">{heading}</h2>}
       <figure className="pd-image-centre-heading-figure">
-        <img src={src} alt={alt} loading="lazy" />
+        <img src={src} alt={alt} />
         {caption && <figcaption className="pd-image-centre-heading-caption">{caption}</figcaption>}
       </figure>
     </section>
