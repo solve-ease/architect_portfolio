@@ -53,12 +53,12 @@
 }
 
 /* Per-column Y offsets for staggered look */
-.fx-col:nth-child(1) { transform: translateY(-45px); }
-.fx-col:nth-child(2) { transform: translateY(60px); }
-.fx-col:nth-child(3) { transform: translateY(-80px); }
-.fx-col:nth-child(4) { transform: translateY(35px); }
-.fx-col:nth-child(5) { transform: translateY(-20px); }
-.fx-col:nth-child(6) { transform: translateY(75px); }
+.fx-col:nth-child(1) { transform: translateY(-122.5px); }
+.fx-col:nth-child(2) { transform: translateY(-150px); }
+.fx-col:nth-child(3) { transform: translateY(-100px); }
+.fx-col:nth-child(4) { transform: translateY(-57.5px); }
+.fx-col:nth-child(5) { transform: translateY(-50px); }
+.fx-col:nth-child(6) { transform: translateY(-187.5px); }
 
 .fx-layer {
   transform-style: preserve-3d;

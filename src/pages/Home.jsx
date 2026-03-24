@@ -104,7 +104,7 @@ function Home() {
 
   // Skip fly-in animation when returning from project detail — set final state before paint
   // Column Y offsets must match the CSS @keyframes fx-fly-in-offset1 … offset7 final translateY values
-  const COLUMN_Y_OFFSETS = useMemo(() => [-45, 60, -80, 35, -20, 75, -55], []);
+ const COLUMN_Y_OFFSETS = useMemo(() => [-122.5, -150, -100, -57.5, -50, -187.5], []);
 
   useLayoutEffect(() => {
     if (!skipIntro) return;
