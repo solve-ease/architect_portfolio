@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "playwright test",
+    "test:laptop": "playwright test --project=laptop",
+    "test:tablet": "playwright test --project=tablet",
+    "test:mobile": "playwright test --project=mobile"
   },
   "dependencies": {
     "gsap": "^3.14.2",
@@ -18,6 +22,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.58.2",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
