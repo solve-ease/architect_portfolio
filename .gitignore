@@ -27,3 +27,5 @@ dist-ssr
 
 assets
 node_modules/
+
+public/about/clients

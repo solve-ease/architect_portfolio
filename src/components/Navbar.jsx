@@ -67,7 +67,7 @@ function Navbar({ variant = 'default', transparent = false }) {
           <nav className="menu-nav">
             {/* <a href="#sectors" className="menu-link">Sectors</a> */}
             <Link to="/" className="menu-link" onClick={() => setIsMenuOpen(false)}>Home</Link>
-            <a href="#projects" className="menu-link">Projects</a>
+            <Link to="/projects" className="menu-link" onClick={() => setIsMenuOpen(false)}>Projects</Link>
             <Link to="/about" className="menu-link" onClick={() => setIsMenuOpen(false)}>About</Link>
             {/* <a href="#studio" className="menu-link">Studio</a> */}
             <Link to="/team" className="menu-link" onClick={() => setIsMenuOpen(false)}>Team</Link>
