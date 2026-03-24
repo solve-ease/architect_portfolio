@@ -8,6 +8,22 @@ const migsun = '/assets/architect_images_webp_reduced/Renders for website/Migsun
 const pentagon = '/assets/architect_images_webp_reduced/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
 const whitehouse = '/about/OurVision.webp'
 
+const clientLogos = [
+  '/about/clients/Amity_University_logo.png',
+  '/about/clients/RPS-Group-color.png',
+  '/about/clients/home_about_us.png',
+  '/about/clients/image (3).png',
+  '/about/clients/image.png',
+  '/about/clients/image (1).png',
+  '/about/clients/image (2).png',
+  '/about/clients/logo_black.png',
+  '/about/clients/images.png',
+  '/about/clients/images (1).png',
+  '/about/clients/1690966414036.jpg',
+  '/about/clients/15736259983 (2).jpg',
+  // '/about/clients/_.jpg',
+]
+
 function About() {
   const containerRef = useRef(null)
 
@@ -36,6 +52,11 @@ quality, and seamless integration with the surrounding environment. By pushing t
 of creativity and embracing the latest trends in real estate, we aspire to leave a lasting impact on
 the urban landscape and enhance the lives of individuals and communities through our transformative designs.`,
       image: whitehouse
+    },
+    {
+      title: "Our Clients",
+      subtitle: "TRUSTED BY LEADING ORGANIZATIONS",
+      isClientsSection: true
     }
   ]
 
@@ -94,23 +115,41 @@ the urban landscape and enhance the lives of individuals and communities through
                 <Navbar variant="white" transparent={true} />
               </div>
             )}
-            <div className="about-image-section">
-              <img src={milestone.image} alt={milestone.title} />
-            </div>
-            <div className="about-content-section">
-              <div className="about-content-wrapper">
-                <h1>{milestone.title}</h1>
-                <h2>{milestone.subtitle}</h2>
-                <p>{milestone.content}</p>
-                {index < milestones.length - 1 && (
-                  <div className="scroll-indicator">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                )}
+            {milestone.isClientsSection ? (
+              <div className="clients-section">
+                <div className="clients-header">
+                  <h1>{milestone.title}</h1>
+                  <h2>{milestone.subtitle}</h2>
+                </div>
+                <div className="clients-collage">
+                  {clientLogos.map((logo, idx) => (
+                    <div key={idx} className="client-logo-item">
+                      <img src={logo} alt={`Client ${idx + 1}`} />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              <>
+                <div className="about-image-section">
+                  <img src={milestone.image} alt={milestone.title} />
+                </div>
+                <div className="about-content-section">
+                  <div className="about-content-wrapper">
+                    <h1>{milestone.title}</h1>
+                    <h2>{milestone.subtitle}</h2>
+                    <p>{milestone.content}</p>
+                    {index < milestones.length - 1 && (
+                      <div className="scroll-indicator">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path d="M7 10L12 15L17 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         ))}
         <div className="about-slide footer-slide">
