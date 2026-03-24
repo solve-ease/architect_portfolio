@@ -255,6 +255,8 @@
 /* ── 5. ImageLeftTextRight ──────────────────────────────────────────────── */
 
 .pd-img-left-text-right {
+  width: 98vw;
+  box-sizing: border-box;
   padding-top: 5%;
   padding-bottom: 5%;
   padding-right: 5%;
@@ -262,11 +264,13 @@
   grid-template-columns: .6fr .4fr;
   /* border-bottom: 1px solid #e0e0e0; */
   min-height: 560px;
-  gap: 12.5%;
+  gap: 11%;
 }
 
 .pd-img-left-text-right-img {
   overflow: hidden;
+  min-width: 840px;
+  /* min-height: 600px; */
 }
 
 .pd-img-left-text-right-img img {

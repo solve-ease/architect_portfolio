@@ -1,6 +1,183 @@
 // Project data for each architecture project
 const projectData = [
   {
+    id: 'urban-square',
+    title: 'Urban Square',
+    location: 'Hindaun City, Rajasthan',
+    type: 'Retail',
+    status: 'Concept / Design Development',
+    area: '300 Sq.mt',
+    description: `Project Overview This landmark retail development, located on a prominent corner plot in a Tier 3 city, represents a deliberate effort to synthesize modern architectural form with deep-rooted cultural heritage. Far from being a standard, placeless commercial structure, the project serves as a contextual catalyst, proving that high-end design can be meaningfully localized.`,
+    coverImage: '/assets/32/1.webp',
+    images: [
+      '/assets/32/1.webp',
+      '/assets/32/2.webp',
+      '/assets/32/3.webp',
+      '/assets/32/4.webp',
+      '/assets/32/5.webp'
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `Project Overview This landmark retail development, located on a prominent corner plot in a Tier 3 city, represents a deliberate effort to synthesize modern architectural form with deep-rooted cultural heritage. Far from being a standard, placeless commercial structure, the project serves as a contextual catalyst, proving that high-end design can be meaningfully localized.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Location', value: 'Hindaun City, Rajasthan' },
+            { label: 'Site Area', value: '300 Sq.mt' },
+            { label: 'Typology', value: 'Retail' },
+            { label: 'Client', value: 'Undisclosed' },
+            { label: 'Status', value: 'Concept / Design Development' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/32/1.webp',
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `The project's architectural expression is defined by its dramatic, curvilinear massing and organic verticality, culminating in a distinctive tapered form that creates a new urban silhouette.`,
+        },
+      },
+      {
+        type: "Slider",
+        props: {
+          heading: `Facade Design`,
+          images: [
+            '/assets/32/2.webp',
+            '/assets/32/3.webp',
+          ],
+        }
+      },
+      {
+        type: "ImageLeftTextRight",
+        props: {
+          src: '/assets/32/4.webp',
+          alt: 'Urban Square facade',
+          heading: 'Contextual\n Catalyst',
+          text: `Central to the project's identity is the intricate, parametrically designed perforated facade screen. Rather than an arbitrary geometric pattern, this complex lattice is carefully derived from traditional textile and building motifs native to the region. This screen acts as a porous, textured 'second skin' that balances current modernism with a historic narrative. This skin serves crucial passive roles, providing vital solar shading and privacy while creating a dynamic and ever-shifting dialogue of dappled light and shadow across the interior spaces and streetscape.`,
+        }
+      },
+      {
+        type: "HeadingLeft",
+        props: {
+          heading: `At the ground plane, the building’s base is expressed as a fully transparent, double-height glazed podium. This light and inviting retail plinth acts as an active urban catalyst, allowing interior retail activity to dissolve into the streetscape.`
+        }
+      },
+      {
+        type: "ImageLeft",
+        props: {
+          src: '/assets/32/5.webp',
+          alt: 'Urban Square ground level'
+        }
+      },
+      {
+        type: 'TextRight',
+        props: {
+          text: `The transparency of this new 'active edge' creates a deliberate and respectful contrast with the heavier, traditional stone and masonry architecture that characterizes the surrounding area, establishing a sophisticated dialogue between new and old. The building is designed for diurnal transformation. By day, the patterned screen absorbs and modulates daylight; by night, the interior is illuminated, causing the building to emit a soft, localized glow that activates the neighborhood and showcases the detailed pattern from a distance. The Contextual Lattice Hub is a powerful intervention that celebrates its location, offering a premium, heritage-driven experience for the modern consumer.`
+        }
+      }
+    ],
+  },
+  {
+    id: 'urban-renaissance',
+    title: 'Urban Renaissance',
+    location: 'Canary Wharf, London',
+    type: 'Urban Planning',
+    status: 'Concept / Design Development',
+    area: '10 Acres',
+    description: `Urban Renaissance explores the pressing issue of urban cores dominated by vacant office buildings, exemplified by trends in cities such as London. Previously bustling business districts, like Canary Wharf, are facing challenges as these structures are vacated, posing environmental concerns with 32% of construction waste ending up in landfills. Urban Renaissance embraces this issue as an opportunity to redefine vacant districts by transforming them into vibrant, mixed-use urbanscapes.`,
+    coverImage: '/assets/1/1.webp',
+    images: [
+      '/assets/1/1.webp',
+      '/assets/1/2.webp',
+      '/assets/1/3.webp',
+      '/assets/1/4.webp',
+      '/assets/1/5.webp'
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `Urban Renaissance explores the pressing issue of urban cores dominated by vacant office buildings, exemplified by trends in cities such as London. Previously bustling business districts, like Canary Wharf, are facing challenges as these structures are vacated, posing environmental concerns with 32% of construction waste ending up in landfills. Urban Renaissance embraces this issue as an opportunity to redefine vacant districts by transforming them into vibrant, mixed-use urbanscapes.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Location', value: 'Canary Wharf, London' },
+            { label: 'Site Area', value: '10 Acres' },
+            { label: 'Typology', value: 'Urban Planning' },
+            { label: 'Program', value: 'Urban Planning' },
+            { label: 'Studio', value: 'Shajay Bhooshan' },
+            { label: 'Tutors', value: 'Henry Louth, Keerti Manney' },
+            { label: 'Team', value: 'Chaitanya Goyal, Ullas Murugesh Rao, Janvi Rashesh Paun, Meghana Srinivasa Rao' },
+            { label: 'Status', value: 'Concept / Design Development' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/1/1.webp',
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Our proposal centres around a multimodal approach, a departure from the conventional focus on offices. Our design introduces dynamic transformations over time, ensuring adaptability to changing urban demands.`,
+        },
+      },
+      {
+        type: "Slider",
+        props: {
+          heading: `Adaptive Urbanism`,
+          images: [
+            '/assets/1/2.webp',
+            '/assets/1/3.webp',
+          ],
+        }
+      },
+      {
+        type: "ImageLeftTextRight",
+        props: {
+          src: '/assets/1/4.webp',
+          alt: 'Urban Renaissance details',
+          heading: '4-Stakeholder\n Model',
+          text: `Key to this is a unique 4-stakeholder representative model, involving: residential, office, commercial, and city co-operatives. Unlike conventional urban planning, the proposed system holistically engages stakeholders using a simulation-driven approach. The inclusion of two dimensions of verticality and time in the existing land-value simulations add precision to decision-making. Verticality introduces accuracy in simulating land value based on spatial decisions, while time represents programmatic changes within the urban fabric making a 4-dimensional land value simulation. Using a 4D simulation allows the process of decision-making to pass through multiple trial and error processes.`,
+        }
+      },
+      {
+        type: "HeadingLeft",
+        props: {
+          heading: `One significant challenge identified involves the arrangement of stacked deeper floorplates. Carving the floorplates diagonally enabled us to introduce natural light, foster visual connectivity, and facilitate circulation between diverse functions. The emphasis on interior urbanism enables harnessing natural light effectively for various programs.`
+        }
+      },
+      {
+        type: "ImageLeft",
+        props: {
+          src: '/assets/1/5.webp',
+          alt: 'Urban Renaissance interior'
+        }
+      },
+      {
+        type: 'TextRight',
+        props: {
+          text: `Urban Renaissance introduces tiles replacing clusters of voxels, creating versatile residential and commercial spaces, enhancing the adaptability and flexibility of interior urban environments. This thesis is potentially a globally applicable urban simulation system tailored for structures featuring deep floorplates as a blueprint. At its core, our simulation model maintains a consistent structural framework, allowing for the interchangeability of interiors in direct response to the dynamic requirements of diverse urban programs.`
+        }
+      }
+    ],
+  },
+  {
     id: 'cascade',
     title: 'Cascade',
     location: 'Faridabad, Haryana',
@@ -112,6 +289,7 @@ Motion`,
       },
     ],
   },
+
   {
     id: 'arcadia',
     title: 'Arcadia',
@@ -209,6 +387,7 @@ Motion`,
       },
     ],
   },
+
   {
     id: 'the-kinetic-ribbon',
     title: 'The Kinetic Ribbon',
@@ -328,6 +507,7 @@ in Motion`,
       },
     ],
   },
+
   {
     id: 'the-studio',
     title: 'The Studio',
@@ -483,6 +663,7 @@ in Motion`,
       },
     ],
   },
+
   {
     id: 'the-human-high-street',
     title: 'The Human High Street',
@@ -572,6 +753,7 @@ in Motion`,
       },
     ],
   },
+
   {
     id: 'shards',
     title: 'Shards',
@@ -679,6 +861,7 @@ in Motion`,
       },
     ],
   },
+
   {
     id: 'm3m-jacob-and-co',
     title: 'M3M JACOB & Co.',
@@ -893,6 +1076,7 @@ in Motion`,
       },
     ],
   },
+
   {
     id: 'the-wave',
     title: 'THE Wave',
@@ -988,6 +1172,7 @@ in Motion`,
       },
     ],
   },
+
   {
     id: 'the-urban-nexus',
     title: 'The Urban Nexus',
@@ -1123,44 +1308,1069 @@ in Motion`,
       },
     ],
   },
+
+  {
+    id: 'the-crescent-studios',
+    title: 'The Crescent Studios',
+    location: 'Lucknow, Uttar Pradesh, India',
+    type: 'High-Street Retail + Serviced Apartments',
+    status: 'Concept / Design Development',
+    area: '16187.4 m²',
+    description: `Redefining the metropolitan skyline, this mixed-use development transcends the traditional, rigid geometry of the high-rise typology. Conceived as a continuous, sweeping gesture, the architecture seamlessly negotiates the transition between the vibrant public realm and elevated private sanctuary. The project merges a high-capacity retail podium with a soaring, sculptural residential tower, creating a dynamic new locus for the city.`,
+
+    coverImage: '/assets/5/1.webp',
+    images: [
+      '/assets/5/1.webp',
+      '/assets/5/2.webp',
+      '/assets/5/3.webp',
+      '/assets/5/4.webp',
+      '/assets/5/5.webp',
+      '/assets/5/6.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `Redefining the metropolitan skyline, this mixed-use development transcends the traditional, rigid geometry of the high-rise typology. Conceived as a continuous, sweeping gesture, the architecture seamlessly negotiates the transition between the vibrant public realm and elevated private sanctuary. The project merges a high-capacity retail podium with a soaring, sculptural residential tower, creating a dynamic new locus for the city.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'The Crescent Studios' },
+            { label: 'Typology', value: 'High-Street Retail + Serviced Apartments' },
+            { label: 'Location', value: 'Lucknow, Uttar Pradesh, India' },
+            { label: 'Program', value: '4 Floors of High-Street Retail + 30 Floors of Studio Apartments' },
+            { label: 'Status', value: 'Concept / Design Development' },
+            { label: 'Site Area', value: '4 Acres' },
+            { label: 'Client', value: 'Migsun Group' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/5/1.webp',
+          alt: 'The Crescent Studios exterior view',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          subtext: 'The Civic Threshold',
+          heading: 'At ground level, the architecture is designed for maximum urban permeability. The 4-story high-street retail podium acts as a civic catalyst, defined by expansive, curved glazing and a soaring canopy.',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/5/2.webp',
+          alt: 'The Crescent Studios podium detail',
+          heading: 'High-Street Podium',
+          text: `Rather than a static base, the podium is a fluid, circulatory landscape that blurs the boundary between the streetscape and the interior commercial environment, maximizing frontage and public engagement. The architecture draws the pedestrian realm inward, creating a seamless transition from the urban fabric to the retail experience.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Rising from the podium are 30 floors of premium serviced studio apartments, housed within a striking crescent morphology. This geometric orientation was engineered to optimize natural light penetration and offer residents uninterrupted sightlines across the urban grid.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/5/3.webp',
+          alt: 'The Crescent Studios tower view',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/5/4.webp',
+          alt: 'The Crescent Studios facade detail',
+          heading: 'Parametric Morphology',
+          text: `The facade is characterized by its tectonic rhythm. Continuous, undulating balconies wrap the perimeter, functioning both as passive environmental controls (brise-soleil) and as an aesthetic device that breaks down the tower's monolithic scale. This horizontal banding creates a kinetic visual effect, allowing the building's profile to shift and evolve depending on the viewer's vantage point.`,
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: 'Continuous Spatial Flow',
+          images: [
+            '/assets/5/5.webp',
+            '/assets/5/6.webp',
+          ],
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: 'The transition from the high-energy retail base to the serene residential levels is articulated without abrupt visual breaks, creating a singular, unified structural entity.',
+        },
+      },
+      {
+        type: 'ImageRight',
+        props: {
+          src: '/assets/5/1.webp',
+          alt: 'The Crescent Studios overall view',
+        },
+      },
+    ],
+  },
+
+  {
+    id: 'limassol-office',
+    title: 'London Meets Limassol',
+    location: 'Limassol, Cyprus',
+    type: 'Office Interior Design',
+    status: 'Concept / Design Development',
+    area: '5,000 Sq.ft',
+    description: `Located in the sun-drenched landscape of Cyprus, this bespoke office interior was commissioned by a London-based marketing firm seeking a workspace that balances raw, urban grit with Mediterranean warmth. The design serves as a bridge between the client's metropolitan roots and the vibrant, natural energy of its new island location.`,
+
+    coverImage: '/assets/30/1.webp',
+    images: [
+      '/assets/30/1.webp',
+      '/assets/30/2.webp',
+      '/assets/30/3.webp',
+      '/assets/30/4.webp',
+      '/assets/30/5.webp',
+      '/assets/30/6.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `Located in the sun-drenched landscape of Cyprus, this bespoke office interior was commissioned by a London-based marketing firm seeking a workspace that balances raw, urban grit with Mediterranean warmth. The design serves as a bridge between the client's metropolitan roots and the vibrant, natural energy of its new island location.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'London Meets Limassol' },
+            { label: 'Typology', value: 'Office Interior Design' },
+            { label: 'Location', value: 'Limassol, Cyprus' },
+            { label: 'Program', value: 'Boutique Office' },
+            { label: 'Status', value: 'Concept / Design Development' },
+            { label: 'Area', value: '5,000 Sq.ft' },
+            { label: 'Client', value: 'Undisclosed' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/30/1.webp',
+          alt: 'Limassol office interior',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          subtext: 'Raw & Refined',
+          heading: 'The brief centered on a desire for raw textures and earthy tones. We leaned into an industrialist aesthetic, utilizing a material palette that prioritizes honesty and tactility.',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/30/2.webp',
+          alt: 'Limassol office materiality',
+          heading: 'Tectonic Materiality',
+          text: `The walls feature exposed board-formed concrete, providing a cool, brutalist backdrop that contrasts beautifully with the warmth of the dark wood herringbone flooring. By stripping back the "corporate mask," we created a high-energy environment that fosters the creativity and transparency essential to a leading marketing agency.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Embracing an "open-plenum" concept, the mechanical and electrical systems (MEP) are left exposed. The silver ductwork acts as a functional sculpture, adding a sense of verticality and "loft-style" volume to the workspace.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/30/3.webp',
+          alt: 'Industrialist ceiling treatment',
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: 'Biophilic Integration',
+          images: [
+            '/assets/30/4.webp',
+            '/assets/30/5.webp',
+          ],
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: 'To counteract the raw industrial elements, we integrated lush internal greenery alongside floor-to-ceiling glazing that frames the external landscape. This biophilic approach provides a natural "pop" of color, softening the brutalist textures.',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/30/6.webp',
+          alt: 'Executive suite detail',
+          heading: 'Fluid Professionalism',
+          text: `The executive suite features a sculptural, bronze-finished desk and mid-century modern seating, reflecting the sophisticated "London" character of the brand while maintaining the office's overall earthy, grounded atmosphere. This space embodies the fusion of metropolitan refinement and Mediterranean ease.`,
+        },
+      },
+    ],
+  },
+
+  {
+        id: 'noida-one',
+        title: 'Noida One',
+        location: 'Noida',
+        type: 'Commercial',
+        status: 'Concept / Design Development',
+        area: '15,000 m²',
+
+        coverImage: '/assets/2.webp',  
+        sections: [
+          {
+            type: 'KeyInfo',
+            props: {
+              items: [
+                { label: 'Project', value: 'Noida One' },
+                { label: 'Typology', value: 'Commercial' },
+                { label: 'Location', value: 'Noida, India' },
+                { label: 'Program', value: 'Office' },
+                { label: 'Status', value: 'Concept / Design Development' },
+                { label: 'Area', value: '15,000 m²' },
+                { label: 'Client', value: 'Undisclosed' },
+              ],
+            },
+          },
+        ]
+  },
+
+  {
+    id: 'bachelor-pad',
+    title: 'BACHELOR PAD',
+    coverImage: '/assets/4.webp',
+    // location: 'Noida',
+    // type: 'Commercial',
+    // status: 'Concept / Design Development',
+    // area: '15,000 m²',
+  },
+
+  {
+    id: 'the-hex',
+    title: 'The Hex',
+    location: 'Undisclosed',
+    type: 'Government Office',
+    status: 'Concept / Design Development',
+    area: '5 Acres',
+    description: `The Integrated Operations Hub is a ground-breaking facility designed with a high level of discretion for a confidential agency. This secure operations node breaks the traditional mold of monolithic block architecture, employing a complex of intersecting concentric volumes and radial wings. The result is a highly efficient yet humane environment where architecture and landscape are inseparable.`,
+
+    coverImage: '/assets/23/1.webp',
+    images: [
+      '/assets/23/1.webp',
+      '/assets/23/2.webp',
+      '/assets/23/3.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `The Integrated Operations Hub is a ground-breaking facility designed with a high level of discretion for a confidential agency. This secure operations node breaks the traditional mold of monolithic block architecture, employing a complex of intersecting concentric volumes and radial wings. The result is a highly efficient yet humane environment where architecture and landscape are inseparable.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'The Hex' },
+            { label: 'Typology', value: 'Government Office' },
+            { label: 'Location', value: 'Undisclosed' },
+            { label: 'Program', value: 'Government Office' },
+            { label: 'Status', value: 'Concept / Design Development' },
+            { label: 'Site Area', value: '5 Acres' },
+            { label: 'Client', value: 'Undisclosed' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/23/2.webp',
+          alt: 'The Hex exterior view',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          subtext: 'Concept & Form',
+          heading: 'At the heart of the complex, a monumental central open-air rotunda serves as a secured public/private mixing chamber and a central core, capped with a subtle, domed canopy that filters natural light.',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/23/3.webp',
+          alt: 'The Hex architectural detail',
+          heading: 'Architectural Skin & Biophilia',
+          text: `The facility's architectural language is defined by a performative skin of curved curtain walls, articulated with a rhythmic grid of horizontal spandrels and vertical brise-soleils (louvers). These elements work in concert to modulate dynamic solar gain and ensure critical visual privacy while maximizing interior natural light. The terraced, glass-clad volumes create extensive, accessible green roof terraces at every operational level, establishing a powerful and ever-present biophilic connection for users.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Surrounding the core, multi-level office wings cascade in terraced forms, stepping down to engage with the natural terrain. The ground-level podium is porous, with a finely grained network of vertical fins that manage access and security without creating a hostile perimeter.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/23/1.webp',
+          alt: 'The Hex site integration',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: 'Site planning is meticulous, designed to provide layered security through landscape rather than walling. The facility is secluded within a dense, indigenous forest, which forms a critical security setback and a natural camouflage.',
+        },
+      },
+    ],
+  },
+
+  {
+    id: 'the-aurelia-villa',
+    title: 'The Aurelia Villa',
+    location: 'New Delhi',
+    type: 'Residential',
+    status: 'Concept / Design Development',
+    area: '2 Acres',
+    description: `Designed as a bespoke holiday sanctuary for a New Delhi-based client, this luxury villa offers a serene counterpoint to the bustling metropolis. The project is conceived not just as a residence, but as an immersive, resort-like retreat where striking contemporary architecture harmonizes with tranquil water features and lush landscapes.`,
+
+    coverImage: '/assets/25/1.webp',
+    images: [
+      '/assets/25/1.webp',
+      '/assets/25/2.webp',
+      '/assets/25/3.webp',
+      '/assets/25/4.webp',
+      '/assets/25/5.webp',
+      '/assets/25/6.webp',
+      '/assets/25/7.webp',
+      '/assets/25/8.webp',
+      '/assets/25/9.webp',
+      '/assets/25/10.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `Designed as a bespoke holiday sanctuary for a New Delhi-based client, this luxury villa offers a serene counterpoint to the bustling metropolis. The project is conceived not just as a residence, but as an immersive, resort-like retreat where striking contemporary architecture harmonizes with tranquil water features and lush landscapes.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'The Aurelia Villa' },
+            { label: 'Typology', value: 'Residential' },
+            { label: 'Location', value: 'New Delhi' },
+            { label: 'Program', value: 'Vacation Home' },
+            { label: 'Status', value: 'Concept / Design Development' },
+            { label: 'Site Area', value: '2 Acres' },
+            { label: 'Client', value: 'Undisclosed' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/25/3.webp',
+          alt: 'The Aurelia Villa exterior view',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          subtext: 'Geometric Harmony',
+          heading: 'At the heart of the design is an innovative Y-shaped, tri-radial footprint. Three distinct wings radiate from a central nexus, a deliberate spatial strategy that maximizes privacy while optimizing natural light and cross-ventilation.',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/25/2.webp',
+          alt: 'The Aurelia Villa tri-radial plan',
+          heading: 'The Tri-Radial Plan',
+          text: `This branching layout creates intimate, semi-enclosed courtyards between the volumes, ensuring that every interior space maintains a direct, uninterrupted connection to the surrounding nature. The configuration maximizes views while maintaining privacy across the different wings of the residence.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `The villa's exterior presents a bold, monolithic massing that is softened by a delicate, randomized perforated facade—a modern, abstract interpretation of traditional vernacular screens.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/25/6.webp',
+          alt: 'The Aurelia Villa perforated facade',
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: 'The Perforated Veil',
+          images: [
+            '/assets/25/4.webp',
+            '/assets/25/5.webp',
+            '/assets/25/1.webp',
+          ],
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/25/7.webp',
+          alt: 'The Aurelia Villa daylight interplay',
+          heading: 'Daylight Interplay',
+          text: `During the day, this porous skin filters harsh sunlight, casting dynamic, dappled shadows across the interior spaces. As night falls, the architecture undergoes a dramatic transformation. Internal lighting shines through the perforations, turning the solid volumes into a glowing, ethereal lantern that reflects beautifully across the adjacent water bodies.`,
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: 'Tying the geometric blocks together is an expansive, undulating roof canopy. This fluid, sculptural element contrasts with the orthogonal walls below, providing deep, protective overhangs that shade the expansive glass facades and upper terraces.',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/25/8.webp',
+          alt: 'The Aurelia Villa roof canopy',
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: 'Fluidity and Transition',
+          images: [
+            '/assets/25/9.webp',
+            '/assets/25/10.webp',
+          ],
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Deeply recessed, softly curved portals frame the transitional balconies and patios, blurring the boundary between the luxurious interiors and the expansive reflective pools that wrap around the property.`,
+        },
+      },
+    ],
+  },
+
+  {
+    id: 'pathcare-research-campus',
+    title: 'The Pathcare Research Campus',
+    location: 'Noida',
+    type: 'Commercial',
+    status: 'Concept / Design Development',
+    area: '4,500 Sq.mt',
+    description: `Designed as the future-forward headquarters for Pathcare, a pioneering pathology and research organization, this state-of-the-art facility is a study in adaptable master planning. The project was conceived as a dynamic, two-phase development, ensuring the architecture can evolve in tandem with the company's expanding research capabilities.`,
+
+    coverImage: '/assets/16/1.webp',
+    images: [
+      '/assets/16/1.webp',
+      '/assets/16/2.webp',
+      '/assets/16/3.webp',
+      '/assets/16/4.webp',
+      '/assets/16/5.webp',
+      '/assets/16/6.webp',
+      '/assets/16/7.webp',
+      '/assets/16/8.webp',
+      '/assets/16/9.webp',
+      '/assets/16/10.webp',
+      '/assets/16/11.webp',
+      '/assets/16/12.webp',
+      '/assets/16/13.webp',
+      '/assets/16/14.webp',
+      '/assets/16/15.webp',
+      '/assets/16/16.webp',
+      '/assets/16/17.webp',
+      '/assets/16/18.webp',
+      '/assets/16/19.webp',
+      '/assets/16/20.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `Designed as the future-forward headquarters for Pathcare, a pioneering pathology and research organization, this state-of-the-art facility is a study in adaptable master planning. The project was conceived as a dynamic, two-phase development, ensuring the architecture can evolve in tandem with the company's expanding research capabilities.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'The Pathcare Research Campus' },
+            { label: 'Typology', value: 'Commercial' },
+            { label: 'Location', value: 'Noida' },
+            { label: 'Program', value: 'Research Lab' },
+            { label: 'Status', value: 'Concept / Design Development' },
+            { label: 'Site Area', value: '4,500 Sq.mt' },
+            { label: 'Client', value: 'Pathcare' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/16/5.webp',
+          alt: 'The Pathcare Research Campus exterior view',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          subtext: 'Cohesive Phasing',
+          heading: 'The central architectural challenge was avoiding the "incomplete" look often associated with phased construction. The design required a Phase One tower that stands as a balanced, striking, and fully resolved architectural statement on its own.',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/16/2.webp',
+          alt: 'The Pathcare Research Campus phase one',
+          heading: 'The Continuous Ribbon',
+          text: `To achieve this duality, the design employs a bold, unifying motif: a sweeping, continuous ribbon of warm, metallic louvers. In the initial phase, these sculptural fins cascade smoothly down the primary glass tower, swooping outward to form a grounded podium and a dramatic, organically-shaped entrance canopy. The building feels rooted and complete.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Upon expansion, this identical architectural ribbon will extend across the connecting base and sweep upward to envelop the second tower, completing a cohesive, U-shaped composition that embraces a central, collaborative courtyard.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/16/3.webp',
+          alt: 'The Pathcare Research Campus phase two expansion',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/16/4.webp',
+          alt: 'The Pathcare Research Campus facade detail',
+          heading: 'Materiality and Performance',
+          text: `The facade presents a striking juxtaposition between high-performance, cool-toned glass curtain walls and the warmth of the sculptural, bronze-finished ribs. For a research and pathology laboratory, controlling natural light is paramount. The metallic fins act as an integrated shading system, mitigating solar heat gain and glare while allowing optimal, diffuse daylight into the sensitive workspaces inside.`,
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: 'By night, strategic illumination along these sweeping ribs transforms the campus into a glowing beacon of scientific innovation.',
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: 'Phase One Elegance',
+          images: [
+            '/assets/16/7.webp',
+            '/assets/16/6.webp',
+            '/assets/16/1.webp',
+          ],
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/16/8.webp',
+          alt: 'The Pathcare Research Campus entrance',
+          heading: 'The Dramatic Entrance',
+          text: `The entrance canopy represents the ribbon's most expressive moment. The sculptural louvers sweep down from the tower's facade, creating an organically-shaped, protective overhang that guides visitors into the facility. This gesture transforms a functional element into an architectural signature—a welcoming threshold that announces the building's innovative spirit.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `The building stands as a complete architectural statement in Phase One, yet contains the geometric DNA for seamless future expansion.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/16/9.webp',
+          alt: 'The Pathcare Research Campus podium',
+        },
+      },
+      {
+        type: 'ImageRight',
+        props: {
+          src: '/assets/16/10.webp',
+          alt: 'The Pathcare Research Campus facade rhythm',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: 'The metallic ribs create a rhythmic, sculptural pattern that provides both aesthetic beauty and functional shading for the sensitive research laboratories within.',
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: 'The Ribbon in Detail',
+          images: [
+            '/assets/16/11.webp',
+            '/assets/16/12.webp',
+            '/assets/16/13.webp',
+          ],
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/16/14.webp',
+          alt: 'The Pathcare Research Campus courtyard',
+          heading: 'Phase Two Synergy',
+          text: `The Phase Two expansion completes the vision with a second tower connected by a unified base. The continuous ribbon motif flows seamlessly across both structures, creating a U-shaped composition that embraces a central collaborative courtyard. This outdoor space becomes the social and intellectual heart of the campus—a place for researchers to gather, exchange ideas, and find inspiration amidst greenery and filtered sunlight.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `The courtyard acts as a visual and functional link between the two phases, fostering collaboration and community within the research campus.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/16/15.webp',
+          alt: 'The Pathcare Research Campus full campus view',
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `As day transitions to night, integrated LED lighting highlights the flowing metallic ribs, transforming the architecture into a luminous landmark that celebrates scientific progress and innovation.`,
+        },
+      },
+      {
+        type: 'ImageLeft',
+        props: {
+          src: '/assets/16/16.webp',
+          alt: 'The Pathcare Research Campus at dusk',
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: 'Night-Time Transformation',
+          images: [
+            '/assets/16/17.webp',
+            '/assets/16/18.webp',
+            '/assets/16/19.webp',
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/16/20.webp',
+          alt: 'The Pathcare Research Campus illuminated',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: `The Pathcare Research Campus stands as a testament to architecture that evolves—a facility designed not just for today, but for tomorrow's expanding horizons of scientific discovery.`,
+        },
+      },
+    ],
+  },
+
+  {
+    id: 'inter-weave',
+    title: 'Inter Weave',
+    location: 'Faridabad, Haryana',
+    type: 'Branded Ultra-Luxury Mall',
+    status: 'Concept / Design Development',
+    area: '30 Acres',
+    description: `The Weave represents a conscious departure from the rigid orthography typical of modern commercial developments. Conceived as a highly permeable urban ecosystem, the project introduces an undulating retail and pedestrian promenade that nestles naturally at the base of the surrounding high-density residential fabric. The design prioritizes spatial continuity, drawing visitors through a choreographed sequence of interconnected public plazas, open-air terraces, and intimate courtyards.`,
+
+    coverImage: '/assets/9/1.webp',
+    images: [
+      '/assets/9/1.webp',
+      '/assets/9/2.webp',
+      '/assets/9/3.webp',
+      '/assets/9/4.webp',
+      '/assets/9/5.webp',
+      '/assets/9/6.webp',
+      '/assets/9/7.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `The Weave represents a conscious departure from the rigid orthography typical of modern commercial developments. Conceived as a highly permeable urban ecosystem, the project introduces an undulating retail and pedestrian promenade that nestles naturally at the base of the surrounding high-density residential fabric. The design prioritizes spatial continuity, drawing visitors through a choreographed sequence of interconnected public plazas, open-air terraces, and intimate courtyards.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'Inter Weave' },
+            { label: 'Typology', value: 'Branded Ultra-Luxury Mall' },
+            { label: 'Location', value: 'Faridabad, Haryana' },
+            { label: 'Program', value: 'High Street Retail' },
+            { label: 'Status', value: 'Concept / Design Development' },
+            { label: 'Site Area', value: '30 Acres Master Plan' },
+            { label: 'Client', value: 'GPM Architects / RPS' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/9/1.webp',
+          alt: 'Inter Weave exterior view',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          subtext: 'The Architecture of Flow',
+          heading: 'The design prioritizes spatial continuity, drawing visitors through a choreographed sequence of interconnected public plazas, open-air terraces, and intimate courtyards.',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/9/2.webp',
+          alt: 'Inter Weave material language',
+          heading: 'Material Dialogue',
+          text: `Materially, the facades establish a dialogue between stark, contemporary lines and organic textures. The striking purity of sweeping white horizontal fasciae is rhythmically interrupted by the warmth of vertical timber louvers. Below, expansive, double-height fenestration effectively dissolves the threshold between the interior commercial spaces and the exterior public realm, creating a highly porous, activated streetscape.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Circulation throughout the precinct is organized along a primary pedestrian spine, entirely anchored by the monumental sculptural intervention from which the project takes its name.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/9/3.webp',
+          alt: 'Inter Weave central plaza',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/9/4.webp',
+          alt: 'Inter Weave sculptural lattice',
+          heading: 'The Weave',
+          text: `"The Weave"—a soaring, parametrically designed lattice structure finished in a warm metallic tone—acts as both a critical wayfinding node and the spatial heart of the development. This central plaza is flanked by expansive reflecting pools. These shallow waterscapes serve a vital atmospheric purpose, subtly modulating the local microclimate while providing a mirrored datum that amplifies the geometry of the surrounding architecture and the central folly.`,
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: 'The central woven lattice emerges as both sculpture and infrastructure—a landmark that draws visitors into the heart of the retail experience while providing shaded gathering spaces beneath its geometric canopy.',
+        },
+      },
+      {
+        type: 'ImageRight',
+        props: {
+          src: '/assets/9/5.webp',
+          alt: 'Inter Weave reflecting pools',
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `As the diurnal cycle shifts, the complex is transformed by a carefully calibrated lighting strategy. Concealed architectural illumination traces the structural ribs and highlights the timber articulation.`,
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/9/7.webp',
+          alt: 'Inter Weave night illumination',
+          heading: 'Nocturnal Transformation',
+          text: `The central woven lattice acts as a glowing lantern for the entire precinct. The resulting atmosphere activates the promenade long after sunset, establishing a sophisticated environment optimized for evening dining, retail, and civic engagement. The interplay between light, water, and architecture creates an immersive experience that evolves throughout the day.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/9/6.webp',
+          alt: 'Inter Weave pedestrian promenade',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: 'Inter Weave stands as a testament to architecture that dissolves boundaries—between interior and exterior, between commerce and community, between urban fabric and natural landscape.',
+        },
+      },
+    ],
+  },
+
+  {
+    id: 'the-portal',
+    title: 'The Portal',
+    location: 'Faridabad, Haryana, India',
+    type: 'Retail + Mixed Use Tower',
+    status: 'Concept / Design Development',
+    area: '30 Acres',
+    program: '4-Level Experiential Retail Podium',
+    client: 'GPM Architects / Omaxe',
+    description: `The Portal is conceived as a bold urban anchor, redefining the commercial corridor through a highly extroverted and technologically integrated architectural response. The massing strategy employs a prominent, multi-level retail plinth that establishes a continuous, active street wall, from which distinct vertical volumes rise to accommodate commercial and administrative functions.`,
+    coverImage: '/assets/10/1.webp',
+    images: [
+      '/assets/10/1.webp',
+      '/assets/10/2.webp',
+      '/assets/10/3.webp',
+      '/assets/10/4.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `The Portal is conceived as a bold urban anchor, redefining the commercial corridor through a highly extroverted and technologically integrated architectural response. The massing strategy employs a prominent, multi-level retail plinth that establishes a continuous, active street wall, from which distinct vertical volumes rise to accommodate commercial and administrative functions.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'The Portal' },
+            { label: 'Typology', value: 'Retail + Mixed Use Tower' },
+            { label: 'Location', value: 'Faridabad, Haryana, India' },
+            { label: 'Site Area', value: '30 Acres' },
+            { label: 'Program', value: '4-Level Experiential Retail Podium' },
+            { label: 'Client', value: 'GPM Architects / Omaxe' },
+            { label: 'Status', value: 'Concept / Design Development' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/10/2.webp',
+          alt: 'The Portal - Aerodynamic Form and Digital Integration',
+        },
+      },
+      // {
+      //   type: 'HeadingLeft',
+      //   props: {
+      //     heading: 'Contemporary Streamlining',
+      //   },
+      // },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/10/3.webp',
+          alt: 'The Portal - Sweeping Radiused Corners',
+          heading: 'Contemporary Streamlining',
+          text: `The project's formal language embraces a contemporary streamlining. The rigid orthography of the towers is softened by sweeping, aerodynamic radiused corners across the podium. This horizontal dynamism is reinforced by stark white fascia that wrap the perimeter, acting as a continuous architectural ribbon. These bands successfully unify the complex's diverse functional zones while providing deep, cantilevered overhangs for pedestrian shading along the boulevard.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/10/4.webp',
+          alt: 'The Portal - Nocturnal Architectural Expression',
+        },
+      },
+      // {
+      //   type: 'HeadingRight',
+      //   props: {
+      //     heading: 'Dynamic Digital Canvas',
+      //   },
+      // },
+      // {
+      //   type: 'TextRight',
+      //   props: {
+      //     text: `Moving beyond traditional static cladding, the primary facade is treated as a dynamic digital canvas. Expansive, flush-mounted LED screens are seamlessly integrated into the architectural skin rather than applied as afterthoughts, transforming the building into a kinetic monument. This deliberate integration of media and architecture allows the structure to communicate directly with the urban realm, offering an immersive, high-impact presence optimized for premium retail visibility.`,
+      //   },
+      // },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: 'Nocturnal Transformation',
+        },
+      },
+      {
+        type: 'TextRight',
+        props: {
+          text: `The development achieves its most dramatic architectural expression after twilight. A continuous network of electric blue architectural lighting traces the complex's contours, sharply articulating the sweeping horizontal geometry against the night sky. This high-contrast, futuristic illumination, paired with the inviting warmth radiating from the double-height glazed storefronts at the pedestrian level, creates a vibrant, cosmopolitan atmosphere that activates the public realm and establishes The Portal as a premier 24-hour destination.`,
+        },
+      },
+    ],
+  },
+
+  {
+    id: 'urban-square',
+    title: 'Urban Square',
+    location: 'Hindaun City, Rajasthan',
+    type: 'Retail',
+    status: 'Concept / Design Development',
+    area: '300 Sq.mt',
+    client: 'Undisclosed',
+    description: `This landmark retail development, located on a prominent corner plot in a Tier 3 city, represents a deliberate effort to synthesize modern architectural form with deep-rooted cultural heritage. Far from being a standard, placeless commercial structure, the project serves as a contextual catalyst, proving that high-end design can be meaningfully localized.`,
+    coverImage: '/assets/32/1.webp',
+    images: [
+      '/assets/32/1.webp',
+      '/assets/32/2.webp',
+      '/assets/32/3.webp',
+      '/assets/32/4.webp',
+      '/assets/32/5.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `This landmark retail development, located on a prominent corner plot in a Tier 3 city, represents a deliberate effort to synthesize modern architectural form with deep-rooted cultural heritage. Far from being a standard, placeless commercial structure, the project serves as a contextual catalyst, proving that high-end design can be meaningfully localized.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'Urban Square' },
+            { label: 'Typology', value: 'Retail' },
+            { label: 'Location', value: 'Hindaun City, Rajasthan' },
+            { label: 'Site Area', value: '300 Sq.mt' },
+            { label: 'Client', value: 'Undisclosed' },
+            { label: 'Status', value: 'Concept / Design Development' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/32/2.webp',
+          alt: 'Urban Square exterior view',
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          subtext: 'Architectural Concept & Facade',
+          heading: `The project's architectural expression is defined by its dramatic, curvilinear massing and organic verticality, culminating in a distinctive tapered form that creates a new urban silhouette.`,
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/32/3.webp',
+          alt: 'Urban Square perforated facade',
+          heading: 'The Contextual Lattice',
+          text: `Central to the project's identity is the intricate, parametrically designed perforated facade screen. Rather than an arbitrary geometric pattern, this complex lattice is carefully derived from traditional textile and building motifs native to the region. This screen acts as a porous, textured 'second skin' that balances current modernism with a historic narrative. This skin serves crucial passive roles, providing vital solar shading and privacy while creating a dynamic and ever-shifting dialogue of dappled light and shadow across the interior spaces and streetscape.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `At the ground plane, the building's base is expressed as a fully transparent, double-height glazed podium. This light and inviting retail plinth acts as an active urban catalyst, allowing interior retail activity to dissolve into the streetscape.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/32/4.webp',
+          alt: 'Urban Square transparent podium',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/32/5.webp',
+          alt: 'Urban Square urban context',
+          heading: 'The Urban Plinth & Dialogue',
+          text: `The transparency of this new 'active edge' creates a deliberate and respectful contrast with the heavier, traditional stone and masonry architecture that characterizes the surrounding area, establishing a sophisticated dialogue between new and old. The building is designed for diurnal transformation. By day, the patterned screen absorbs and modulates daylight; by night, the interior is illuminated, causing the building to emit a soft, localized glow that activates the neighborhood and showcases the detailed pattern from a distance.`,
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: 'Urban Square is a powerful intervention that celebrates its location, offering a premium, heritage-driven experience for the modern consumer.',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/32/1.webp',
+          alt: 'Urban Square overall view',
+        },
+      },
+    ],
+  },
+
+  {
+    id: "masterplan-projects",
+    title: "Masterplan Projects",
+    coverImage: '/assets/12.webp',
+  },
+
+  {
+    id: "crescent-high-street",
+    title: "The Crescent High Street",
+    coverImage: '/assets/29.webp',
+  },
+
+  {
+    id: "house27",
+    title: "House 27",
+    coverImage: '/assets/27.webp',
+  }
+
 ];
 
 // Map from imageKey to projectId — covers both new img1…img32 keys (current home page)
 // Images are distributed across projects in round-robin order (12 projects × ~3 images each)
 export const imageKeyToProject = {
   // ── New home page image keys (img1–img32) ──────────────────────────────
-  img1:  'conventional-center',
-  img2:  'evolo',
+  img1:  'urban-renaissance',
+  img2:  'noida-one',
   img3:  'shards',
-  img4:  'm3m',
-  img5:  'migsun-lucknow',
+  img4:  'bachelor-pad',
+  img5:  'the-crescent-studios',
   img6:  'migsun-mixed-use',
   img7:  'the-wave',
-  img8:  'noida-one',
-  img9:  'omaxe-mall',
-  img10: 'pentagon',
+  img8:  'noida',
+  img9:  'inter-weave',
+  img10: 'the-portal',
   img11: 'the-human-high-street',
-  img12: 'the-white-house',
+  img12: 'masterplan-projects',
   img13: 'the-studio',
   img14: 'cascade',
   img15: 'gpm-retail',
-  img16: 'm3m',
+  img16: 'pathcare-research-campus',
   img17: 'migsun-lucknow',
   img18: 'the-kinetic-ribbon',
   img19: 'm3m-jacob-and-co',
   img20: 'arcadia',
   img21: 'omaxe-mall',
   img22: 'pentagon',
-  img23: 'rsp',
+  img23: 'the-hex',
   img24: 'the-urban-nexus',
-  img25: 'conventional-center',
+  img25: 'the-aurelia-villa',
   img26: 'evolo',
-  img27: 'gpm-retail',
+  img27: 'house27',
   img28: 'm3m',
-  img29: 'migsun-lucknow',
+  img29: 'crescent-high-street',
   img30: 'migsun-mixed-use',
   img31: 'migsun-rohini',
-  img32: 'noida-one',
+  img32: 'urban-square',
 };
 
 export default projectData;
