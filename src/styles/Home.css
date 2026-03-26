@@ -85,9 +85,11 @@
   /* Start images at far position before animation begins */
   transform: translateZ(-2000px) scale(0.5);
   opacity: 0;
+  visibility: hidden;
 
   /* Single shared animation for all images */
   animation: fx-fly-in 7.5s cubic-bezier(.43,.31,0,1) forwards;
+  animation-play-state: paused;
   /* Delay set via JavaScript based on index */
 
   /* Return transition: smoothly fades back in after panel is closed */
@@ -129,10 +131,15 @@
   from {
     transform: translateZ(-2000px) scale(0.5);
     opacity: 0;
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
   }
   to {
     transform: translateZ(0) scale(1);
     opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -257,6 +264,7 @@
   transform: translateZ(-900px) scale(0.7) !important;
   transition: opacity 1s ease-out, transform 1s cubic-bezier(0.4, 0, 0.6, 1);
   pointer-events: none;
+  visibility: hidden !important;
 }
 
 /* ── Zoom-to-fullscreen overlay ── */

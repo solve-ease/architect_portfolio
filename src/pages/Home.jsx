@@ -117,8 +117,10 @@ function Home() {
 
     layers.forEach((layer) => {
       layer.style.opacity = '1';
+      layer.style.visibility = 'visible';
       layer.style.transform = 'translateZ(0) scale(1)';
       layer.style.animation = 'none';
+      layer.style.animationPlayState = 'running'; // Ensure running state
     });
   }, [skipIntro, COLUMN_Y_OFFSETS]);
 
@@ -134,6 +136,7 @@ function Home() {
       const finalTransform = getComputedStyle(layer).transform;
       // Set final state as inline styles so transitions own these properties going forward
       layer.style.opacity = '1';
+      layer.style.visibility = 'visible';
       layer.style.transform = finalTransform;
       // Remove the animation entirely — fill-mode was suppressing CSS transitions on
       // opacity/transform; with no animation active the transitions work normally
@@ -141,11 +144,20 @@ function Home() {
       layer.removeEventListener('animationend', handleAnimationEnd);
     };
 
+    // Set delays first with animation still paused
     layers.forEach((layer) => {
       // Random delay between 0 and 2 seconds for more varied appearance
       const randomDelay = Math.random() * 2;
       layer.style.animationDelay = `${randomDelay}s`;
       layer.addEventListener('animationend', handleAnimationEnd);
+    });
+
+    // Force a reflow to ensure delays are applied before unpausing
+    void document.body.offsetHeight;
+
+    // Now unpause to start animations with their delays
+    layers.forEach((layer) => {
+      layer.style.animationPlayState = 'running';
     });
 
     return () => {
