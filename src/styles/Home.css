@@ -264,7 +264,7 @@
   transform: translateZ(-900px) scale(0.7) !important;
   transition: opacity 1s ease-out, transform 1s cubic-bezier(0.4, 0, 0.6, 1);
   pointer-events: none;
-  visibility: hidden !important;
+  /* visibility: hidden !important; */
 }
 
 /* ── Zoom-to-fullscreen overlay ── */
