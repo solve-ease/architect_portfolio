@@ -1,9 +1,3 @@
-/* ─────────────────────────────────────────────────────────────────────────────
-   ProjectDetailSections.css
-   Styles for all composable project-detail section components.
-   Design language: clean, minimal, typographic — architecture portfolio.
-───────────────────────────────────────────────────────────────────────────── */
-
 /* ── Shared utilities ───────────────────────────────────────────────────── */
 
 .pd-lead {
@@ -340,6 +334,8 @@
   line-height: 1.6;
 }
 
+
+
 /* ── 7. ImageRight ──────────────────────────────────────────────────────── */
 
 .pd-image-right {
@@ -601,18 +597,20 @@
   .pd-heading-right,
   .pd-heading-left {
     padding: 48px 24px;
-    justify-content: center;
+    /* justify-content: center; */
+    justify-content: left;
   }
 
   .pd-heading-right-inner,
   .pd-heading-left-inner {
-    max-width: 100%;
-    text-align: center;
+    width: 100%;
+    /* text-align: center; */
+    text-align: left;
   }
 
   .pd-heading-right-title,
   .pd-heading-left-title {
-    text-align: center;
+    text-align: left;
   }
 
   .pd-image-centre,
@@ -623,7 +621,7 @@
   .pd-keyinfo-item {
     flex: 1 1 auto;
     padding: 20px 16px;
-    text-align: center;
+    text-align: left;
   }
 
   .pd-image-centre-heading-title {
@@ -634,8 +632,10 @@
   .pd-text-right-content p.pd-lead,
   .pd-img-left-text-right-text p.pd-lead,
   .pd-slider-body {
-    text-align: center;
+    text-align: left;
   }
+
+
 }
 
 /* Small devices: up to 480px - Aggressive mobile optimization */
@@ -646,12 +646,12 @@
   }
 
   .pd-section-heading {
-    font-size: clamp(1.1rem, 5vw, 2rem);
+    font-size: clamp(1.7rem, 5vw, 2rem);
     margin: 0 0 20px;
   }
 
   .pd-slider-heading {
-    font-size: clamp(1.1rem, 5.5vw, 2rem);
+    font-size: clamp(1.7rem, 5.5vw, 2rem);
   }
 
   .pd-slider-body {
@@ -711,7 +711,7 @@
   .pd-image-centre-heading-caption,
   .pd-image-centre-caption {
     font-size: 0.7rem;
-    margin: 12px 0 0;
+    /* margin: 12px 0 0; */
   }
 
   .pd-slider-counter {
@@ -726,8 +726,8 @@
   .pd-text-right-content,
   .pd-img-left-text-right-text {
     padding: 32px 16px;
-    gap: 16px;
-    text-align: center;
+    gap: 8px;
+    text-align: left;
   }
 
   .pd-heading-right,
@@ -738,18 +738,18 @@
 
   .pd-heading-right-inner,
   .pd-heading-left-inner {
-    text-align: center;
+    text-align: left;
   }
 
   .pd-image-centre {
-    padding: 32px 16px;
+    padding: 32px 0px;
   }
 
   .pd-img-left-text-right {
-    padding-top: 4%;
-    padding-bottom: 4%;
-    padding-right: 4%;
-    gap: 8%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    padding-right: 0%;
+    gap: 4%;
   }
 
   .pd-slider {
@@ -760,6 +760,6 @@
   .pd-text-right-content p.pd-lead,
   .pd-img-left-text-right-text p.pd-lead,
   .pd-slider-body {
-    text-align: center;
+    text-align: left;
   }
 }

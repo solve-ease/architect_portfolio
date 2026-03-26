@@ -74,7 +74,7 @@ the urban landscape and enhance the lives of individuals and communities through
 
       const slides = container.querySelectorAll('.about-slide')
       const currentIndex = Math.round(container.scrollTop / window.innerHeight)
-      
+
       if (e.deltaY > 0 && currentIndex < slides.length - 1) {
         // Scroll down
         isScrolling = true
