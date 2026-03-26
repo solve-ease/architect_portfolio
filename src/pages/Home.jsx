@@ -144,18 +144,26 @@ function Home() {
       layer.removeEventListener('animationend', handleAnimationEnd);
     };
 
-    // Set delays first with animation still paused
+    // Step 1: Reset the animation completely to ensure clean state
+    // This fixes the glitch when returning to home page or on slow initial loads
     layers.forEach((layer) => {
-      // Random delay between 0 and 2 seconds for more varied appearance
+      layer.style.animation = 'none';
+    });
+
+    // Step 2: Force reflow to flush the "none" state
+    void document.body.offsetHeight;
+
+    // Step 3: Re-apply the animation with random delays (all in one shorthand)
+    layers.forEach((layer) => {
       const randomDelay = Math.random() * 2;
-      layer.style.animationDelay = `${randomDelay}s`;
+      layer.style.animation = `fx-fly-in 7.5s cubic-bezier(.43,.31,0,1) ${randomDelay}s forwards paused`;
       layer.addEventListener('animationend', handleAnimationEnd);
     });
 
-    // Force a reflow to ensure delays are applied before unpausing
+    // Step 4: Force another reflow to ensure animation is fully registered
     void document.body.offsetHeight;
 
-    // Now unpause to start animations with their delays
+    // Step 5: Now unpause to start all animations
     layers.forEach((layer) => {
       layer.style.animationPlayState = 'running';
     });
