@@ -69,7 +69,7 @@ function Home() {
   const imageSets = useMemo(() => {
     const sets = {};
     for (let i = 1; i <= 32; i++) {
-      sets[`img${i}`] = { mobile: `/assets/mobile/${i}.webp`, desktop: `/assets/home/${i}.webp` };
+      sets[`img${i}`] = { mobile: `/assets/home/${i}.webp`, desktop: `/assets/home/${i}.webp` };
     }
     return sets;
   }, []);

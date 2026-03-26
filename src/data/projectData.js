@@ -2368,7 +2368,7 @@ export const imageKeyToProject = {
   img27: 'house27',
   img28: 'm3m',
   img29: 'crescent-high-street',
-  img30: 'migsun-mixed-use',
+  img30: 'limassol-office',
   img31: 'migsun-rohini',
   img32: 'urban-square',
 };
