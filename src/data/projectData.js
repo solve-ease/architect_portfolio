@@ -8,7 +8,7 @@ const projectData = [
     status: 'Concept / Design Development',
     area: '300 Sq.mt',
     description: `Project Overview This landmark retail development, located on a prominent corner plot in a Tier 3 city, represents a deliberate effort to synthesize modern architectural form with deep-rooted cultural heritage. Far from being a standard, placeless commercial structure, the project serves as a contextual catalyst, proving that high-end design can be meaningfully localized.`,
-    coverImage: '/assets/32/1.webp',
+    coverImage: '/assets/32.webp',
     images: [
       '/assets/32/1.webp',
       '/assets/32/2.webp',
@@ -95,7 +95,7 @@ const projectData = [
     status: 'Concept / Design Development',
     area: '10 Acres',
     description: `Urban Renaissance explores the pressing issue of urban cores dominated by vacant office buildings, exemplified by trends in cities such as London. Previously bustling business districts, like Canary Wharf, are facing challenges as these structures are vacated, posing environmental concerns with 32% of construction waste ending up in landfills. Urban Renaissance embraces this issue as an opportunity to redefine vacant districts by transforming them into vibrant, mixed-use urbanscapes.`,
-    coverImage: '/assets/1/1.webp',
+    coverImage: '/assets/1.webp',
     images: [
       '/assets/1/1.webp',
       '/assets/1/2.webp',
@@ -186,7 +186,7 @@ const projectData = [
     status: 'Competition Entry',
     area: '62,000 m²',
     description: `A Vertical River "The Cascade" is defined by its soft, terraced geometry. Moving away from rigid verticality, the building is conceived as a series of cascading floor plates that step down toward the street. This creates a natural, amphitheater-like effect, where each level offers a new vantage point over the bustling high-street below. The architecture mimics the movement of water over stone, replacing sharp corners with smooth, organic curves that guide the eye and the pedestrian flow.`,
-    coverImage: '/assets/home/14.webp',
+    coverImage: '/assets/14.webp',
     images: [
       '/assets/home/14.webp',
     ],
@@ -300,7 +300,7 @@ Motion`,
     area: '24,000 m²',
     description: `"The Arcadia" is a contemporary reinterpretation of the historic European shopping arcade, scaled for the future of the Indian metropolis. While the "Shards" concept focused on vertical tension, The Arcadia celebrates the rhythm of the arch. The façade is defined by a series of monumental, copper-toned portals that stretch across the building's length, creating a cinematic promenade that frames the commercial energy within.`,
 
-    coverImage: '/assets/home/20.webp',
+    coverImage: '/assets/20.webp',
     images: [
       '/assets/20/1.webp',
       '/assets/20/2.webp',
@@ -397,7 +397,7 @@ Motion`,
     area: '48,000 m²',
     description: `The Kinetic Ribbon is a study in perpetual motion captured in built form. Conceived as a continuous flowing surface that wraps, folds, and cantilevers across the site, the design reimagines the high-street mall as a dynamic, sculptural landscape. Unlike conventional retail blocks, this project embraces fluidity—creating a building that appears to twist and unravel as it rises, offering multiple perspectives and experiences from every vantage point.`,
 
-    coverImage: '/assets/home/18.webp',
+    coverImage: '/assets/18.webp',
     images: [
       '/assets/18/1.webp',
       '/assets/18/2.webp',
@@ -517,7 +517,7 @@ in Motion`,
     area: '5,000 Sq.ft',
     description: `This expansive, multi-functional 5000-square-foot facility in Noida is designed to be the ultimate creative playground for a premier technology YouTuber. The design philosophy moves completely away from the outdated 'slap a logo on the wall' approach. Instead, the studio environment embodies the brand's DNA—precision, warmth, and innovation—through a curated balance of color, light, and functional form.`,
 
-    coverImage: '/assets/home/13.webp',
+    coverImage: '/assets/13.webp',
     images: [
       '/assets/13/1.webp',
       '/assets/13/2.webp',
@@ -673,7 +673,7 @@ in Motion`,
     area: '3 Acres',
     description: `The Human High Street redefines the conventional high-street retail experience by creating a layered canopy that shelters pedestrians while inviting natural light and air to flow freely. The design is a direct response to the harsh climate of North India, where the summer sun can be unforgiving and the monsoon rains relentless. By stepping the building envelope back at each level, the architecture creates a series of shaded terraces that serve as both public promenades and private balconies for the studio apartments above.`,
 
-    coverImage: '/assets/home/11.webp',
+    coverImage: '/assets/11.webp',
     images: [
       '/assets/11/1.webp',
       '/assets/11/2.webp',
@@ -763,7 +763,7 @@ in Motion`,
     area: '3 Acres',
     description: `Shards is unapologetically bold. Born from a desire to break free from the monotony of conventional retail architecture, this design embraces verticality, tension, and drama. The building is conceived as a cluster of sharp, crystalline forms that rise and fracture across the site, each shard angled to catch light and create dynamic shadows throughout the day. The result is a structure that feels alive, constantly shifting in appearance as the sun moves across the sky.`,
 
-    coverImage: '/assets/home/3.webp',
+    coverImage: '/assets/3.webp',
     images: [
       '/assets/3/1.webp',
       '/assets/3/2.webp',
@@ -871,7 +871,7 @@ in Motion`,
     area: '800 Sq.ft',
     description: `This is not just a watch boutique—it is a spatial celebration of precision, craftsmanship, and exclusivity. Designed for JACOB & Co., one of the world's most prestigious watchmakers, this 800-square-foot space in M3M Gurgaon reimagines the luxury retail experience as a curated journey through light, material, and form. Every element is meticulously crafted to reflect the DNA of the brand: bold, unapologetic, and timelessly elegant.`,
 
-    coverImage: '/assets/home/19.webp',
+    coverImage: '/assets/19.webp',
     images: [
       '/assets/19/1.webp',
       '/assets/19/2.webp',
@@ -1086,7 +1086,7 @@ in Motion`,
     area: '4 Acres',
     description: `THE Wave is a celebration of fluid dynamics frozen in architecture. Defined by its seamless continuity of form, the design reimagines the traditional high-street retail and residential tower typology through a language of curves, rhythm, and flow. The building does not sit static on its site—it moves, undulates, and breathes, creating a visual spectacle that feels as much like a sculpture as it does a piece of functional architecture.`,
 
-    coverImage: '/assets/home/7.webp',
+    coverImage: '/assets/7.webp',
     images: [
       '/assets/7/1.webp',
       '/assets/7/2.webp',
@@ -1182,7 +1182,7 @@ in Motion`,
     area: '23,314.6 m²',
     description: `The Urban Nexus is a bold reimagining of mixed-use architecture in the heart of Lucknow. Conceived as two 14-story towers—one housing a premium hotel, the other luxury studio apartments—the design is unified by a dramatic sky-bridge that spans the gap between the blocks, creating both a visual anchor and a functional connection. Below, a multi-story atrium flooded with natural light serves as the social and commercial heart of the development.`,
 
-    coverImage: '/assets/home/24.webp',
+    coverImage: '/assets/24.webp',
     images: [
       '/assets/24/1.webp',
       '/assets/24/2.webp',
@@ -1318,7 +1318,7 @@ in Motion`,
     area: '16187.4 m²',
     description: `Redefining the metropolitan skyline, this mixed-use development transcends the traditional, rigid geometry of the high-rise typology. Conceived as a continuous, sweeping gesture, the architecture seamlessly negotiates the transition between the vibrant public realm and elevated private sanctuary. The project merges a high-capacity retail podium with a soaring, sculptural residential tower, creating a dynamic new locus for the city.`,
 
-    coverImage: '/assets/5/1.webp',
+    coverImage: '/assets/5.webp',
     images: [
       '/assets/5/1.webp',
       '/assets/5/2.webp',
@@ -1428,7 +1428,7 @@ in Motion`,
     area: '5,000 Sq.ft',
     description: `Located in the sun-drenched landscape of Cyprus, this bespoke office interior was commissioned by a London-based marketing firm seeking a workspace that balances raw, urban grit with Mediterranean warmth. The design serves as a bridge between the client's metropolitan roots and the vibrant, natural energy of its new island location.`,
 
-    coverImage: '/assets/30/1.webp',
+    coverImage: '/assets/30.webp',
     images: [
       '/assets/30/1.webp',
       '/assets/30/2.webp',
@@ -1568,7 +1568,7 @@ in Motion`,
     area: '5 Acres',
     description: `The Integrated Operations Hub is a ground-breaking facility designed with a high level of discretion for a confidential agency. This secure operations node breaks the traditional mold of monolithic block architecture, employing a complex of intersecting concentric volumes and radial wings. The result is a highly efficient yet humane environment where architecture and landscape are inseparable.`,
 
-    coverImage: '/assets/23/1.webp',
+    coverImage: '/assets/23.webp',
     images: [
       '/assets/23/1.webp',
       '/assets/23/2.webp',
@@ -1649,7 +1649,7 @@ in Motion`,
     area: '2 Acres',
     description: `Designed as a bespoke holiday sanctuary for a New Delhi-based client, this luxury villa offers a serene counterpoint to the bustling metropolis. The project is conceived not just as a residence, but as an immersive, resort-like retreat where striking contemporary architecture harmonizes with tranquil water features and lush landscapes.`,
 
-    coverImage: '/assets/25/1.webp',
+    coverImage: '/assets/25.webp',
     images: [
       '/assets/25/1.webp',
       '/assets/25/2.webp',
@@ -1780,7 +1780,7 @@ in Motion`,
     area: '4,500 Sq.mt',
     description: `Designed as the future-forward headquarters for Pathcare, a pioneering pathology and research organization, this state-of-the-art facility is a study in adaptable master planning. The project was conceived as a dynamic, two-phase development, ensuring the architecture can evolve in tandem with the company's expanding research capabilities.`,
 
-    coverImage: '/assets/16/1.webp',
+    coverImage: '/assets/16.webp',
     images: [
       '/assets/16/1.webp',
       '/assets/16/2.webp',
@@ -2003,7 +2003,7 @@ in Motion`,
     area: '30 Acres',
     description: `The Weave represents a conscious departure from the rigid orthography typical of modern commercial developments. Conceived as a highly permeable urban ecosystem, the project introduces an undulating retail and pedestrian promenade that nestles naturally at the base of the surrounding high-density residential fabric. The design prioritizes spatial continuity, drawing visitors through a choreographed sequence of interconnected public plazas, open-air terraces, and intimate courtyards.`,
 
-    coverImage: '/assets/9/1.webp',
+    coverImage: '/assets/9.webp',
     images: [
       '/assets/9/1.webp',
       '/assets/9/2.webp',
@@ -2133,7 +2133,7 @@ in Motion`,
     program: '4-Level Experiential Retail Podium',
     client: 'GPM Architects / Omaxe',
     description: `The Portal is conceived as a bold urban anchor, redefining the commercial corridor through a highly extroverted and technologically integrated architectural response. The massing strategy employs a prominent, multi-level retail plinth that establishes a continuous, active street wall, from which distinct vertical volumes rise to accommodate commercial and administrative functions.`,
-    coverImage: '/assets/10/1.webp',
+    coverImage: '/assets/10.webp',
     images: [
       '/assets/10/1.webp',
       '/assets/10/2.webp',
@@ -2226,7 +2226,7 @@ in Motion`,
     area: '300 Sq.mt',
     client: 'Undisclosed',
     description: `This landmark retail development, located on a prominent corner plot in a Tier 3 city, represents a deliberate effort to synthesize modern architectural form with deep-rooted cultural heritage. Far from being a standard, placeless commercial structure, the project serves as a contextual catalyst, proving that high-end design can be meaningfully localized.`,
-    coverImage: '/assets/32/1.webp',
+    coverImage: '/assets/32.webp',
     images: [
       '/assets/32/1.webp',
       '/assets/32/2.webp',

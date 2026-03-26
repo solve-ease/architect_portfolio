@@ -13,12 +13,19 @@
 .fx-3d-scene {
   perspective: 1200px;
   perspective-origin: 50% 50%;
-  overflow: hidden;
+  overflow: visible;
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: -8%;
+  right: -8%;
   z-index: 1;
   pointer-events: auto;
   cursor: grab;
+  /* Optimize touch handling on mobile */
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .fx-3d-scene:active {
@@ -30,6 +37,12 @@
   inset: 0;
   transform-style: preserve-3d;
   user-select: none;
+  /* Enable GPU acceleration */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Smooth dragging on mobile */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* Flex row container — columns fill vertically with their own row counts */
@@ -62,24 +75,29 @@
 
 .fx-layer {
   transform-style: preserve-3d;
-  will-change: transform, opacity;
   width: 375px;
   height: 281px;
   /* border-radius: 12px; */
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  
+
   /* Start images at far position before animation begins */
   transform: translateZ(-2000px) scale(0.5);
   opacity: 0;
-  
+  visibility: hidden;
+
   /* Single shared animation for all images */
   animation: fx-fly-in 7.5s cubic-bezier(.43,.31,0,1) forwards;
+  animation-play-state: paused;
   /* Delay set via JavaScript based on index */
 
   /* Return transition: smoothly fades back in after panel is closed */
   transition: opacity 0.6s ease;
+
+  /* Enable GPU acceleration for better mobile performance */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .fx-layer:hover {
@@ -92,8 +110,8 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  pointer-events: none;
-  user-select: none;
+  /* pointer-events: none; */
+  /* user-select: none; */
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -104,8 +122,8 @@
   width: 100%;
   height: 100%;
   display: block;
-  pointer-events: none;
-  user-select: none;
+  /* pointer-events: none; */
+  /* user-select: none; */
 }
 
 /* Shared animation - flies from far to near in 3D space */
@@ -113,10 +131,15 @@
   from {
     transform: translateZ(-2000px) scale(0.5);
     opacity: 0;
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
   }
   to {
     transform: translateZ(0) scale(1);
     opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -241,6 +264,7 @@
   transform: translateZ(-900px) scale(0.7) !important;
   transition: opacity 1s ease-out, transform 1s cubic-bezier(0.4, 0, 0.6, 1);
   pointer-events: none;
+  visibility: hidden !important;
 }
 
 /* ── Zoom-to-fullscreen overlay ── */
