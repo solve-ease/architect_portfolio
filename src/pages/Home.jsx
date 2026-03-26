@@ -96,7 +96,7 @@ function Home() {
       <img 
         src={imageSets[imageKey].desktop}
         alt={alt}
-        fetchpriority={priority ? "high" : "auto"}
+        fetchPriority={priority ? "high" : "auto"}
         decoding="async"
       />
     </picture>
@@ -155,102 +155,117 @@ function Home() {
     };
   }, [skipIntro]);
 
-  // Drag functionality (Mouse and Touch) - Optimized for mobile
+  // Drag functionality (Mouse and Touch) - Optimized for mobile performance
   useEffect(() => {
     const handleStart = (e) => {
-      e.preventDefault(); // Prevent default drag behavior
       isDragging.current = true;
       didDrag.current = false;
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      
+
       startPos.current = {
-        x: clientX - offset.x,
-        y: clientY - offset.y
+        x: clientX - offsetRef.current.x,
+        y: clientY - offsetRef.current.y
       };
       if (sceneRef.current) {
         sceneRef.current.style.cursor = 'grabbing';
-        // Force hardware acceleration
-        if (worldRef.current) {
-          worldRef.current.style.willChange = 'transform';
-        }
+      }
+      if (worldRef.current) {
+        worldRef.current.style.willChange = 'transform';
       }
     };
 
     const handleMove = (e) => {
       if (!isDragging.current) return;
-      
-      e.preventDefault(); // Prevent scrolling/default behavior during drag
-      
+
+      // Prevent default to stop scrolling while dragging
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+
       // Cancel previous frame
       if (rafId.current) {
         cancelAnimationFrame(rafId.current);
       }
-      
+
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      
+
       // Use requestAnimationFrame for smooth updates
       rafId.current = requestAnimationFrame(() => {
+        if (!worldRef.current) return;
+
         let newX = clientX - startPos.current.x;
         let newY = clientY - startPos.current.y;
-        
+
         // Calculate boundaries based on viewport and grid size
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
-        
+
         // Define maximum drag limits to reduce white space
-        // Reduced from 0.8 to 0.3 to minimize white space on x-axis
-        // Increased y-axis limits slightly for more vertical freedom
-        const maxOffsetX = viewportWidth * 1.0;
-        const minOffsetX = -viewportWidth * 1.0;
+        const isSmallScreen = viewportWidth < 768;
+        const maxOffsetX = isSmallScreen ? viewportWidth * 2.0 : viewportWidth * 1.5;
+        const minOffsetX = isSmallScreen ? -viewportWidth * 2.0 : -viewportWidth * 1.5;
         const maxOffsetY = viewportHeight * .9;
         const minOffsetY = -viewportHeight * 1.0;
-        
+
         // Clamp the offset within boundaries
         newX = Math.max(minOffsetX, Math.min(maxOffsetX, newX));
         newY = Math.max(minOffsetY, Math.min(maxOffsetY, newY));
-        
-        const newOffset = {
-          x: newX,
-          y: newY
-        };
+
+        // Apply transform directly to DOM (no React re-render during drag)
+        worldRef.current.style.transform = `translate3d(${newX}px, ${newY}px, 0) scale(${zoomRef.current})`;
+
+        // Update logo position
+        if (logoRef.current) {
+          logoRef.current.style.transform = `translate(calc(-50% + ${newX * 0.25}px), calc(-50% + ${newY * 0.25}px)) translateZ(-400px)`;
+        }
+
+        // Store current position in ref
+        offsetRef.current = { x: newX, y: newY };
         didDrag.current = true;
-        setOffset(newOffset);
       });
     };
 
     const handleEnd = () => {
       isDragging.current = false;
+
       if (rafId.current) {
         cancelAnimationFrame(rafId.current);
       }
+
+      // Update React state once at the end
+      setOffset(offsetRef.current);
+
       if (sceneRef.current) {
         sceneRef.current.style.cursor = 'grab';
-        // Remove will-change after interaction
-        if (worldRef.current) {
-          worldRef.current.style.willChange = 'auto';
-        }
       }
+      if (worldRef.current) {
+        worldRef.current.style.willChange = 'auto';
+      }
+
+      // Reset didDrag after a short delay to allow click handler to check it
+      setTimeout(() => {
+        didDrag.current = false;
+      }, 50);
     };
 
     const scene = sceneRef.current;
-    const world = worldRef.current;
-    
+
     if (scene) {
       // Prevent default image drag behavior
       const preventDragStart = (e) => e.preventDefault();
       scene.addEventListener('dragstart', preventDragStart);
-      
+
       // Mouse events
-      scene.addEventListener('mousedown', handleStart);
-      window.addEventListener('mousemove', handleMove);
-      window.addEventListener('mouseup', handleEnd);
-      
-      // Touch events - passive: false to allow smooth dragging
-      scene.addEventListener('touchstart', handleStart, { passive: false });
+      scene.addEventListener('mousedown', handleStart, { passive: true });
+      window.addEventListener('mousemove', handleMove, { passive: false });
+      window.addEventListener('mouseup', handleEnd, { passive: true });
+
+      // Touch events with passive where possible
+      scene.addEventListener('touchstart', handleStart, { passive: true });
       window.addEventListener('touchmove', handleMove, { passive: false });
-      window.addEventListener('touchend', handleEnd);
+      window.addEventListener('touchend', handleEnd, { passive: true });
     }
 
     return () => {
@@ -264,29 +279,44 @@ function Home() {
       window.removeEventListener('mouseup', handleEnd);
       window.removeEventListener('touchmove', handleMove);
       window.removeEventListener('touchend', handleEnd);
-      
+
       // Clean up RAF on unmount
       if (rafId.current) {
         cancelAnimationFrame(rafId.current);
       }
     };
-  }, [offset]);
+  }, []); // Empty dependency array - handlers use refs
 
-  // Zoom functionality on scroll
+  // Zoom functionality on scroll - optimized to reduce re-renders
   useEffect(() => {
+    let zoomRafId = null;
+
     const handleWheel = (e) => {
       e.preventDefault();
-      
-      setZoom((prevZoom) => {
+
+      // Cancel previous frame
+      if (zoomRafId) {
+        cancelAnimationFrame(zoomRafId);
+      }
+
+      zoomRafId = requestAnimationFrame(() => {
         const zoomDelta = e.deltaY * -0.001;
-        const newZoom = prevZoom + zoomDelta;
-        
-        // Clamp zoom between 0.85 and 1.35
-        return Math.min(Math.max(newZoom, 0.85), 1.5);
+        const newZoom = Math.min(Math.max(zoomRef.current + zoomDelta, 0.85), 1.5);
+
+        // Update ref
+        zoomRef.current = newZoom;
+
+        // Apply directly to DOM
+        if (worldRef.current) {
+          worldRef.current.style.transform = `translate3d(${offsetRef.current.x}px, ${offsetRef.current.y}px, 0) scale(${newZoom})`;
+        }
+
+        // Update React state (throttled - only for persistence)
+        setZoom(newZoom);
       });
     };
 
-    const scene = document.querySelector('.fx-3d-scene');
+    const scene = sceneRef.current;
     if (scene) {
       scene.addEventListener('wheel', handleWheel, { passive: false });
     }
@@ -295,26 +325,36 @@ function Home() {
       if (scene) {
         scene.removeEventListener('wheel', handleWheel);
       }
+      if (zoomRafId) {
+        cancelAnimationFrame(zoomRafId);
+      }
     };
   }, []);
 
   // Handle image click — first dismiss others, then zoom to fullscreen
   const handleLayerClick = useCallback((e, imageKey) => {
-    // Ignore if user was dragging
+    console.log('Click detected on:', imageKey);
+    console.log('didDrag.current:', didDrag.current);
+    
     if (didDrag.current) {
+      console.log('Ignoring click - was dragging');
       didDrag.current = false;
       return;
     }
+    
     const projectId = imageKeyToProject[imageKey];
-    if (!projectId) return;
+    console.log('projectId for', imageKey, ':', projectId);
+    
+    if (!projectId) {
+      console.log('No projectId found!');
+      return;
+    }
 
-    // Get the clicked layer element rect
     const layerEl = e.currentTarget;
     const rect = layerEl.getBoundingClientRect();
-
-    // Get current src from the img inside
     const imgEl = layerEl.querySelector('img');
     const src = imgEl ? imgEl.currentSrc || imgEl.src : '';
+    console.log('Setting click info for:', { key: imageKey, projectId, src });
 
     setClickedInfo({ key: imageKey, src, rect, projectId });
   }, []);
@@ -360,13 +400,11 @@ function Home() {
       )}
 
       <div className="fx-3d-scene" ref={sceneRef}>
-        <div 
-          className={`fx-3d-world fx-grid${clickedInfo ? ' fx-world-dismissing' : ''}`} 
+        <div
+          className={`fx-3d-world fx-grid${clickedInfo ? ' fx-world-dismissing' : ''}`}
           ref={worldRef}
           style={{
-            transform: `translate3d(${offset.x}px, ${offset.y}px, 0) scale(${zoom})`,
-            transition: isDragging.current ? 'none' : 'transform 0.3s ease-out',
-            willChange: isDragging.current ? 'transform' : 'auto'
+            transform: `translate3d(${offset.x}px, ${offset.y}px, 0) scale(${zoom})`
           }}
         >
           {columns.map((colItems, colIdx) => (
@@ -377,6 +415,12 @@ function Home() {
                   className="fx-layer"
                   data-chosen={clickedInfo?.key === `img${num}` ? 'true' : undefined}
                   onClick={(e) => handleLayerClick(e, `img${num}`)}
+                  onTouchEnd={(e) => {
+                    // On mobile, touchend should also trigger the click
+                    if (!isDragging.current) {
+                      handleLayerClick(e, `img${num}`);
+                    }
+                  }}
                 >
                   <ResponsiveImage imageKey={`img${num}`} alt={`Architecture render ${num}`} priority={num <= 6} />
                 </div>
@@ -386,12 +430,11 @@ function Home() {
         </div>
       </div>
       
-      <div 
+      <div
         className="hero-title-wrapper"
         ref={logoRef}
         style={{
-          transform: `translate(calc(-50% + ${offset.x * 0.25}px), calc(-50% + ${offset.y * 0.25}px)) translateZ(-400px)`,
-          transition: isDragging.current ? 'none' : 'transform 0.3s ease-out'
+          transform: `translate(calc(-50% + ${offset.x * 0.25}px), calc(-50% + ${offset.y * 0.25}px)) translateZ(-400px)`
         }}
       >
         <img src={logo} alt="Paraflux" className="hero-logo" />

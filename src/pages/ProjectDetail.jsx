@@ -101,10 +101,10 @@ function ProjectDetail() {
             <p className="pd-hero-location">{project.location} — {project.year}</p>
           </div>
         </div>
-        <div className="pd-scroll-hint">
+        {/* <div className="pd-scroll-hint">
           <span>Scroll</span>
           <span className="pd-scroll-arrow">↓</span>
-        </div>
+        </div> */}
       </section>
 
       {/* ── Body: render sections from project config ── */}
