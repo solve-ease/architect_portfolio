@@ -31,4 +31,4 @@ node_modules/
 # Playwright
 playwright-report/
 test-results/
-public/about/clients
+public/about-assets/clients

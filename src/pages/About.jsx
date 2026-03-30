@@ -2,26 +2,26 @@ import { useEffect, useRef } from 'react'
 import '../styles/About.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-const evolo = '/about/AboutUs.webp'
+const evolo = '/about-assets/AboutUs.webp'
 const m3m = '/assets/architect_images_webp_reduced/Renders for website/M3m/Final 1.webp'
 const migsun = '/assets/architect_images_webp_reduced/Renders for website/Migsun_mixed use/op1/2 copy.webp'
 const pentagon = '/assets/architect_images_webp_reduced/Renders for website/Pentagon/Scene 1(1)_style_transfer01 copy.webp'
-const whitehouse = '/about/OurVision.webp'
+const whitehouse = '/about-assets/OurVision.webp'
 
 const clientLogos = [
-  '/about/clients/Amity_University_logo.png',
-  '/about/clients/RPS-Group-color.png',
-  '/about/clients/home_about_us.png',
-  '/about/clients/image (3).png',
-  '/about/clients/image.png',
-  '/about/clients/image (1).png',
-  '/about/clients/image (2).png',
-  '/about/clients/logo_black.png',
-  '/about/clients/images.png',
-  '/about/clients/images (1).png',
-  '/about/clients/1690966414036.jpg',
-  '/about/clients/15736259983 (2).jpg',
-  // '/about/clients/_.jpg',
+  '/about-assets/clients/Amity_University_logo.png',
+  '/about-assets/clients/RPS-Group-color.png',
+  '/about-assets/clients/home_about_us.png',
+  '/about-assets/clients/image (3).png',
+  '/about-assets/clients/image.png',
+  '/about-assets/clients/image (1).png',
+  '/about-assets/clients/image (2).png',
+  '/about-assets/clients/logo_black.png',
+  '/about-assets/clients/images.png',
+  '/about-assets/clients/images (1).png',
+  '/about-assets/clients/1690966414036.jpg',
+  '/about-assets/clients/15736259983 (2).jpg',
+  // '/about-assets/clients/_.jpg',
 ]
 
 function About() {
