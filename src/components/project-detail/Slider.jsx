@@ -16,7 +16,9 @@ function Slider({ text = '', images = [], heading = '' }) {
 
   const containerRef = useRef(null)
   const startXRef = useRef(0)
+  const startYRef = useRef(0)
   const startOffsetRef = useRef(0)
+  const isScrollingRef = useRef(false)
 
   const paragraphs = text.trim().split('\n\n')
 
@@ -50,26 +52,55 @@ function Slider({ text = '', images = [], heading = '' }) {
 
   const handleDragStart = (e) => {
     if (isAnimating || images.length <= 1) return
-    e.preventDefault()
+    
+    // Only prevent default for mouse events to prevent image ghost dragging 
+    if (e.type === 'mousedown') {
+      e.preventDefault()
+    }
 
     setIsDragging(true)
+    isScrollingRef.current = false
     const clientX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX
+    const clientY = e.type === 'mousedown' ? e.clientY : e.touches[0].clientY
     startXRef.current = clientX
+    startYRef.current = clientY
     startOffsetRef.current = dragOffset
   }
 
   const handleDragMove = useCallback((e) => {
     if (!isDragging) return
-    e.preventDefault()
-
+    
     const clientX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX
-    const diff = clientX - startXRef.current
-    setDragOffset(startOffsetRef.current + diff)
+    const clientY = e.type === 'mousemove' ? e.clientY : e.touches[0].clientY
+    const diffX = clientX - startXRef.current
+    const diffY = clientY - startYRef.current
+
+    // If scrolling vertically, let the browser handle it and cancel our dragging
+    if (e.type === 'touchmove') {
+      if (!isScrollingRef.current && Math.abs(diffY) > Math.abs(diffX)) {
+        isScrollingRef.current = true
+        setIsDragging(false)
+        setDragOffset(0)
+        return
+      }
+      if (isScrollingRef.current) return
+      
+      // We are horizontally swiping, prevent default so Safari doesn't navigate back/forward
+      if (e.cancelable) {
+        e.preventDefault()
+      }
+    } else {
+      e.preventDefault()
+    }
+
+    setDragOffset(startOffsetRef.current + diffX)
   }, [isDragging])
 
   const handleDragEnd = useCallback(() => {
     if (!isDragging) return
     setIsDragging(false)
+
+    if (isScrollingRef.current) return
 
     const container = containerRef.current
     if (!container) {

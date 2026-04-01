@@ -31,7 +31,7 @@ function About() {
     {
       title: "Our Story",
       subtitle: "A COLLECTION OF KEY MILESTONES",
-      content: `The ParaFlux Architects is a small, innovative architecture studio based in Noida, India. Our ideology is rooted in the belief that architecture is not just about creating beautiful buildings, but also
+      content: `The ParaFlux Architects is an innovative architecture studio based in Noida, India. Our ideology is rooted in the belief that architecture is not just about creating beautiful buildings, but also
 about shaping the way people experience and interact with their surroundings. We believe that
 architecture has the power to transform people’s lives and create a better world.
 At ParaFlux, we strive to create architecture that is both functional and aesthetically pleasing,
@@ -61,48 +61,7 @@ the urban landscape and enhance the lives of individuals and communities through
   ]
 
   useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-
-    let isScrolling = false
-    let scrollTimeout
-
-    const handleWheel = (e) => {
-      if (isScrolling) return
-
-      e.preventDefault()
-
-      const slides = container.querySelectorAll('.about-slide')
-      const currentIndex = Math.round(container.scrollTop / window.innerHeight)
-
-      if (e.deltaY > 0 && currentIndex < slides.length - 1) {
-        // Scroll down
-        isScrolling = true
-        container.scrollTo({
-          top: (currentIndex + 1) * window.innerHeight,
-          behavior: 'smooth'
-        })
-      } else if (e.deltaY < 0 && currentIndex > 0) {
-        // Scroll up
-        isScrolling = true
-        container.scrollTo({
-          top: (currentIndex - 1) * window.innerHeight,
-          behavior: 'smooth'
-        })
-      }
-
-      clearTimeout(scrollTimeout)
-      scrollTimeout = setTimeout(() => {
-        isScrolling = false
-      }, 800)
-    }
-
-    container.addEventListener('wheel', handleWheel, { passive: false })
-
-    return () => {
-      container.removeEventListener('wheel', handleWheel)
-      clearTimeout(scrollTimeout)
-    }
+    // Relying on native CSS scroll-snap for better Safari and mobile compatibility
   }, [])
 
   return (

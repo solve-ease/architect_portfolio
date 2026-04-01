@@ -1,5 +1,6 @@
 .careers-page {
   min-height: 100vh;
+  min-height: min(100vh, -webkit-fill-available);
   background-color: #fff;
 }
 

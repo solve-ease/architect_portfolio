@@ -40,14 +40,6 @@ function ProjectPanel({ project, heroImage, onClose, onHeroReady, isClosing }) {
     }
   }, [])
 
-  // Allow scrolling inside the panel after a tick
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      document.body.style.overflow = ''
-    }, 50)
-    return () => clearTimeout(timer)
-  }, [])
-
   // If the hero image is already in the browser cache it may never fire onLoad.
   // Check img.complete on mount and call onHeroReady immediately in that case.
   useEffect(() => {
