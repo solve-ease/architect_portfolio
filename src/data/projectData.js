@@ -298,7 +298,7 @@ Motion`,
     type: 'Branded Ultra-Luxury Mixed-Use',
     status: 'Concept / Design Development',
     area: '24,000 m²',
-    description: `"The Arcadia" is a contemporary reinterpretation of the historic European shopping arcade, scaled for the future of the Indian metropolis. While the "Shards" concept focused on vertical tension, The Arcadia celebrates the rhythm of the arch. The façade is defined by a series of monumental, copper-toned portals that stretch across the building's length, creating a cinematic promenade that frames the commercial energy within.`,
+    description: `"The Arcadia" is a contemporary reinterpretation of the historic European shopping arcade, scaled for the future of the Indian metropolis. While the "Shards" concept focused on vertical tension, The Arcadia celebrates the rhythm of the arch. The facade is defined by a series of monumental, copper-toned portals that stretch across the building's length, creating a cinematic promenade that frames the commercial energy within.`,
 
     coverImage: '/assets/20.webp',
     images: [
@@ -314,7 +314,7 @@ Motion`,
         type: 'TextRight',
         props: {
           // heading: 'The Arcadia',
-          text: `"The Arcadia" is a contemporary reinterpretation of the historic European shopping arcade, scaled for the future of the Indian metropolis. While the "Shards" concept focused on vertical tension, The Arcadia celebrates the rhythm of the arch. The façade is defined by a series of monumental, copper-toned portals that stretch across the building's length, creating a cinematic promenade that frames the commercial energy within.`,
+          text: `"The Arcadia" is a contemporary reinterpretation of the historic European shopping arcade, scaled for the future of the Indian metropolis. While the "Shards" concept focused on vertical tension, The Arcadia celebrates the rhythm of the arch. The facade is defined by a series of monumental, copper-toned portals that stretch across the building's length, creating a cinematic promenade that frames the commercial energy within.`,
         },
       },
       {
@@ -341,7 +341,7 @@ Motion`,
       {
         type: "HeadingLeft",
         props: {
-          subtext: 'The Portal Façade: Luxury as a Frame',
+          subtext: 'The Portal Facade: Luxury as a Frame',
           heading: 'The architectural signature of The Arcadia lies in its repetitive, high-arched geometry. These are not merely windows, but monumental frames for global luxury.',
         }
       },
