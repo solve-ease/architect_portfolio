@@ -686,10 +686,15 @@
     font-size: clamp(1rem, 2vw, 1.4rem);
   }
 
+  .pd-img-left-text-right-img{
+    min-height: 180px;
+  }
+
   .pd-keyinfo {
     flex-direction: column;
     padding-top: 32px;
     padding-bottom: 32px;
+    gap: 2%;
   }
 
   .pd-keyinfo-item {
