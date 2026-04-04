@@ -7,7 +7,8 @@
 .about-container {
   height: 100vh;
   /* height: calc(var(--vh, 1vh) * 100); JS-based fallback for mobile */
-  height: min(100vh, -webkit-fill-available);
+  height: 100vh;
+  height: 100dvh;
   height: 100dvh; /* Dynamic viewport height for mobile browsers */
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch; /* Safari mobile scroll momentum */
@@ -24,7 +25,8 @@
 .about-slide {
   height: 100vh;
   /* height: calc(var(--vh, 1vh) * 100); JS-based fallback for mobile */
-  height: min(100vh, -webkit-fill-available);
+  height: 100vh;
+  height: 100dvh;
   height: 100dvh; /* Dynamic viewport height for mobile browsers */
   display: flex;
   scroll-snap-align: start;
@@ -46,7 +48,8 @@
   top: 0;
   width: 50%;
   height: 100vh;
-  height: min(100vh, -webkit-fill-available);
+  height: 100vh;
+  height: 100dvh;
   /* height: calc(var(--vh, 1vh) * 100); JS-based fallback for mobile */
   height: 100dvh; /* Dynamic viewport height for mobile browsers */
   overflow: hidden;
@@ -66,7 +69,8 @@
   right: 0;
   top: 0;
   width: 50%;
-  height: min(100vh, -webkit-fill-available);
+  height: 100vh;
+  height: 100dvh;
   height: 100vh;
   /* height: calc(var(--vh, 1vh) * 100); JS-based fallback for mobile */
   height: 100dvh; /* Dynamic viewport height for mobile browsers */
@@ -150,14 +154,16 @@
 
 .footer-slide footer {
   height: 100vh;
-  height: min(100vh, -webkit-fill-available);
+  height: 100vh;
+  height: 100dvh;
   height: 100dvh; /* Dynamic viewport height for mobile browsers */
 }
 
 .clients-section {
   width: 100%;
   height: 100vh;
-  height: min(100vh, -webkit-fill-available);
+  height: 100vh;
+  height: 100dvh;
   height: 100dvh; /* Dynamic viewport height for mobile browsers */
   position: relative;
   background-color: #f5f5f5;
