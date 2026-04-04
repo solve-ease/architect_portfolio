@@ -175,8 +175,18 @@ function Home() {
     };
   }, [skipIntro]);
 
-  // Drag functionality (Mouse and Touch) - Optimized for mobile performance
+  // Drag functionality (Mouse and Touch) - Optimized for fluid dynamics
   useEffect(() => {
+    // Physics state for momentum and smooth lerping
+    const physics = {
+      position: { x: offsetRef.current.x, y: offsetRef.current.y },
+      velocity: { x: 0, y: 0 },
+      target: { x: offsetRef.current.x, y: offsetRef.current.y }
+    };
+    
+    let lastMousePosition = { x: 0, y: 0 };
+    let animationFrameId = null;
+
     const handleStart = (e) => {
       isDragging.current = true;
       didDrag.current = false;
@@ -184,9 +194,11 @@ function Home() {
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
       startPos.current = {
-        x: clientX - offsetRef.current.x,
-        y: clientY - offsetRef.current.y
+        x: clientX - physics.position.x,
+        y: clientY - physics.position.y
       };
+      lastMousePosition = { x: clientX, y: clientY };
+
       if (sceneRef.current) {
         sceneRef.current.style.cursor = 'grabbing';
       }
@@ -198,70 +210,33 @@ function Home() {
     const handleMove = (e) => {
       if (!isDragging.current) return;
 
-      // Prevent default to stop scrolling while dragging
       if (e.cancelable) {
         e.preventDefault();
-      }
-
-      // Cancel previous frame
-      if (rafId.current) {
-        cancelAnimationFrame(rafId.current);
       }
 
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-      // Use requestAnimationFrame for smooth updates
-      rafId.current = requestAnimationFrame(() => {
-        if (!worldRef.current) return;
+      // Update target based on mouse position
+      physics.target.x = clientX - startPos.current.x;
+      physics.target.y = clientY - startPos.current.y;
 
-        let newX = clientX - startPos.current.x;
-        let newY = clientY - startPos.current.y;
+      // Track rough velocity for momentum
+      physics.velocity.x = clientX - lastMousePosition.x;
+      physics.velocity.y = clientY - lastMousePosition.y;
+      lastMousePosition = { x: clientX, y: clientY };
 
-        // Calculate boundaries based on viewport and grid size
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-
-        // Define maximum drag limits to reduce white space
-        const isSmallScreen = viewportWidth < 768;
-        const maxOffsetX = isSmallScreen ? viewportWidth * 2.0 : viewportWidth * 1.5;
-        const minOffsetX = isSmallScreen ? -viewportWidth * 2.0 : -viewportWidth * 1.5;
-        const maxOffsetY = viewportHeight * .9;
-        const minOffsetY = -viewportHeight * 1.0;
-
-        // Clamp the offset within boundaries
-        newX = Math.max(minOffsetX, Math.min(maxOffsetX, newX));
-        newY = Math.max(minOffsetY, Math.min(maxOffsetY, newY));
-
-        // Apply transform directly to DOM (no React re-render during drag)
-        worldRef.current.style.transform = `translate3d(${newX}px, ${newY}px, 0) scale(${zoomRef.current})`;
-
-        // Update logo position
-        if (logoRef.current) {
-          logoRef.current.style.transform = `translate(calc(-50% + ${newX * 0.25}px), calc(-50% + ${newY * 0.25}px)) translateZ(-400px)`;
-        }
-
-        // Store current position in ref
-        offsetRef.current = { x: newX, y: newY };
-        didDrag.current = true;
-      });
+      didDrag.current = true;
     };
 
     const handleEnd = () => {
       isDragging.current = false;
 
-      if (rafId.current) {
-        cancelAnimationFrame(rafId.current);
-      }
-
       // Update React state once at the end
-      setOffset(offsetRef.current);
+      setOffset({ x: physics.position.x, y: physics.position.y });
 
       if (sceneRef.current) {
         sceneRef.current.style.cursor = 'grab';
-      }
-      if (worldRef.current) {
-        worldRef.current.style.willChange = 'auto';
       }
 
       // Reset didDrag after a short delay to allow click handler to check it
@@ -269,6 +244,77 @@ function Home() {
         didDrag.current = false;
       }, 50);
     };
+
+    // The animation loop that runs continuously decoupled from input
+    const physicsLoop = () => {
+      if (!worldRef.current) return;
+
+      // Calculate boundaries based on viewport and grid size
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const isSmallScreen = viewportWidth < 768;
+      const maxOffsetX = isSmallScreen ? viewportWidth * 2.0 : viewportWidth * 1.5;
+      const minOffsetX = isSmallScreen ? -viewportWidth * 2.0 : -viewportWidth * 1.5;
+      const maxOffsetY = viewportHeight * 0.9;
+      const minOffsetY = -viewportHeight * 1.0;
+
+      if (isDragging.current) {
+        // Softly clamp target to prevent dragging too far off screen
+        physics.target.x = Math.max(minOffsetX - viewportWidth*0.5, Math.min(maxOffsetX + viewportWidth*0.5, physics.target.x));
+        physics.target.y = Math.max(minOffsetY - viewportHeight*0.5, Math.min(maxOffsetY + viewportHeight*0.5, physics.target.y));
+
+        // Smoothly interpolate current position towards target - lowered for more fluid drag
+        physics.position.x += (physics.target.x - physics.position.x) * 0.15;
+        physics.position.y += (physics.target.y - physics.position.y) * 0.15;
+      } else {
+        // Let it coast with friction - increased closer to 1 for longer gliding
+        physics.velocity.x *= 0.96;
+        physics.velocity.y *= 0.96;
+
+        physics.position.x += physics.velocity.x;
+        physics.position.y += physics.velocity.y;
+
+        // Spring bound edges (rubber banding) - softened for smoother bounce
+        if (physics.position.x > maxOffsetX) {
+          physics.velocity.x += (maxOffsetX - physics.position.x) * 0.05;
+        } else if (physics.position.x < minOffsetX) {
+          physics.velocity.x += (minOffsetX - physics.position.x) * 0.05;
+        }
+
+        if (physics.position.y > maxOffsetY) {
+          physics.velocity.y += (maxOffsetY - physics.position.y) * 0.05;
+        } else if (physics.position.y < minOffsetY) {
+          physics.velocity.y += (minOffsetY - physics.position.y) * 0.05;
+        }
+
+        // Keep target synced so picking it up again relies on current settled coordinates
+        physics.target.x = physics.position.x;
+        physics.target.y = physics.position.y;
+      }
+
+      // Small threshold to avoid updating DOM when fully settled
+      if (
+        isDragging.current || 
+        Math.abs(physics.velocity.x) > 0.05 || 
+        Math.abs(physics.velocity.y) > 0.05 ||
+        physics.position.x > maxOffsetX + 0.5 ||
+        physics.position.x < minOffsetX - 0.5 ||
+        physics.position.y > maxOffsetY + 0.5 ||
+        physics.position.y < minOffsetY - 0.5 
+      ) {
+        worldRef.current.style.transform = `translate3d(${physics.position.x}px, ${physics.position.y}px, 0) scale(${zoomRef.current})`;
+
+        if (logoRef.current) {
+          logoRef.current.style.transform = `translate(calc(-50% + ${physics.position.x * 0.25}px), calc(-50% + ${physics.position.y * 0.25}px)) translateZ(-400px)`;
+        }
+
+        offsetRef.current = { x: physics.position.x, y: physics.position.y };
+      }
+
+      animationFrameId = requestAnimationFrame(physicsLoop);
+    };
+
+    animationFrameId = requestAnimationFrame(physicsLoop);
 
     const scene = sceneRef.current;
 
@@ -289,6 +335,7 @@ function Home() {
     }
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       if (scene) {
         const preventDragStart = (e) => e.preventDefault();
         scene.removeEventListener('dragstart', preventDragStart);
@@ -299,11 +346,6 @@ function Home() {
       window.removeEventListener('mouseup', handleEnd);
       window.removeEventListener('touchmove', handleMove);
       window.removeEventListener('touchend', handleEnd);
-
-      // Clean up RAF on unmount
-      if (rafId.current) {
-        cancelAnimationFrame(rafId.current);
-      }
     };
   }, []); // Empty dependency array - handlers use refs
 
