@@ -2316,6 +2316,119 @@ in Motion`,
   },
 
   {
+    id: "peace-scraper",
+    title: "Peace-Scraper",
+    location: "Global",
+    type: "Skyscraper",
+    status: "Concept / Design Development",
+    area: "-",
+    description: `‘All war is a symptom of the failure of man as a thinking animal.’ The Anthropocene has witnessed prolonged periods marred with plagues and calamities. But none has been of the magnitude caused by expansionist conflicts, and identity politics. The Peace-scraper is envisaged as a vertical mixed-use development in regions most affected by wars, upcycling embodied materials and energy from militarization into living pods and community spaces for state-less migrants.`,
+    coverImage: '/assets/22.webp',
+    images: [
+      '/assets/22/1.webp',
+      '/assets/22/2.webp',
+      '/assets/22/3.webp',
+      '/assets/22/4.webp',
+      '/assets/22/5.webp',
+      '/assets/22/6.webp'
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `‘All war is a symptom of the failure of man as a thinking animal.’ The Anthropocene has witnessed prolonged periods marred with plagues and calamities. But none has been of the magnitude caused by expansionist conflicts, and identity politics. The turmoil caused by wars is unparalleled. Millions have lost their lives and millions have been forced to migrate and dwell in disarray.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Typology', value: 'Skyscraper' },
+            { label: 'Program', value: 'Peace-Scraper For Refugees In War Zones' },
+            { label: 'Award', value: 'Editor\'s Choice' },
+            { label: 'Team', value: 'Anjan Mondal, Chaitanya Goyal, Chinmay Chowdhary, Dewesh Agrawal, Kartik Misra' },
+            { label: 'Status', value: 'Concept / Design Development' },
+          ],
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Upcycling fire: The proposal calls for complete demilitarization, with the subsequent upcycling of embodied materials and weapons-grade nuclear energy to form the peace-scraper.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/22/4.webp',
+          alt: 'Peace-Scraper overview',
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: `Vertical Development`,
+          images: [
+            '/assets/22/2.webp',
+            '/assets/22/3.webp',
+          ],
+        }
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/22/1.webp',
+          alt: 'Peace-Scraper structural design',
+          heading: 'Mixed-Use Community Tower',
+          text: `The peace-scraper is envisaged as a vertical mixed-use development in regions most affected by wars. The program includes a nuclear reactor for clean energy, skill development center, school, higher education facilities, and markets. Ground-level sports activities foster community integration.`,
+        }
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/22/5.webp',
+          alt: 'Living capsules design',
+        },
+      },
+      {
+        type: 'TextRight',
+        props: {
+          text: `Living Capsules: The tower is an assimilation of pre-fabricated, modular living pods that cluster into dwelling units of varying sizes. Each unit opens to community space and features dedicated hydroponic farming areas. The peace-scraper stands as emancipator of millions, created from the very means that orphaned them of their land.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/22/6.webp',
+          alt: 'Peace-Scraper final vision',
+        },
+      },
+    ],
+  },
+
+  {
+    id: "convention-centre",
+    title: "Convention Centre",
+    coverImage: '/assets/8.webp',
+    sections: [
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/8/1.webp',
+          alt: 'Convention Centre exterior view',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/8/3.webp',
+          alt: 'Convention Centre exterior view',
+        },
+      },
+    ],
+  },
+
+  {
     id: "masterplan-projects",
     title: "Masterplan Projects",
     coverImage: '/assets/12.webp',
@@ -2331,6 +2444,49 @@ in Motion`,
     id: "house27",
     title: "House 27",
     coverImage: '/assets/27.webp',
+  },
+
+  {
+    id: "house50",
+    title: "House 50",
+    coverImage: '/assets/33.webp',
+    sections: [
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/33/1.webp',
+          alt: 'House 50 exterior view',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/33/2.webp',
+          alt: 'House 50 interior view',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/33/3.webp',
+          alt: 'House 50 interior view',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/33/4.webp',
+          alt: 'House 50 interior view',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/33/5.webp',
+          alt: 'House 50 interior view',
+        },
+      },
+    ],
   }
 
 ];
@@ -2346,7 +2502,7 @@ export const imageKeyToProject = {
   img5:  'the-crescent-studios',
   img6:  'migsun-mixed-use',
   img7:  'the-wave',
-  img8:  'noida',
+  img8:  'convention-centre',
   img9:  'inter-weave',
   img10: 'the-portal',
   img11: 'the-human-high-street',
@@ -2360,7 +2516,7 @@ export const imageKeyToProject = {
   img19: 'm3m-jacob-and-co',
   img20: 'arcadia',
   img21: 'omaxe-mall',
-  img22: 'pentagon',
+  img22: 'peace-scraper',
   img23: 'the-hex',
   img24: 'the-urban-nexus',
   img25: 'the-aurelia-villa',
@@ -2371,6 +2527,7 @@ export const imageKeyToProject = {
   img30: 'limassol-office',
   img31: 'migsun-rohini',
   img32: 'urban-square',
+  img33: "house50"
 };
 
 export default projectData;

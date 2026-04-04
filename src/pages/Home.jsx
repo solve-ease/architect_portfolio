@@ -7,7 +7,7 @@ import { imageKeyToProject } from '../data/projectData'
 const logo = '/assets/PARAFLULX_LOGO.webp'
 
 // Number of images per column (must sum to 32)
-const COLUMN_SIZES = [6, 5, 6, 5, 6, 4];
+const COLUMN_SIZES = [6, 5, 6, 5, 6, 5];
 
 function Home() {
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ function Home() {
   // Create image sets with srcSet for responsive loading
   const imageSets = useMemo(() => {
     const sets = {};
-    for (let i = 1; i <= 32; i++) {
+    for (let i = 1; i <= 33; i++) {
       sets[`img${i}`] = { mobile: `/assets/home/${i}.webp`, desktop: `/assets/home/${i}.webp` };
     }
     return sets;
