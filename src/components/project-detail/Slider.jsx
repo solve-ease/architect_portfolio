@@ -19,6 +19,10 @@ function Slider({ text = '', images = [], heading = '' }) {
   const startYRef = useRef(0)
   const startOffsetRef = useRef(0)
   const isScrollingRef = useRef(false)
+  // Ref mirrors dragOffset so handleDragEnd doesn't need dragOffset in its
+  // closure — prevents global listener teardown/re-add on every touchmove
+  // (which causes Safari to miss touchend and leave the slider stuck).
+  const dragOffsetRef = useRef(0)
 
   const paragraphs = text.trim().split('\n\n')
 
@@ -65,6 +69,7 @@ function Slider({ text = '', images = [], heading = '' }) {
     startXRef.current = clientX
     startYRef.current = clientY
     startOffsetRef.current = dragOffset
+    dragOffsetRef.current = dragOffset
   }
 
   const handleDragMove = useCallback((e) => {
@@ -93,7 +98,9 @@ function Slider({ text = '', images = [], heading = '' }) {
       e.preventDefault()
     }
 
-    setDragOffset(startOffsetRef.current + diffX)
+    const newOffset = startOffsetRef.current + diffX
+    dragOffsetRef.current = newOffset
+    setDragOffset(newOffset)
   }, [isDragging])
 
   const handleDragEnd = useCallback(() => {
@@ -105,23 +112,25 @@ function Slider({ text = '', images = [], heading = '' }) {
     const container = containerRef.current
     if (!container) {
       setDragOffset(0)
+      dragOffsetRef.current = 0
       return
     }
 
     const containerWidth = container.offsetWidth
     const threshold = containerWidth * 0.15 // 15% of container width to trigger slide
 
-    if (dragOffset < -threshold) {
+    if (dragOffsetRef.current < -threshold) {
       // Dragged left enough - go to next
       goToNext()
-    } else if (dragOffset > threshold) {
+    } else if (dragOffsetRef.current > threshold) {
       // Dragged right enough - go to prev
       goToPrev()
     } else {
       // Not enough drag - snap back
       setDragOffset(0)
     }
-  }, [isDragging, dragOffset, goToNext, goToPrev])
+    dragOffsetRef.current = 0
+  }, [isDragging, goToNext, goToPrev])
 
   // Add global mouse/touch handlers for drag outside element
   useEffect(() => {

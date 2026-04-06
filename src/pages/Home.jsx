@@ -478,8 +478,10 @@ function Home() {
                   data-chosen={clickedInfo?.key === `img${num}` ? 'true' : undefined}
                   onClick={(e) => handleLayerClick(e, `img${num}`)}
                   onTouchEnd={(e) => {
-                    // On mobile, touchend should also trigger the click
-                    if (!isDragging.current) {
+                    // didDrag is false for a tap; isDragging is still true here
+                    // (window-level handleEnd fires after this element handler)
+                    if (!didDrag.current) {
+                      e.preventDefault(); // prevent synthesized mouse click (avoids double-fire)
                       handleLayerClick(e, `img${num}`);
                     }
                   }}
