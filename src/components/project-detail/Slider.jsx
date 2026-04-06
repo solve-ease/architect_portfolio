@@ -7,165 +7,200 @@ import { useState, useRef, useEffect, useCallback } from 'react'
  * Box1 (off-screen left) | Box2 (visible - current image) | gap | Box3 (5% peek - next image)
  *
  * Dragging left moves current image to Box1, next image slides from Box3 to Box2.
+ *
+ * All drag tracking uses refs (no React state) so there are zero re-renders
+ * during a swipe. Global listeners are registered ONCE at mount and never
+ * torn down mid-gesture — this fixes Safari dropping touchend when listeners
+ * are removed/re-added on every touchmove reactrender cycle.
  */
 function Slider({ text = '', images = [], heading = '' }) {
   const [current, setCurrent] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
   const [dragOffset, setDragOffset] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [isDraggingUI, setIsDraggingUI] = useState(false) // only for cursor CSS
 
   const containerRef = useRef(null)
+  const trackRef = useRef(null)
+
+  // All drag state in refs — no re-renders during gestures
+  const isDraggingRef = useRef(false)
+  const isScrollingRef = useRef(false)
+  const isAnimatingRef = useRef(false)
   const startXRef = useRef(0)
   const startYRef = useRef(0)
   const startOffsetRef = useRef(0)
-  const isScrollingRef = useRef(false)
-  // Ref mirrors dragOffset so handleDragEnd doesn't need dragOffset in its
-  // closure — prevents global listener teardown/re-add on every touchmove
-  // (which causes Safari to miss touchend and leave the slider stuck).
   const dragOffsetRef = useRef(0)
+  const currentRef = useRef(0)
+  const imagesCountRef = useRef(images.length)
+
+  // Keep refs in sync with state
+  currentRef.current = current
+  imagesCountRef.current = images.length
+  isAnimatingRef.current = isAnimating
 
   const paragraphs = text.trim().split('\n\n')
 
-  // Calculate positions for the three-box layout
-  // Each image takes 100% of container width
-  // Gap between images is 24px
-  // Next image peeks at 5%
   const GAP = 24
   const PEEK_PERCENT = 5
 
+  // Apply transform directly to DOM — no setState, no re-render
+  const applyTrackTransform = useCallback((offset, animated) => {
+    const track = trackRef.current
+    if (!track) return
+    const c = currentRef.current
+    const slideOffset = `calc(${-c} * (100% - ${PEEK_PERCENT}% - ${GAP}px + ${GAP}px))`
+    track.style.transition = animated
+      ? 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)'
+      : 'none'
+    track.style.transform = `translateX(calc(${slideOffset} + ${offset}px))`
+  }, [])
+
   const goToNext = useCallback(() => {
-    if (isAnimating || images.length <= 1) return
+    if (isAnimatingRef.current || imagesCountRef.current <= 1) return
+    isAnimatingRef.current = true
     setIsAnimating(true)
-    setCurrent((c) => (c + 1) % images.length)
+    setCurrent((c) => {
+      const next = (c + 1) % imagesCountRef.current
+      currentRef.current = next
+      return next
+    })
+    dragOffsetRef.current = 0
     setDragOffset(0)
-  }, [isAnimating, images.length])
+  }, [])
 
   const goToPrev = useCallback(() => {
-    if (isAnimating || images.length <= 1) return
+    if (isAnimatingRef.current || imagesCountRef.current <= 1) return
+    isAnimatingRef.current = true
     setIsAnimating(true)
-    setCurrent((c) => (c - 1 + images.length) % images.length)
+    setCurrent((c) => {
+      const prev = (c - 1 + imagesCountRef.current) % imagesCountRef.current
+      currentRef.current = prev
+      return prev
+    })
+    dragOffsetRef.current = 0
     setDragOffset(0)
-  }, [isAnimating, images.length])
+  }, [])
 
   useEffect(() => {
     if (isAnimating) {
-      const timer = setTimeout(() => setIsAnimating(false), 500)
+      const timer = setTimeout(() => {
+        setIsAnimating(false)
+        isAnimatingRef.current = false
+      }, 500)
       return () => clearTimeout(timer)
     }
   }, [isAnimating])
 
-  const handleDragStart = (e) => {
-    if (isAnimating || images.length <= 1) return
-    
-    // Only prevent default for mouse events to prevent image ghost dragging 
+  // After current changes, re-apply the transform with animation
+  useEffect(() => {
+    applyTrackTransform(0, true)
+  }, [current, applyTrackTransform])
+
+  const handleDragStart = useCallback((e) => {
+    if (isAnimatingRef.current || imagesCountRef.current <= 1) return
+
     if (e.type === 'mousedown') {
       e.preventDefault()
     }
 
-    setIsDragging(true)
+    isDraggingRef.current = true
     isScrollingRef.current = false
+    setIsDraggingUI(true)
+
     const clientX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX
     const clientY = e.type === 'mousedown' ? e.clientY : e.touches[0].clientY
     startXRef.current = clientX
     startYRef.current = clientY
-    startOffsetRef.current = dragOffset
-    dragOffsetRef.current = dragOffset
-  }
+    startOffsetRef.current = dragOffsetRef.current
+  }, [])
 
   const handleDragMove = useCallback((e) => {
-    if (!isDragging) return
-    
+    if (!isDraggingRef.current) return
+
     const clientX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX
     const clientY = e.type === 'mousemove' ? e.clientY : e.touches[0].clientY
     const diffX = clientX - startXRef.current
     const diffY = clientY - startYRef.current
 
-    // If scrolling vertically, let the browser handle it and cancel our dragging
     if (e.type === 'touchmove') {
       if (!isScrollingRef.current && Math.abs(diffY) > Math.abs(diffX)) {
+        // Vertical scroll — cancel drag
         isScrollingRef.current = true
-        setIsDragging(false)
-        setDragOffset(0)
+        isDraggingRef.current = false
+        setIsDraggingUI(false)
+        dragOffsetRef.current = 0
+        applyTrackTransform(0, true)
         return
       }
       if (isScrollingRef.current) return
-      
-      // We are horizontally swiping, prevent default so Safari doesn't navigate back/forward
-      if (e.cancelable) {
-        e.preventDefault()
-      }
+      if (e.cancelable) e.preventDefault()
     } else {
       e.preventDefault()
     }
 
     const newOffset = startOffsetRef.current + diffX
     dragOffsetRef.current = newOffset
-    setDragOffset(newOffset)
-  }, [isDragging])
+    applyTrackTransform(newOffset, false)
+  }, [applyTrackTransform])
 
   const handleDragEnd = useCallback(() => {
-    if (!isDragging) return
-    setIsDragging(false)
+    if (!isDraggingRef.current) return
+    isDraggingRef.current = false
+    setIsDraggingUI(false)
 
     if (isScrollingRef.current) return
 
     const container = containerRef.current
     if (!container) {
-      setDragOffset(0)
       dragOffsetRef.current = 0
+      applyTrackTransform(0, true)
       return
     }
 
     const containerWidth = container.offsetWidth
-    const threshold = containerWidth * 0.15 // 15% of container width to trigger slide
+    const threshold = containerWidth * 0.15
 
-    if (dragOffsetRef.current < -threshold) {
-      // Dragged left enough - go to next
+    const offset = dragOffsetRef.current
+    dragOffsetRef.current = 0
+
+    if (offset < -threshold) {
       goToNext()
-    } else if (dragOffsetRef.current > threshold) {
-      // Dragged right enough - go to prev
+    } else if (offset > threshold) {
       goToPrev()
     } else {
-      // Not enough drag - snap back
-      setDragOffset(0)
+      applyTrackTransform(0, true)
     }
-    dragOffsetRef.current = 0
-  }, [isDragging, goToNext, goToPrev])
+    setDragOffset(0)
+  }, [goToNext, goToPrev, applyTrackTransform])
 
-  // Add global mouse/touch handlers for drag outside element
+  // Register ALL listeners once at mount — never torn down mid-gesture
   useEffect(() => {
-    if (isDragging) {
-      const handleGlobalMove = (e) => handleDragMove(e)
-      const handleGlobalEnd = () => handleDragEnd()
+    const carousel = containerRef.current?.querySelector('.pd-slider-carousel')
+    if (!carousel) return
 
-      window.addEventListener('mousemove', handleGlobalMove)
-      window.addEventListener('mouseup', handleGlobalEnd)
-      window.addEventListener('touchmove', handleGlobalMove, { passive: false })
-      window.addEventListener('touchend', handleGlobalEnd)
+    const preventDrag = (e) => e.preventDefault()
 
-      return () => {
-        window.removeEventListener('mousemove', handleGlobalMove)
-        window.removeEventListener('mouseup', handleGlobalEnd)
-        window.removeEventListener('touchmove', handleGlobalMove)
-        window.removeEventListener('touchend', handleGlobalEnd)
-      }
+    carousel.addEventListener('mousedown', handleDragStart, { passive: false })
+    carousel.addEventListener('touchstart', handleDragStart, { passive: true })
+    carousel.addEventListener('dragstart', preventDrag)
+
+    window.addEventListener('mousemove', handleDragMove, { passive: false })
+    window.addEventListener('mouseup', handleDragEnd, { passive: true })
+    window.addEventListener('touchmove', handleDragMove, { passive: false })
+    window.addEventListener('touchend', handleDragEnd, { passive: true })
+    window.addEventListener('touchcancel', handleDragEnd, { passive: true })
+
+    return () => {
+      carousel.removeEventListener('mousedown', handleDragStart)
+      carousel.removeEventListener('touchstart', handleDragStart)
+      carousel.removeEventListener('dragstart', preventDrag)
+      window.removeEventListener('mousemove', handleDragMove)
+      window.removeEventListener('mouseup', handleDragEnd)
+      window.removeEventListener('touchmove', handleDragMove)
+      window.removeEventListener('touchend', handleDragEnd)
+      window.removeEventListener('touchcancel', handleDragEnd)
     }
-  }, [isDragging, handleDragMove, handleDragEnd])
-
-  // Calculate the transform for the track
-  // Each slide position = -(slideWidth + gap) * index
-  // slideWidth = 100% - peekWidth - gap
-  // But we want the next image to peek by PEEK_PERCENT
-  const getTrackStyle = () => {
-    // The visible image width is (100% - peek% - gap)
-    // We translate by that amount per slide
-    const slideOffset = `calc(${-current} * (100% - ${PEEK_PERCENT}% - ${GAP}px + ${GAP}px))`
-
-    return {
-      transform: `translateX(calc(${slideOffset} + ${dragOffset}px))`,
-      transition: isDragging ? 'none' : 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)',
-    }
-  }
+  }, [handleDragStart, handleDragMove, handleDragEnd])
 
   return (
     <section className="pd-slider">
@@ -183,13 +218,15 @@ function Slider({ text = '', images = [], heading = '' }) {
             ref={containerRef}
           >
             <div
-              className={`pd-slider-carousel ${isDragging ? 'dragging' : ''}`}
-              onMouseDown={handleDragStart}
-              onTouchStart={handleDragStart}
+              className={`pd-slider-carousel ${isDraggingUI ? 'dragging' : ''}`}
             >
               <div
                 className="pd-slider-track"
-                style={getTrackStyle()}
+                ref={trackRef}
+                style={{
+                  transform: `translateX(calc(${-current} * (100% - ${PEEK_PERCENT}% - ${GAP}px + ${GAP}px) + ${dragOffset}px))`,
+                  transition: isDraggingUI ? 'none' : 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                }}
               >
                 {images.map((img, idx) => (
                   <div key={idx} className="pd-slider-slide">
