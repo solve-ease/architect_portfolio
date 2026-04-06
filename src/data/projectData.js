@@ -214,7 +214,7 @@ const projectData = [
       {
         type: 'ImageCentre',
         props: {
-          src: '/assets/home/14/1.webp',
+          src: '/assets/14/1.webp',
         },
       },
       {
