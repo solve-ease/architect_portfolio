@@ -2435,12 +2435,6 @@ in Motion`,
   },
 
   {
-    id: "crescent-high-street",
-    title: "The Crescent High Street",
-    coverImage: '/assets/29.webp',
-  },
-
-  {
     id: "house27",
     title: "House 27",
     coverImage: '/assets/27.webp',
@@ -2487,6 +2481,215 @@ in Motion`,
         },
       },
     ],
+  },
+
+  {
+    id: 'phoenix-mall',
+    title: 'Phoenix Mall – 12th Avenue',
+    location: 'Faridabad, Haryana',
+    type: 'Branded Ultra-Luxury Mall',
+    status: 'Concept / Design Development',
+    area: 'Part of a sprawling 30 acre master-planned development',
+    description: `The Phoenix is an iconic centerpiece of the 12th Avenue development, defined by sweeping, aerodynamic overhangs that mimic the expansive wingspan of a bird in mid-flight. This radical silhouette breaks the urban skyline, offering a sense of protection and grandeur while establishing a new visual language for the city's commercial core.`,
+
+    coverImage: '/assets/26.webp',
+    images: [
+      '/assets/26/1.webp',
+      '/assets/26/2.webp',
+      '/assets/26/3.webp',
+      '/assets/26/4.webp',
+      '/assets/26/5.webp',
+      '/assets/26/6.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `The Winged Silhouette Inspired by the powerful stance and rising form of the phoenix, this design serves as the iconic centerpiece of the 12th Avenue development. The architecture is defined by sweeping, aerodynamic overhangs that mimic the expansive wingspan of a bird in mid-flight. This radical silhouette breaks the urban skyline, offering a sense of protection and grandeur to the high-street below while establishing a new visual language for the city's commercial core.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'Phoenix Mall – 12th Avenue' },
+            { label: 'Typology', value: 'Branded Ultra-Luxury Mall' },
+            { label: 'Location', value: 'Faridabad, Haryana' },
+            { label: 'Program', value: 'High Street Retail' },
+            { label: 'Status', value: 'Concept / Design Development' },
+            { label: 'Site Area', value: 'Part of a sprawling 30 acre master-planned development' },
+            { label: 'Client', value: 'GPM Architects / RPS' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/26/1.webp',
+          alt: 'Phoenix Mall aerial view',
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `The Digital Plumage: Kinetic Media The "Phoenix" does not just sit in the city; it communicates with it. The curved, copper-toned structural shells function as an integrated digital skin.`,
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/26/2.webp',
+          alt: 'Phoenix Mall facade detail',
+          heading: 'The Kinetic Skin',
+          text: `These massive surfaces act as high-definition media canvases, transforming the building's "plumage" into a living display of light and motion. At night, the structure glows with a kinetic energy, blurring the lines between physical form and digital art, ensuring the mall remains a 24-hour destination of light.`,
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: `A Radical High-Street Experience Moving away from enclosed, climate-controlled interiors, The Phoenix champions a porous, outdoor-centric philosophy.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/26/3.webp',
+          alt: 'Phoenix Mall ground level plaza',
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/26/4.webp',
+          alt: 'Phoenix Mall outdoor terraces',
+          heading: 'Theatrical Promenade',
+          text: `The ground plane is an active topography of water features and reflecting pools that mirror the soaring architecture above. Deep-set, cantilevered floor plates create a series of sheltered "outdoor galleries," allowing visitors to transition seamlessly between global flagship storefronts and sun-drenched, biophilic terraces. It is a high-street reimagined as a theatrical promenade.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `The Sculptural Core The heart of the project is anchored by a stunning, vortex-like structural column—a vertical lattice of light that appears to support the weight of the "wings."`,
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: 'Architectural Elements',
+          images: [
+            '/assets/26/5.webp',
+            '/assets/26/6.webp',
+          ],
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: `This central feature creates a sense of awe at the pedestrian level, serving as a social landmark and a focal point for the surrounding retail levels. Every material choice, from the polished metallic undersides to the seamless glass envelopes, is a study in craftsmanship, making The Phoenix not just a mall, but a monument to the future of the urban experience.`,
+        },
+      },
+    ],
+  },
+
+  {
+    id: 'crescent-high-street',
+    title: 'The Crescent High Street',
+    location: 'Greater Noida, Uttar Pradesh, India',
+    type: 'High-Street Retail + Serviced Apartments',
+    status: 'Concept / Design Development',
+    area: '3 Acres',
+    description: `We wanted to create a retail experience that feels as though it was grown, not just assembled. Instead of a hard-edged commercial block, we've designed a porous, layered landscape that invites the outside in. The architecture is defined by sweeping, tactile ribbons of warm copper and glass that peel back to create deep, sheltered terraces.`,
+
+    coverImage: '/assets/29.webp',
+    images: [
+      '/assets/29/1.webp',
+      '/assets/29/2.webp',
+      '/assets/29/3.webp',
+      '/assets/29/4.webp',
+      '/assets/29/5.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `We wanted to create a retail experience that feels as though it was grown, not just assembled. Instead of a hard-edged commercial block, we've designed a porous, layered landscape that invites the outside in.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Project', value: 'The Crescent High Street' },
+            { label: 'Typology', value: 'High-Street Retail + Serviced Apartments' },
+            { label: 'Location', value: 'Greater Noida, Uttar Pradesh, India' },
+            { label: 'Program', value: '3 Floors Retail + 3 Floors Studio Apartments' },
+            { label: 'Status', value: 'Concept / Design Development' },
+            { label: 'Site Area', value: '3 Acres' },
+            { label: 'Client', value: 'Migsun Group' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/29/1.webp',
+          alt: 'The Crescent High Street exterior view',
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `The architecture is defined by sweeping, tactile ribbons of warm copper and glass that peel back to create deep, sheltered terraces.`,
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/29/2.webp',
+          alt: 'The Crescent High Street facade ribbon',
+          heading: 'Tactile Ribbons',
+          text: `Sweeping copper and glass elements peel back organically, creating a sense of movement and fluidity. These ribbons form sheltered terraces and covered promenades, offering protection while maintaining visual connection to the surrounding landscape.`,
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: `It's a design that prioritizes the 'pause'—encouraging visitors to linger under the canopy of palm trees or along the wide, sun-drenched promenades.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/29/3.webp',
+          alt: 'The Crescent High Street palm plaza',
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: 'Layered Landscape',
+          images: [
+            '/assets/29/4.webp',
+            '/assets/29/5.webp',
+          ],
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `This isn't just a place to shop; it's a series of crafted moments where the textures of the city meet the softness of nature. The crescent form embraces visitors, creating intimate public spaces that encourage lingering and connection.`,
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/29/1.webp',
+          alt: 'The Crescent High Street retail experience',
+          heading: 'Grown, Not Assembled',
+          text: `The seamless integration of retail, apartments, and landscape creates a living, breathing ecosystem. The design fosters organic movement through interconnected spaces, inviting community engagement and creating memorable retail and residential experiences.`,
+        },
+      },
+    ],
   }
 
 ];
@@ -2515,12 +2718,12 @@ export const imageKeyToProject = {
   img18: 'the-kinetic-ribbon',
   img19: 'm3m-jacob-and-co',
   img20: 'arcadia',
-  img21: 'omaxe-mall',
+  img21: 'noida-one',
   img22: 'peace-scraper',
   img23: 'the-hex',
   img24: 'the-urban-nexus',
   img25: 'the-aurelia-villa',
-  img26: 'evolo',
+  img26: 'phoenix-mall',
   img27: 'house27',
   img28: 'm3m',
   img29: 'crescent-high-street',
