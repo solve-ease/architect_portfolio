@@ -256,7 +256,7 @@ function Home() {
       const maxOffsetX = isSmallScreen ? viewportWidth * 2.0 : viewportWidth * 1.5;
       const minOffsetX = isSmallScreen ? -viewportWidth * 2.0 : -viewportWidth * 1.5;
       const maxOffsetY = viewportHeight * 0.9;
-      const minOffsetY = -viewportHeight * 1.0;
+      const minOffsetY = -viewportHeight * 0.9;
 
       if (isDragging.current) {
         // Softly clamp target to prevent dragging too far off screen

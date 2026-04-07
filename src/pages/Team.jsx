@@ -20,7 +20,7 @@ function Team() {
     {
       id: 3,
       name: 'Mohammed Faisal Rais',
-      position: 'Project Architect',
+      position: 'Lead Architect',
       languages: 'B. Arch',
       image: '/team/faizal.webp'
     },
@@ -41,7 +41,7 @@ function Team() {
     {
       id: 6,
       name: 'Anika Jain',
-      position: 'Interior Designer',
+      position: 'Creative Director',
       languages: 'M. Des | GSA, GLASGOW',
       image: '/team/anika.webp'
     },

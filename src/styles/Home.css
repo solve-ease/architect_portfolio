@@ -1,8 +1,6 @@
 .main-content {
   width: 100%;
   height: 100vh;
-  height: 100vh;
-  height: 100dvh;
   height: 100dvh;
   display: flex;
   justify-content: center;
@@ -81,8 +79,8 @@
 
 .fx-layer {
   transform-style: preserve-3d;
-  width: 375px;
-  height: 281px;
+  width: 450px;
+  height: 337px;
   /* border-radius: 12px; */
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -204,8 +202,8 @@
   }
 
   .fx-layer {
-    width: 313px;
-    height: 235px;
+    width: 376px;
+    height: 282px;
   }
 
   .fx-3d-scene {
@@ -224,8 +222,8 @@
   }
 
   .fx-layer {
-    width: 225px;
-    height: 169px;
+    width: 270px;
+    height: 203px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
 
@@ -249,8 +247,8 @@
   }
 
   .fx-layer {
-    width: 188px;
-    height: 141px;
+    width: 226px;
+    height: 169px;
   }
 
   .hero-logo {
