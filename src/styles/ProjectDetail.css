@@ -144,7 +144,7 @@
 }
 
 .pd-hero-title {
-  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  font-size: clamp(2rem, 5vw, 4.2rem);
   font-weight: 300;
   letter-spacing: -0.01em;
   line-height: 1.0;
@@ -248,7 +248,7 @@
 }
 
 .pd-lead {
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
   line-height: 1.65;
   font-weight: 300;
   color: #111;
@@ -454,9 +454,21 @@
     padding: 0 24px 48px;
   }
 
+  .pd-hero-title {
+    font-size: clamp(1.6rem, 4.5vw, 3rem);
+  }
+
   .pd-info-item {
     flex: 1 1 120px;
     padding: 20px 20px;
+  }
+
+  .pd-info-label {
+    font-size: 0.8rem;
+  }
+
+  .pd-info-value {
+    font-size: 0.85rem;
   }
 
   .pd-intro-text {

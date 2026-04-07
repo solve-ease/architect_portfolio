@@ -1,7 +1,7 @@
 /* ── Shared utilities ───────────────────────────────────────────────────── */
 
 .pd-lead {
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
   line-height: 1.65;
   font-weight: 300;
   color: #111;
@@ -9,7 +9,7 @@
 }
 
 .pd-section-heading {
-  font-size: clamp(1.8rem, 5vw, 4.6rem);
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.14em;
@@ -44,14 +44,14 @@
 }
 
 .pd-keyinfo-label {
-  font-size: 1.12rem;
+  font-size: 0.95rem;
   letter-spacing: 0.18em;
    
   color: #888;
 }
 
 .pd-keyinfo-value {
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: #111;
   letter-spacing: 0.02em;
@@ -113,7 +113,7 @@
 }
 
 .pd-slider-heading {
-  font-size: clamp(1.8rem, 5vw, 4.15rem);
+  font-size: clamp(1.5rem, 4vw, 3.2rem);
   font-weight: 400;
   letter-spacing: 0.01em;
    
@@ -122,7 +122,7 @@
 }
 
 .pd-slider-body {
-  font-size: clamp(1.0rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
   line-height: 1.7;
   font-weight: 300;
   color: #111;
@@ -240,7 +240,7 @@
 }
 
 .pd-text-right-content p.pd-lead {
-  font-size: clamp(2.05rem, 2.6vw, 2.3rem);
+  font-size: clamp(1.6rem, 2.2vw, 1.85rem);
   line-height: 1.65;
   font-weight: 300;
   color: #111;
@@ -296,7 +296,7 @@
 }
 
 .pd-img-left-text-right-text p.pd-lead {
-  font-size: clamp(1.5rem, 2.1vw, 1.8rem);
+  font-size: clamp(1.3rem, 1.8vw, 1.55rem);
   line-height: 1.65;
   font-weight: 300;
   color: #111;
@@ -318,7 +318,7 @@
 }
 
 .pd-heading-right-title {
-  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
   font-weight: 300;
   letter-spacing: -0.01em;
   line-height: 1.3;
@@ -384,7 +384,7 @@
 }
 
 .pd-heading-left-title {
-  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
   font-weight: 300;
   letter-spacing: -0.01em;
   line-height: 1.3;
@@ -442,7 +442,7 @@
 }
 
 .pd-image-centre-heading-title {
-  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
   font-weight: 300;
   letter-spacing: -0.01em;
   line-height: 1.08;
@@ -531,48 +531,48 @@
 @media (max-width: 768px) {
   /* Font sizing reductions for tablet/mobile */
   .pd-lead {
-    font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+    font-size: clamp(0.8rem, 1.4vw, 1.05rem);
   }
 
   .pd-section-heading {
-    font-size: clamp(1.3rem, 5vw, 3rem);
+    font-size: clamp(1.1rem, 4vw, 2.4rem);
   }
 
   .pd-slider-heading {
-    font-size: clamp(1.3rem, 5vw, 3rem);
+    font-size: clamp(1.1rem, 4vw, 2.4rem);
   }
 
   .pd-slider-body {
-    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-size: clamp(0.75rem, 1.3vw, 0.9rem);
   }
 
   .pd-heading-right-title,
   .pd-heading-left-title {
-    font-size: clamp(1.3rem, 4.5vw, 2.8rem);
+    font-size: clamp(1.1rem, 3.5vw, 2.2rem);
   }
 
   .pd-text-right-heading {
-    font-size: clamp(0.9rem, 1.4vw, 1rem);
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
   }
 
   .pd-text-right-content p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .pd-text-right-content p.pd-lead {
-    font-size: clamp(1.7rem, 2.6vw, 2.1rem);
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
   }
 
   .pd-img-left-text-right-text p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .pd-img-left-text-right-text p.pd-lead {
-    font-size: clamp(1.2rem, 2.1vw, 1.6rem);
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
   }
 
   .pd-image-centre-heading-title {
-    font-size: clamp(1.4rem, 4.5vw, 3rem);
+    font-size: clamp(1.1rem, 3.5vw, 2.2rem);
   }
 
   /* Text centering for mobile/tablet */
