@@ -1,10 +1,8 @@
 .projects-root {
   width: 100%;
   min-height: 100vh;
-  min-height: 100vh;
-  height: 100dvh;
   background-color: white;
-  padding: 80px 40px 60px;
+  padding: 20px 40px 60px;
 }
 
 /* Header Section */
@@ -171,7 +169,7 @@
 /* Tablet Responsive */
 @media (max-width: 1024px) {
   .projects-root {
-    padding: 60px 30px 50px;
+    padding: 30px 30px 50px;
   }
 
   .projects-header {
@@ -201,7 +199,7 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .projects-root {
-    padding: 50px 20px 40px;
+    padding: 15px 20px 40px;
   }
 
   .projects-header {
@@ -240,7 +238,7 @@
 /* Small Mobile Responsive */
 @media (max-width: 480px) {
   .projects-root {
-    padding: 40px 15px 30px;
+    padding: 0px 15px 30px;
   }
 
   .projects-title {

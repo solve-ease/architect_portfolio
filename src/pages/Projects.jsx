@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import projectData from '../data/projectData'
 import '../styles/Projects.css'
+import Navbar from '../components/Navbar'
 
 function Projects() {
   const navigate = useNavigate()
@@ -11,6 +12,7 @@ function Projects() {
 
   return (
     <div className="projects-root">
+      <Navbar />
       {/* Header Section */}
       <section className="projects-header">
         <h1 className="projects-title">Our Projects</h1>

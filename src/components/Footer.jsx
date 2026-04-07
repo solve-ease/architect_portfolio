@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../styles/Footer.css'
 const logo = '/assets/logo_white.webp'
-import { FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 function Footer() {
   return (
@@ -21,9 +21,8 @@ function Footer() {
               <a href="https://www.instagram.com/theparaflux/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <FaInstagram />
               </a>
-
-              <a href="https://www.instagram.com/theparaflux/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <FaInstagram />
+              <a href="https://www.youtube.com/@Theparafluxarchitects" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <FaYoutube />
               </a>
             </div>
           </div>
