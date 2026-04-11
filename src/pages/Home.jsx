@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, useMemo, useCallback } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Home.css'
 import { imageKeyToProject } from '../data/projectData'
@@ -8,6 +8,47 @@ const logo = '/assets/PARAFLULX_LOGO.webp'
 
 // Number of images per column (must sum to 32)
 const COLUMN_SIZES = [6, 5, 6, 5, 6, 5];
+
+// Column Y offsets must match the CSS final translateY values for each column
+const COLUMN_Y_OFFSETS = [-122.5, -150, -100, -57.5, -50, -187.5];
+
+// Static image map — defined outside component so the reference never changes
+const imageSets = (() => {
+  const sets = {};
+  for (let i = 1; i <= 33; i++) {
+    sets[`img${i}`] = { mobile: `/assets/home/${i}.webp`, desktop: `/assets/home/${i}.webp` };
+  }
+  return sets;
+})();
+
+// Group images into columns — static, computed once at module level
+const columns = (() => {
+  const cols = [];
+  let idx = 1;
+  for (const size of COLUMN_SIZES) {
+    const col = [];
+    for (let i = 0; i < size; i++) col.push(idx++);
+    cols.push(col);
+  }
+  return cols;
+})();
+
+// Defined at module level so React never treats it as a new component type on re-render,
+// which would cause images to unmount/remount (and reload) every time offset/zoom state updates.
+const ResponsiveImage = ({ imageKey, alt, priority = false }) => (
+  <picture>
+    <source
+      media="(max-width: 1000px)"
+      srcSet={imageSets[imageKey].mobile}
+    />
+    <img
+      src={imageSets[imageKey].desktop}
+      alt={alt}
+      fetchPriority={priority ? 'high' : 'auto'}
+      decoding="async"
+    />
+  </picture>
+);
 
 function Home() {
   const navigate = useNavigate();
@@ -65,46 +106,8 @@ function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Create image sets with srcSet for responsive loading
-  const imageSets = useMemo(() => {
-    const sets = {};
-    for (let i = 1; i <= 33; i++) {
-      sets[`img${i}`] = { mobile: `/assets/home/${i}.webp`, desktop: `/assets/home/${i}.webp` };
-    }
-    return sets;
-  }, []);
-
-  // Group images into columns per COLUMN_SIZES
-  const columns = useMemo(() => {
-    const cols = [];
-    let idx = 1;
-    for (const size of COLUMN_SIZES) {
-      const col = [];
-      for (let i = 0; i < size; i++) col.push(idx++);
-      cols.push(col);
-    }
-    return cols;
-  }, []);
-
-  // Helper component for responsive images with picture element
-  const ResponsiveImage = ({ imageKey, alt, priority = false }) => (
-    <picture>
-      <source 
-        media="(max-width: 1000px)" 
-        srcSet={imageSets[imageKey].mobile}
-      />
-      <img 
-        src={imageSets[imageKey].desktop}
-        alt={alt}
-        fetchPriority={priority ? "high" : "auto"}
-        decoding="async"
-      />
-    </picture>
-  );
 
   // Skip fly-in animation when returning from project detail — set final state before paint
-  // Column Y offsets must match the CSS @keyframes fx-fly-in-offset1 … offset7 final translateY values
- const COLUMN_Y_OFFSETS = useMemo(() => [-122.5, -150, -100, -57.5, -50, -187.5], []);
 
   useLayoutEffect(() => {
     if (!skipIntro) return;
@@ -122,7 +125,7 @@ function Home() {
       layer.style.animation = 'none';
       layer.style.animationPlayState = 'running'; // Ensure running state
     });
-  }, [skipIntro, COLUMN_Y_OFFSETS]);
+  }, [skipIntro]);
 
   // Random animation delays + lock in final state after fly-in so CSS transitions work
   useEffect(() => {
