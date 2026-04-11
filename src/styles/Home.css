@@ -97,18 +97,20 @@
   /* Delay set via JavaScript based on index */
 
   /* Return transition: smoothly fades back in after panel is closed */
-  transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease, box-shadow 0.3s ease, scale 0.3s ease;
   pointer-events: auto;
 
   /* Enable GPU acceleration for better mobile performance */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+
 }
 
 .fx-layer:hover {
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
   z-index: 10;
   pointer-events: auto;
+  scale: 1.01;
 }
 
 .fx-layer img {
