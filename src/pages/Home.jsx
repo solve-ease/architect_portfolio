@@ -63,23 +63,33 @@ function Home() {
   const [skipIntro] = useState(() => {
     return sessionStorage.getItem('homeVisited') === 'true';
   });
-  const [offset, setOffset] = useState(() => {
+
+  // Refs are the single source of truth for offset/zoom — rAF owns all DOM writes.
+  // React state is only used as a one-time initializer from sessionStorage.
+  const offsetRef = useRef(() => {
     const saved = sessionStorage.getItem('homeOffset');
     return saved ? JSON.parse(saved) : { x: 0, y: 0 };
   });
-  const [zoom, setZoom] = useState(() => {
+  if (typeof offsetRef.current === 'function') offsetRef.current = offsetRef.current();
+  const zoomRef = useRef(() => {
     const saved = sessionStorage.getItem('homeZoom');
     return saved ? parseFloat(saved) : 1;
   });
-
-  // Refs to access current offset/zoom in callbacks without stale closures
-  const offsetRef = useRef(offset);
-  offsetRef.current = offset;
-  const zoomRef = useRef(zoom);
-  zoomRef.current = zoom;
+  if (typeof zoomRef.current === 'function') zoomRef.current = zoomRef.current();
 
   const [isMobile, setIsMobile] = useState(false);
   const rafId = useRef(null);
+
+  // Initialize world and logo transforms from refs before first paint,
+  // so the DOM is never controlled by React state — only the rAF loop.
+  useLayoutEffect(() => {
+    if (worldRef.current) {
+      worldRef.current.style.transform = `translate3d(${offsetRef.current.x}px, ${offsetRef.current.y}px, 0) scale(${zoomRef.current})`;
+    }
+    if (logoRef.current) {
+      logoRef.current.style.transform = `translate(calc(-50% + ${offsetRef.current.x * 0.25}px), calc(-50% + ${offsetRef.current.y * 0.25}px)) translateZ(-400px)`;
+    }
+  }, []);
 
   // Clicked image info — set on click, triggers dismiss animation for all others
   const [clickedInfo, setClickedInfo] = useState(null); // { key, src, rect, projectId }
@@ -205,8 +215,10 @@ function Home() {
       if (sceneRef.current) {
         sceneRef.current.style.cursor = 'grabbing';
       }
-      if (worldRef.current) {
-        worldRef.current.style.willChange = 'transform';
+
+      // Restart the loop if it stopped while the world was settled
+      if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(physicsLoop);
       }
     };
 
@@ -235,9 +247,6 @@ function Home() {
     const handleEnd = () => {
       isDragging.current = false;
 
-      // Update React state once at the end
-      setOffset({ x: physics.position.x, y: physics.position.y });
-
       if (sceneRef.current) {
         sceneRef.current.style.cursor = 'grab';
       }
@@ -248,11 +257,11 @@ function Home() {
       }, 50);
     };
 
-    // The animation loop that runs continuously decoupled from input
+    // The animation loop — self-suspends when world is settled, restarts on next drag
     const physicsLoop = () => {
       if (!worldRef.current) return;
 
-      // Calculate boundaries based on viewport and grid size
+      // Cache viewport once per frame (not on every read)
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       const isSmallScreen = viewportWidth < 768;
@@ -295,16 +304,16 @@ function Home() {
         physics.target.y = physics.position.y;
       }
 
-      // Small threshold to avoid updating DOM when fully settled
-      if (
-        isDragging.current || 
-        Math.abs(physics.velocity.x) > 0.05 || 
+      const isActive =
+        isDragging.current ||
+        Math.abs(physics.velocity.x) > 0.05 ||
         Math.abs(physics.velocity.y) > 0.05 ||
         physics.position.x > maxOffsetX + 0.5 ||
         physics.position.x < minOffsetX - 0.5 ||
         physics.position.y > maxOffsetY + 0.5 ||
-        physics.position.y < minOffsetY - 0.5 
-      ) {
+        physics.position.y < minOffsetY - 0.5;
+
+      if (isActive) {
         worldRef.current.style.transform = `translate3d(${physics.position.x}px, ${physics.position.y}px, 0) scale(${zoomRef.current})`;
 
         if (logoRef.current) {
@@ -312,9 +321,13 @@ function Home() {
         }
 
         offsetRef.current = { x: physics.position.x, y: physics.position.y };
-      }
 
-      animationFrameId = requestAnimationFrame(physicsLoop);
+        // Continue loop while active
+        animationFrameId = requestAnimationFrame(physicsLoop);
+      } else {
+        // World has settled — stop the loop to free up CPU/GPU for other animations
+        animationFrameId = null;
+      }
     };
 
     animationFrameId = requestAnimationFrame(physicsLoop);
@@ -371,13 +384,10 @@ function Home() {
         // Update ref
         zoomRef.current = newZoom;
 
-        // Apply directly to DOM
+        // Apply directly to DOM — never via React state to avoid stale-offset re-renders
         if (worldRef.current) {
           worldRef.current.style.transform = `translate3d(${offsetRef.current.x}px, ${offsetRef.current.y}px, 0) scale(${newZoom})`;
         }
-
-        // Update React state (throttled - only for persistence)
-        setZoom(newZoom);
       });
     };
 
@@ -468,9 +478,6 @@ function Home() {
         <div
           className={`fx-3d-world fx-grid${clickedInfo ? ' fx-world-dismissing' : ''}`}
           ref={worldRef}
-          style={{
-            transform: `translate3d(${offset.x}px, ${offset.y}px, 0) scale(${zoom})`
-          }}
         >
           {columns.map((colItems, colIdx) => (
             <div key={`col${colIdx}`} className="fx-col">
@@ -500,9 +507,6 @@ function Home() {
       <div
         className="hero-title-wrapper"
         ref={logoRef}
-        style={{
-          transform: `translate(calc(-50% + ${offset.x * 0.25}px), calc(-50% + ${offset.y * 0.25}px)) translateZ(-400px)`
-        }}
       >
         <img src={logo} alt="Paraflux" className="hero-logo" />
       </div>

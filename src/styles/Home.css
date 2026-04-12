@@ -38,12 +38,10 @@
   inset: 0;
   transform-style: preserve-3d;
   user-select: none;
-  /* Enable GPU acceleration */
+  /* Permanently promote to GPU compositor layer for jank-free rAF updates */
+  will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  /* Smooth dragging on mobile */
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
   pointer-events: none;
 }
 
@@ -97,7 +95,7 @@
   /* Delay set via JavaScript based on index */
 
   /* Return transition: smoothly fades back in after panel is closed */
-  transition: opacity 0.6s ease, box-shadow 0.3s ease, scale 0.3s ease;
+  transition: opacity 0.6s ease, box-shadow 0.3s ease, transform 0.3s ease;
   pointer-events: auto;
 
   /* Enable GPU acceleration for better mobile performance */
@@ -110,7 +108,7 @@
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
   z-index: 10;
   pointer-events: auto;
-  scale: 1.01;
+  transform: translateZ(0) scale(1.01);
 }
 
 .fx-layer img {
