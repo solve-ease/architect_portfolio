@@ -1546,6 +1546,27 @@ in Motion`,
               ],
             },
           },
+          {
+            type: 'ImageCentre',
+            props: {
+              src: '/assets/2/1.webp',
+              alt: 'Noida One view 1',
+            },
+          },
+          {
+            type: 'ImageCentre',
+            props: {
+              src: '/assets/2/2.webp',
+              alt: 'Noida One view 2',
+            },
+          },
+          {
+            type: 'ImageCentre',
+            props: {
+              src: '/assets/2/3.webp',
+              alt: 'Noida One view 3',
+            },
+          },
         ]
   },
 
@@ -1557,6 +1578,29 @@ in Motion`,
     // type: 'Commercial',
     // status: 'Concept / Design Development',
     // area: '15,000 m²',
+    sections: [
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/4/1.webp',
+          alt: 'Bachelor Pad view 1',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/4/2.webp',
+          alt: 'Bachelor Pad view 2',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/4/3.webp',
+          alt: 'Bachelor Pad view 3',
+        },
+      },
+    ],
   },
 
   {
@@ -2432,12 +2476,79 @@ in Motion`,
     id: "masterplan-projects",
     title: "Masterplan Projects",
     coverImage: '/assets/12.webp',
+    sections: [
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/12/1.webp',
+          alt: 'Masterplan Projects view 1',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/12/2.webp',
+          alt: 'Masterplan Projects view 2',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/12/3.webp',
+          alt: 'Masterplan Projects view 3',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/12/4.webp',
+          alt: 'Masterplan Projects view 4',
+        },
+      },
+    ],
   },
 
   {
     id: "house27",
     title: "House 27",
     coverImage: '/assets/27.webp',
+    sections: [
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/27/1.webp',
+          alt: 'House 27 view 1',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/27/2.webp',
+          alt: 'House 27 view 2',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/27/3.webp',
+          alt: 'House 27 view 3',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/27/4.webp',
+          alt: 'House 27 view 4',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/27/5.webp',
+          alt: 'House 27 view 5',
+        },
+      },
+    ],
   },
 
   {
@@ -2714,11 +2825,11 @@ export const imageKeyToProject = {
   img14: 'cascade',
   img15: 'gpm-retail',
   img16: 'pathcare-research-campus',
-  img17: 'migsun-lucknow',
+  img17: 'noida-one',
   img18: 'the-kinetic-ribbon',
   img19: 'm3m-jacob-and-co',
   img20: 'arcadia',
-  img21: 'noida-one',
+  img21: '',
   img22: 'peace-scraper',
   img23: 'the-hex',
   img24: 'the-urban-nexus',
