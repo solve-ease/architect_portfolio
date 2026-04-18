@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import '../styles/About.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -24,8 +24,14 @@ const clientLogos = [
   // '/about-assets/clients/_.jpg',
 ]
 
+const clientSlideGroups = [
+  clientLogos.slice(0, 6),
+  clientLogos.slice(6, 12),
+]
+
 function About() {
   const containerRef = useRef(null)
+  const [clientSlide, setClientSlide] = useState(0)
 
   const milestones = [
     {
@@ -56,12 +62,20 @@ the urban landscape and enhance the lives of individuals and communities through
     {
       title: "Our Clients",
       subtitle: "TRUSTED BY LEADING ORGANIZATIONS",
+      content: `We have had the privilege of collaborating with leading organizations across diverse sectors. Our client portfolio reflects our commitment to excellence and our ability to deliver transformative architectural solutions. From educational institutions to real estate developers, our clients trust us to bring their visions to life with innovation, precision, and sustainability.`,
       isClientsSection: true
     }
   ]
 
   useEffect(() => {
     // Relying on native CSS scroll-snap for better Safari and mobile compatibility
+  }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setClientSlide(prev => (prev + 1) % clientSlideGroups.length)
+    }, 2000)
+    return () => clearInterval(timer)
   }, [])
 
   return (
@@ -75,19 +89,41 @@ the urban landscape and enhance the lives of individuals and communities through
               </div>
             )}
             {milestone.isClientsSection ? (
-              <div className="clients-section">
-                <div className="clients-header">
-                  <h1>{milestone.title}</h1>
-                  <h2>{milestone.subtitle}</h2>
+              <>
+                <div className="about-image-section clients-slideshow-section">
+                  <div className="clients-slideshow">
+                    {clientSlideGroups.map((group, slideIdx) => (
+                      <div
+                        key={slideIdx}
+                        className={`clients-slide-group${slideIdx === clientSlide ? ' active' : ''}`}
+                      >
+                        {group.map((logo, idx) => (
+                          <div key={idx} className="client-logo-card">
+                            <img src={logo} alt={`Client logo ${idx + 1}`} />
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="clients-slide-dots">
+                    {clientSlideGroups.map((_, dotIdx) => (
+                      <button
+                        key={dotIdx}
+                        className={`slide-dot${dotIdx === clientSlide ? ' active' : ''}`}
+                        onClick={() => setClientSlide(dotIdx)}
+                        aria-label={`Go to slide ${dotIdx + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div className="clients-collage">
-                  {clientLogos.map((logo, idx) => (
-                    <div key={idx} className="client-logo-item">
-                      <img src={logo} alt={`Client ${idx + 1}`} />
-                    </div>
-                  ))}
+                <div className="about-content-section">
+                  <div className="about-content-wrapper">
+                    <h1>{milestone.title}</h1>
+                    <h2>{milestone.subtitle}</h2>
+                    {milestone.content && <p>{milestone.content}</p>}
+                  </div>
                 </div>
-              </div>
+              </>
             ) : (
               <>
                 <div className="about-image-section">
