@@ -509,6 +509,124 @@ in Motion`,
   },
 
   {
+    id: 'strata-center',
+    title: 'Strata Center',
+    location: 'Lucknow, Uttar Pradesh, India',
+    type: 'Mixed-Use Development',
+    status: 'Concept / Design Development',
+    area: '23,314.6 Sq.mt',
+    description: `Strata Center is a dual-block mixed-use development in Lucknow featuring two mirrored 14-story towers — one a premium hotel, the other luxury studio apartments — linked by a dramatic sky-bridge that forms a grand urban window. The base activates the street with High Street Retail and an Ultra-Luxury Mall experience, while a central public plaza beneath a multi-story atrium serves as the social spine of the development.`,
+    coverImage: '/assets/15.webp',
+    images: [
+      '/assets/15/1.webp',
+      '/assets/15/2.webp',
+      '/assets/15/3.webp',
+      '/assets/15/4.webp',
+      '/assets/15/5.webp',
+      '/assets/15/6.webp',
+      '/assets/15/7.webp',
+      '/assets/15/8.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `Strata Center is a dual-block mixed-use development in Lucknow featuring two mirrored 14-story towers — one a premium hotel, the other luxury studio apartments — linked by a dramatic sky-bridge that forms a grand urban window. The base activates the street with High Street Retail and an Ultra-Luxury Mall experience, while a central public plaza beneath a multi-story atrium serves as the social spine of the development.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Location', value: 'Lucknow, Uttar Pradesh, India' },
+            { label: 'Site Area', value: '23,314.6 Sq.mt' },
+            { label: 'Client', value: 'Migsun' },
+            { label: 'Status', value: 'Concept / Design Development' },
+            { label: 'Typology', value: 'Mixed-Use Development' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/15/1.webp',
+          alt: 'Strata Center exterior view',
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Two distinct yet mirrored towers rise in a synchronized curve, physically and conceptually linked by a dramatic sky-bridge — creating a grand urban window and exclusive viewing decks at the confluence of hotel and residence.`,
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/15/2.webp',
+          alt: 'Strata Center dual-block design',
+          heading: 'Architectural\n Synergy',
+          text: `The project features two distinct yet mirrored towers — one dedicated to a premium hotel and the other to luxury studio apartments. These 14-story blocks rise in a synchronized curve, physically and conceptually linked by a dramatic sky-bridge. This bridge creates a grand "urban window," allowing for a multi-level transition between the hospitality and residential wings while offering exclusive viewing decks.`,
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: `Vertical Integration`,
+          images: [
+            '/assets/15/3.webp',
+            '/assets/15/4.webp',
+          ],
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          subtext: 'The Program',
+          heading: `Ground Floor Activation anchors the development with High Street Retail, creating a vibrant pedestrian experience and an Ultra-Luxury Mall atmosphere at street level.`,
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/15/5.webp',
+          alt: 'Strata Center public plaza and atrium',
+          heading: 'The Social\n Core',
+          text: `At the heart of the development is a central public plaza positioned beneath a multi-story atrium. This space acts as a "social spine," encouraging public movement and creating a vibrant gathering hub. The Hotel Wing occupies the upper levels of one block, providing world-class suites with panoramic city views, while the Studio Wing offers modern, open-plan apartments designed for urban professionals and integrated with smart living technology.`,
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Cascading hanging gardens and landscaped terraces wrap the building's curved ribs — acting as natural air filters and providing private outdoor retreats for both hotel guests and residents.`,
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: `Biophilic Design`,
+          images: [
+            '/assets/15/6.webp',
+            '/assets/15/7.webp',
+          ],
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          heading: `The cantilevered floor plates serve as aerodynamic shading, reducing solar heat gain while maintaining the high-performance glass facade's transparency — a synthesis of performance and elegance.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/15/8.webp',
+          alt: 'Strata Center facade detail',
+        },
+      },
+    ],
+  },
+
+  {
     id: 'the-studio',
     title: 'The Studio',
     location: 'Noida, UP',
@@ -1079,12 +1197,12 @@ in Motion`,
 
   {
     id: 'the-wave',
-    title: 'THE Wave',
+    title: 'The Wave',
     location: 'Lucknow, Uttar Pradesh',
     type: 'High-Street Retail + Serviced Apartments',
     status: 'Concept / Design Development',
     area: '4 Acres',
-    description: `THE Wave is a celebration of fluid dynamics frozen in architecture. Defined by its seamless continuity of form, the design reimagines the traditional high-street retail and residential tower typology through a language of curves, rhythm, and flow. The building does not sit static on its site—it moves, undulates, and breathes, creating a visual spectacle that feels as much like a sculpture as it does a piece of functional architecture.`,
+    description: `The Wave is a celebration of fluid dynamics frozen in architecture. Defined by its seamless continuity of form, the design reimagines the traditional high-street retail and residential tower typology through a language of curves, rhythm, and flow. The building does not sit static on its site—it moves, undulates, and breathes, creating a visual spectacle that feels as much like a sculpture as it does a piece of functional architecture.`,
 
     coverImage: '/assets/7.webp',
     images: [
@@ -1098,14 +1216,14 @@ in Motion`,
       {
         type: 'TextRight',
         props: {
-          text: `THE Wave is a celebration of fluid dynamics frozen in architecture. Defined by its seamless continuity of form, the design reimagines the traditional high-street retail and residential tower typology through a language of curves, rhythm, and flow. The building does not sit static on its site—it moves, undulates, and breathes, creating a visual spectacle that feels as much like a sculpture as it does a piece of functional architecture.`,
+          text: `The Wave is a celebration of fluid dynamics frozen in architecture. Defined by its seamless continuity of form, the design reimagines the traditional high-street retail and residential tower typology through a language of curves, rhythm, and flow. The building does not sit static on its site—it moves, undulates, and breathes, creating a visual spectacle that feels as much like a sculpture as it does a piece of functional architecture.`,
         },
       },
       {
         type: 'KeyInfo',
         props: {
           items: [
-            { label: 'Project', value: 'THE Wave' },
+            { label: 'Project', value: 'The Wave' },
             { label: 'Typology', value: 'High-Street Retail + Serviced Apartments' },
             { label: 'Location', value: 'Lucknow, Uttar Pradesh' },
             { label: 'Program', value: '4 Floors Retail + 30 Floors Studio Apartments' },
@@ -1119,7 +1237,7 @@ in Motion`,
         type: 'ImageCentre',
         props: {
           src: '/assets/7/2.webp',
-          alt: 'THE Wave exterior view',
+          alt: 'The Wave exterior view',
         },
       },
       {
@@ -1133,22 +1251,22 @@ in Motion`,
         type: 'ImageLeftTextRight',
         props: {
           src: '/assets/7/3.webp',
-          alt: 'THE Wave facade detail',
+          alt: 'The Wave facade detail',
           heading: 'Rhythm in Motion',
-          text: `The defining gesture of THE Wave is its undulating facade—a continuous surface that curves and flows with deliberate intention, creating a visual rhythm that runs across the building is height and length. Unlike conventional towers that prioritize verticality, THE Wave balances horizontal and vertical movement. The horizontal lines, expressed through elongated balconies and cantilevered floor plates, create a sense of forward momentum, as if the building is perpetually in motion.`,
+          text: `The defining gesture of The Wave is its undulating facade—a continuous surface that curves and flows with deliberate intention, creating a visual rhythm that runs across the building is height and length. Unlike conventional towers that prioritize verticality, The Wave balances horizontal and vertical movement. The horizontal lines, expressed through elongated balconies and cantilevered floor plates, create a sense of forward momentum, as if the building is perpetually in motion.`,
         },
       },
       {
         type: 'HeadingRight',
         props: {
-          heading: `The facade is not just sculptural—it is performative. By stepping and curving the building envelope, THE Wave creates deep, shaded balconies and overhangs that provide natural climate control.`,
+          heading: `The facade is not just sculptural—it is performative. By stepping and curving the building envelope, The Wave creates deep, shaded balconies and overhangs that provide natural climate control.`,
         },
       },
       {
         type: 'ImageCentre',
         props: {
           src: '/assets/7/4.webp',
-          alt: 'THE Wave climate responsive design',
+          alt: 'The Wave climate responsive design',
         },
       },
       {
@@ -1161,7 +1279,7 @@ in Motion`,
         type: 'ImageRight',
         props: {
           src: '/assets/7/5.webp',
-          alt: 'THE Wave residential tower',
+          alt: 'The Wave residential tower',
         },
       },
       {
@@ -2509,6 +2627,107 @@ in Motion`,
   },
 
   {
+    id: "white-house",
+    title: "The White House",
+    coverImage: '/assets/6.webp',
+    sections: [
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/6/1.webp',
+          alt: 'The White House view 1',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/6/2.webp',
+          alt: 'The White House view 2',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/6/3.webp',
+          alt: 'The White House view 3',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/6/4.webp',
+          alt: 'The White House view 4',
+        },
+      },
+    ],
+  },
+
+
+  {
+    id: "pinaccle",
+    title: "M3M X GPM Pinaccle",
+    coverImage: '/assets/21.webp',
+    sections: [
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/21/1.webp',
+          alt: 'M3M X GPM Pinaccle view 1',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/21/2.webp',
+          alt: 'M3M X GPM Pinaccle view 2',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/21/3.webp',
+          alt: 'M3M X GPM Pinaccle view 3',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/21/4.webp',
+          alt: 'M3M X GPM Pinaccle view 4',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/21/5.webp',
+          alt: 'M3M X GPM Pinaccle view 5',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/21/6.webp',
+          alt: 'M3M X GPM Pinaccle view 6',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/21/7.webp',
+          alt: 'M3M X GPM Pinaccle view 7',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/21/8.webp',
+          alt: 'M3M X GPM Pinaccle view 8',
+        },
+      },
+    ],
+  },
+
+  {
     id: "house27",
     title: "House 27",
     coverImage: '/assets/27.webp',
@@ -2589,6 +2808,49 @@ in Motion`,
         props: {
           src: '/assets/33/5.webp',
           alt: 'House 50 interior view',
+        },
+      },
+    ],
+  },
+
+  {
+    id: "skyrise",
+    title: "M3M X GPM Skyrise",
+    coverImage: '/assets/28.webp',
+    sections: [
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/28/1.webp',
+          alt: 'Skyrise view',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/28/2.webp',
+          alt: 'Skyrise interior view',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/28/3.webp',
+          alt: 'Skyrise interior view',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/28/4.webp',
+          alt: 'Skyrise interior view',
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/28/5.webp',
+          alt: 'Skyrise interior view',
         },
       },
     ],
@@ -2801,6 +3063,97 @@ in Motion`,
         },
       },
     ],
+  },
+
+  {
+    id: 'migsun-studios',
+    title: 'Migsun Studios',
+    location: 'Lucknow, Uttar Pradesh, India',
+    type: 'High-Street Retail + Serviced Apartments',
+    status: 'Concept / Design Development',
+    area: '4 Acres',
+    description: `Waves stands as a landmark mixed-use development that redefines the skyline through parametric geometry and organic form. Designed as a singular, monolithic gesture, the building seamlessly integrates high-end commercial infrastructure with sophisticated urban living — 4 floors of High-Street Retail beneath 30 floors of wave-inspired studio apartments.`,
+    coverImage: '/assets/31.webp',
+    images: [
+      '/assets/31/1.webp',
+      '/assets/31/2.webp',
+      '/assets/31/3.webp',
+      '/assets/31/4.webp',
+      '/assets/31/5.webp',
+    ],
+    sections: [
+      {
+        type: 'TextRight',
+        props: {
+          text: `Waves stands as a landmark mixed-use development that redefines the skyline through parametric geometry and organic form. Designed as a singular, monolithic gesture, the building seamlessly integrates high-end commercial infrastructure with sophisticated urban living — 4 floors of High-Street Retail beneath 30 floors of wave-inspired studio apartments.`,
+        },
+      },
+      {
+        type: 'KeyInfo',
+        props: {
+          items: [
+            { label: 'Location', value: 'Lucknow, Uttar Pradesh, India' },
+            { label: 'Site Area', value: '4 Acres' },
+            { label: 'Typology', value: 'High-Street Retail + Serviced Apartments' },
+            { label: 'Program', value: '4 Floors High-Street Retail + 30 Floors Studio Apartments' },
+            { label: 'Client', value: 'Migsun Group' },
+            { label: 'Status', value: 'Concept / Design Development' },
+          ],
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/31/1.webp',
+          alt: 'Migsun Studios exterior view',
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `The project's namesake is derived from its most striking feature: the rhythmic, undulating facade. Subtle, varying curves in the cantilevered balconies disrupt rectilinear monotony — creating a dynamic play of light and chiaroscuro that shifts with the sun's path.`,
+        },
+      },
+      {
+        type: 'ImageLeftTextRight',
+        props: {
+          src: '/assets/31/2.webp',
+          alt: 'Migsun Studios tectonic fluidity',
+          heading: 'TectonicFluidity',
+          text: `The design bridges the threshold between the public and private spheres. The 4-story podium, housing premium retail, features a fluid transition into the 30-tier residential stack, creating a continuous vertical flow that avoids a jarring visual break. This seamless tectonic continuity is the defining gesture of the composition — architecture as an uninterrupted vertical journey.`,
+        },
+      },
+      {
+        type: 'Slider',
+        props: {
+          heading: `The Bronze Palette`,
+          images: [
+            '/assets/31/3.webp',
+            '/assets/31/4.webp',
+          ],
+        },
+      },
+      {
+        type: 'HeadingLeft',
+        props: {
+          subtext: 'Material Language',
+          heading: `A refined bronze finish articulates the building's profiles and massing — shifting from deep amber to bright gold depending on atmospheric conditions, lending the envelope a warm, reflective quality that evolves throughout the day.`,
+        },
+      },
+      {
+        type: 'ImageCentre',
+        props: {
+          src: '/assets/31/5.webp',
+          alt: 'Migsun Studios sculpted living balconies',
+        },
+      },
+      {
+        type: 'HeadingRight',
+        props: {
+          heading: `Each studio apartment benefits from the building's curvilinear morphology. The wave-like balconies function as brise-soleil shading devices while offering residents a unique, sculptural outdoor space that frames panoramic views of the city.`,
+        },
+      },
+    ],
   }
 
 ];
@@ -2808,13 +3161,13 @@ in Motion`,
 // Map from imageKey to projectId — covers both new img1…img32 keys (current home page)
 // Images are distributed across projects in round-robin order (12 projects × ~3 images each)
 export const imageKeyToProject = {
-  // ── New home page image keys (img1–img32) ──────────────────────────────
+  // ── New home page image keys (img1–img33) ──────────────────────────────
   img1:  'urban-renaissance',
   img2:  'noida-one',
   img3:  'shards',
   img4:  'bachelor-pad',
   img5:  'the-crescent-studios',
-  img6:  'migsun-mixed-use',
+  img6:  'white-house',
   img7:  'the-wave',
   img8:  'convention-centre',
   img9:  'inter-weave',
@@ -2823,25 +3176,60 @@ export const imageKeyToProject = {
   img12: 'masterplan-projects',
   img13: 'the-studio',
   img14: 'cascade',
-  img15: 'gpm-retail',
+  img15: 'strata-center',
   img16: 'pathcare-research-campus',
   img17: 'noida-one',
   img18: 'the-kinetic-ribbon',
   img19: 'm3m-jacob-and-co',
   img20: 'arcadia',
-  img21: '',
+  img21: 'pinaccle',
   img22: 'peace-scraper',
   img23: 'the-hex',
   img24: 'the-urban-nexus',
   img25: 'the-aurelia-villa',
   img26: 'phoenix-mall',
   img27: 'house27',
-  img28: 'm3m',
+  img28: 'skyrise',
   img29: 'crescent-high-street',
   img30: 'limassol-office',
-  img31: 'migsun-rohini',
+  img31: 'migsun-studios',
   img32: 'urban-square',
-  img33: "house50"
+  img33: 'house50'
 };
+
+// Ordered list of project IDs for the Projects page display
+// Derived by inverting the home→projects mapping provided by the user
+export const projectsPageOrder = [
+  'arcadia',               // 1: img20
+  'strata-center',         // 2: img15
+  'the-aurelia-villa',     // 3: img25
+  'm3m-jacob-and-co',      // 4: img19
+  'pathcare-research-campus', // 5: img16
+  'the-studio',            // 6: img13
+  'shards',                // 7: img3
+  'phoenix-mall',          // 8: img26
+  'the-urban-nexus',       // 9: img24
+  'cascade',               // 10: img14
+  'pinaccle',              // 11: img21
+  'the-kinetic-ribbon',    // 12: img18
+  'noida-one',             // 13: img2 (also img17)
+  'the-wave',              // 14: img7
+  'inter-weave',           // 15: img9
+  'crescent-high-street',  // 16: img29 (also img23)
+  'the-crescent-studios',  // 17: img5
+  'skyrise',               // 18: img28
+  'migsun-studios',        // 19: img31
+  'the-portal',            // 20: img10
+  'urban-square',          // 21: img32
+  'house50',               // 22: img33 (also img6)
+  'the-human-high-street', // 23: img11
+  'masterplan-projects',   // 24: img12
+  'convention-centre',     // 25: img8
+  'peace-scraper',         // 26: img22
+  'house27',               // 27: img27
+  'urban-renaissance',     // 28: img1
+  'bachelor-pad',          // 29: img4
+  'limassol-office',       // 30: img30
+];
 
 export default projectData;

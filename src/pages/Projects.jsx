@@ -1,7 +1,13 @@
 import { useNavigate } from 'react-router-dom'
-import projectData from '../data/projectData'
+import projectData, { projectsPageOrder } from '../data/projectData'
 import '../styles/Projects.css'
 import Navbar from '../components/Navbar'
+
+// Sort projects according to the defined projects-page order; append any unlisted ones at the end
+const sortedProjects = [
+  ...projectsPageOrder.map(id => projectData.find(p => p.id === id)).filter(Boolean),
+  ...projectData.filter(p => !projectsPageOrder.includes(p.id)),
+]
 
 function Projects() {
   const navigate = useNavigate()
@@ -23,7 +29,7 @@ function Projects() {
 
       {/* Projects Grid */}
       <section className="projects-grid">
-        {projectData.map((project) => (
+        {sortedProjects.map((project) => (
           <div
             key={project.id}
             className="project-card"
