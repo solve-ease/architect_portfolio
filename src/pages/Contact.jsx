@@ -144,10 +144,10 @@ function Contact() {
           <div className="contact-info-section">
             <h2>Get in Touch</h2>
 
-            <div className="contact-info-item">
+            {/* <div className="contact-info-item">
               <h3>Studio</h3>
               <p>A 135D Sector 27</p>
-              <p>Noida, U.P</p> 
+              <p>Noida, U.P</p>
               <p>India</p>
             </div>
 
@@ -160,7 +160,7 @@ function Contact() {
               <h3>Phone</h3>
               <a href="tel:+91 95400 06147">+91 95400 06147</a>
               <a href="tel:+91 98100 06147">+91 98100 06147</a>
-            </div>
+            </div> */}
 
             <div className="contact-info-item">
               <h3>Office Hours</h3>

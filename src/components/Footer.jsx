@@ -32,7 +32,7 @@ function Footer() {
               <Link to="/">Home</Link>
               <Link to="/about">Our Story</Link>
               {/* <a href="#studio">Studio</a> */}
-              <Link to="/team">Team</Link>
+              {/* <Link to="/team">Team</Link> */}
               {/* <a href="#careers">Careers</a> */}
             </div>
             
