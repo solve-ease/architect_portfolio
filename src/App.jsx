@@ -48,7 +48,7 @@ function Navbar() {
       {/* Desktop Navbar */}
       <nav className="navbar navbar-desktop">
         <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
-        {/* <Link to="/team" className={location.pathname === '/team' ? 'active' : ''}>Team</Link> */}
+        <Link to="/team" className={location.pathname === '/team' ? 'active' : ''}>Team</Link>
         <a href="/about">About</a>
         <a href="/projects">Projects</a>
         <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link>
@@ -79,7 +79,7 @@ function Navbar() {
           <a href="/about" onClick={closeMenu}>About</a>
           <a href="/projects" onClick={closeMenu}>Projects</a>
           {/* <a href="#studio" onClick={closeMenu}>Studio</a> */}
-          {/* <Link to="/team" onClick={closeMenu}>Team</Link> */}
+          <Link to="/team" onClick={closeMenu}>Team</Link>
           {/* <a href="#news" onClick={closeMenu}>News</a> */}
           {/* <a href="#careers" onClick={closeMenu}>Careers</a> */}
           <Link to="/careers" onClick={closeMenu}>Careers</Link>
