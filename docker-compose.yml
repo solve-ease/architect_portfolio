@@ -9,3 +9,14 @@ services:
       - "51773:51773"
     container_name: architect-portfolio
     restart: unless-stopped
+    depends_on:
+      - blog-api
+
+  blog-api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    container_name: paraflux-blog-api
+    restart: unless-stopped

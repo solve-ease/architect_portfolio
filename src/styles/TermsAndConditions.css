@@ -1,0 +1,118 @@
+.terms-page {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.terms-content {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 0 6rem;
+}
+
+.terms-heading {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.terms-updated {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 0.875rem;
+  color: #888;
+  margin-bottom: 4rem;
+  letter-spacing: 0.05em;
+}
+
+.terms-section {
+  margin-bottom: 2.5rem;
+}
+
+.terms-section h2 {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.terms-section p,
+.terms-section ul {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 0.75rem;
+}
+
+.terms-section ul {
+  padding-left: 1.5rem;
+}
+
+.terms-section ul li {
+  margin-bottom: 0.3rem;
+}
+
+.terms-section a {
+  color: #000;
+  text-decoration: underline;
+  transition: opacity 0.3s;
+}
+
+.terms-section a:hover {
+  opacity: 0.6;
+}
+
+.terms-address {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  font-style: normal;
+  margin-top: 0.5rem;
+}
+
+.terms-address a {
+  color: #000;
+  text-decoration: underline;
+  transition: opacity 0.3s;
+}
+
+.terms-address a:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .terms-content {
+    width: 90%;
+    padding: 3rem 0 4rem;
+  }
+
+  .terms-heading {
+    font-size: 2.5rem;
+  }
+
+  .terms-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .terms-section p,
+  .terms-section ul {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-heading {
+    font-size: 2rem;
+  }
+
+  .terms-section p,
+  .terms-section ul {
+    font-size: 0.9rem;
+  }
+}

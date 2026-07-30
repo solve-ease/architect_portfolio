@@ -9,6 +9,12 @@ export default defineConfig({
     allowedHosts: [
       'theparaflux.com',
       '.theparaflux.com'
-    ]
+    ],
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      }
+    }
   }
 })

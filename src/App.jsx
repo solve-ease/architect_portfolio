@@ -9,6 +9,9 @@ import Contact from './pages/Contact'
 import Careers from './pages/Careers'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
+import TermsAndConditions from './pages/TermsAndConditions'
 import Footer from './components/Footer'
 const logo_mobile = '/assets/logo_white.webp'
 
@@ -96,7 +99,7 @@ function Navbar() {
 
 function AppContent() {
   const location = useLocation()
-  const showFooter = location.pathname !== '/' && location.pathname !== '/about' && location.pathname !== '/privacy-info' && location.pathname !== '/contact' && location.pathname !== '/careers' && !location.pathname.startsWith('/project/')
+  const showFooter = location.pathname !== '/' && location.pathname !== '/about' && location.pathname !== '/privacy-info' && location.pathname !== '/contact' && location.pathname !== '/careers' && location.pathname !== '/terms' && !location.pathname.startsWith('/project/') && !location.pathname.startsWith('/blog')
   
   return (
     <>
@@ -109,6 +112,9 @@ function AppContent() {
         <Route path="/careers" element={<Careers />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/project/:projectId" element={<ProjectDetail />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
       </Routes>
       {showFooter && <Footer />}
     </>

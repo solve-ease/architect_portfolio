@@ -39,8 +39,10 @@ function Footer() {
             <div className="footer-column">
               <a href="/projects">Projects</a>
               {/* <a href="#news">News</a> */}
+              <Link to="/blog">Blog</Link>
               <Link to="/contact">Contact</Link>
               <Link to="/privacy-info">Privacy Policy</Link>
+              <Link to="/terms">Terms &amp; Conditions</Link>
             </div>
           </div>
         </div>

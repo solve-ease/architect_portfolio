@@ -1,0 +1,194 @@
+.blog-post-page {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.blog-post-main {
+  padding-bottom: 6rem;
+}
+
+/* Loading / error states */
+.blog-post-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1.5rem;
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 1rem;
+  color: #555;
+}
+
+.blog-post-not-found-title {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.blog-loader {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #e0e0e0;
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: blog-spin 0.8s linear infinite;
+}
+
+@keyframes blog-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Hero image */
+.blog-post-hero {
+  width: 100%;
+  height: 60vh;
+  max-height: 620px;
+  overflow: hidden;
+}
+
+.blog-post-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content area */
+.blog-post-content {
+  width: 80%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3.5rem 0 0;
+}
+
+/* Back link */
+.blog-post-back-link {
+  display: inline-block;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+
+.blog-post-back-link:hover {
+  color: #000;
+}
+
+/* Category pill */
+.blog-post-category {
+  display: inline-block;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: #000;
+  color: #fff;
+  padding: 0.3rem 0.7rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Title */
+.blog-post-title {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 2.75rem;
+  font-weight: 500;
+  color: #000;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+/* Meta row */
+.blog-post-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.blog-post-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.blog-post-author {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.blog-post-author-role {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 0.78rem;
+  color: #999;
+  letter-spacing: 0.04em;
+}
+
+.blog-post-date-info {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 0.82rem;
+  color: #999;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.blog-post-meta-dot {
+  font-size: 0.5rem;
+}
+
+/* Divider */
+.blog-post-divider {
+  height: 1px;
+  background: #e5e5e5;
+  margin-bottom: 2.5rem;
+}
+
+/* Body text */
+.blog-post-body {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #333;
+}
+
+.blog-post-body p {
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blog-post-hero {
+    height: 45vw;
+  }
+
+  .blog-post-content {
+    width: 90%;
+    padding: 2.5rem 0 0;
+  }
+
+  .blog-post-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-post-title {
+    font-size: 1.65rem;
+  }
+
+  .blog-post-body {
+    font-size: 0.95rem;
+  }
+}
